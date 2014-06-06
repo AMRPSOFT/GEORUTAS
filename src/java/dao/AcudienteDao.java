@@ -18,8 +18,8 @@ public interface AcudienteDao {
     public Acudiente findByAcudiente(Acudiente acudiente);
     public List<Acudiente> selectItems();
     public List<Acudiente> findAll();
-    public boolean create(Acudiente extra);
-    public boolean update(Acudiente extra);
+    public boolean create(Acudiente acudiente);
+    public boolean update(Acudiente acudiente);
     public boolean delete(Integer id);
     
 }
