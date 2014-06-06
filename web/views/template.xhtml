@@ -15,7 +15,7 @@
     <h:body>
 
         <div id="top" class="ui-widget-header ui-corner-all">
-            <ui:insert name="top"><h1>ASOCIACION DE ARTISTAS RADIO CINE Y TELEVISION DE CARTAGENA </h1></ui:insert>
+            <ui:insert name="top"><h1>TRANSPORTE DE RUTAS ESCOLARES</h1></ui:insert>
         </div>
 
         <div id="menu">
@@ -24,11 +24,23 @@
                     <p:submenu label="Usuarios" icon="ui-icon-document">  
                         <p:menuitem value="Usuario" icon="ui-icon-document" url="/faces/views/usuario/usuario.xhtml" />   
                     </p:submenu>
-                    <p:submenu label="Extras" icon="ui-icon-document">  
-                        <p:menuitem value="Extra" icon="ui-icon-document" url="/faces/views/extra/extra.xhtml" />   
+                    <p:submenu label="Acudientes" icon="ui-icon-document">  
+                        <p:menuitem value="Acudiente" icon="ui-icon-document" url="/faces/views/acudiente/acudiente.xhtml" />   
                     </p:submenu>
-                    <p:submenu label="Imagenes" icon="ui-icon-document">  
-                        <p:menuitem value="Imagen" icon="ui-icon-document" url="/faces/views/imagen/imagen.xhtml" />   
+                    <p:submenu label="Estudiantes" icon="ui-icon-document">  
+                        <p:menuitem value="Estudiante" icon="ui-icon-document" url="/faces/views/estudiante/estudiante.xhtml" />   
+                    </p:submenu>
+                    <p:submenu label="Conductores" icon="ui-icon-document">  
+                        <p:menuitem value="Conductor" icon="ui-icon-document" url="/faces/views/conductor/conductor.xhtml" />   
+                    </p:submenu>
+                    <p:submenu label="Rutas" icon="ui-icon-document">  
+                        <p:menuitem value="Ruta" icon="ui-icon-document" url="/faces/views/ruta/ruta.xhtml" />   
+                    </p:submenu>
+                    <p:submenu label="Vehiculos" icon="ui-icon-document">  
+                        <p:menuitem value="Vehiculo" icon="ui-icon-document" url="/faces/views/vehiculo/vehiculo.xhtml" />   
+                    </p:submenu>
+                    <p:submenu label="Recorridos" icon="ui-icon-document">  
+                        <p:menuitem value="Recorrido" icon="ui-icon-document" url="/faces/views/recorrido/recorrido.xhtml" />   
                     </p:submenu>
                     <p:submenu label="Consultas" icon="ui-icon-gear">
                         <p:submenu label="Consultar por" icon="ui-icon-gear">
@@ -39,7 +51,7 @@
                         </p:submenu>
                     </p:submenu>
                     
-                    <p:menuitem value="Salir" actionListener="#{loginBean.logout}" icon="ui-icon-close" oncomplete="handleLoginRequest(xhr, status, args)" />   
+                    <p:menuitem value="Logout" actionListener="#{loginBean.logout}" icon="ui-icon-close" oncomplete="handleLoginRequest(xhr, status, args)" />   
                 </p:menubar>  
             </h:form>  
         </div>
@@ -49,7 +61,7 @@
         </div>
 
         <div id="bottom" class="ui-widget-header ui-corner-all">
-            <ui:insert name="bottom">ARCITECAR Todos los Derechos Reservados &copy; 2014</ui:insert>
+            <ui:insert name="bottom">GEORUTAS Todos los Derechos Reservados &copy; 2014</ui:insert>
         </div>
         
         <script type="text/javascript">
