@@ -2,11 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Listar Usuarios</title>
+        <title>Listar Acudientes</title>
     </h:head>
     <body>
 
@@ -20,12 +20,15 @@
                                      icon="ui-icon-document" title="Nuevo Extra"/>  
                 </h:form>
                 <h:form id="formDataTable">
-                    <p:dataTable id="usuario" var="item" value="#{usuarioBean.usuarios}" paginator="true" rows="8">
+                    <p:dataTable id="usuario" var="item" value="#{acudienteBean.acudientes}" paginator="true" rows="8">
                         <f:facet name="header">
                             <p:outputLabel style="font-size: 18px;" value="Listado de Usuario"/>
                         </f:facet>
                         <p:column headerText="Id">  
-                            <h:outputText value="#{item.idusuario}" />  
+                            <h:outputText value="#{item.idacudiente}" />  
+                        </p:column>
+                        <p:column headerText="Identificacion">  
+                            <h:outputText value="#{item.identificacion}" />  
                         </p:column>
                         <p:column headerText="Nombres">  
                             <h:outputText value="#{item.nombre}" />  
@@ -42,47 +45,54 @@
                         <p:column headerText="Email">  
                             <h:outputText value="#{item.email}" />  
                         </p:column>
+                        <p:column headerText="Sexo">  
+                            <h:outputText value="#{item.sexo}" />  
+                        </p:column>
                         <p:column headerText="Aciones">
                             <p:commandButton id="btnEdit" icon="ui-icon-pencil"  
                                              value="Edit" update=":formUpdateUsuario" 
                                              oncomplete="PF('dialogUpdateUsuario').show()">  
-                                <f:setPropertyActionListener value="#{item}" target="#{usuarioBean.selectedUsuario}" />
+                                <f:setPropertyActionListener value="#{item}" target="#{acudienteBean.selectedAcudiente}" />
                             </p:commandButton>
                             <p:commandButton id="btnVer" icon="ui-icon-search" 
                                              value="View" update=":formViewUsuario" oncomplete="PF('dialogView').show()">  
-                                <f:setPropertyActionListener value="#{item}" target="#{usuarioBean.selectedUsuario}" />
+                                <f:setPropertyActionListener value="#{item}" target="#{acudienteBean.selectedAcudiente}" />
                             </p:commandButton>
                             <p:commandButton id="btnEliminar" icon="ui-icon-close" 
                                              value="Delete" update=":formDeleteUsuario" 
                                              oncomplete="PF('dialogDeleteUsuario').show()">  
-                                <f:setPropertyActionListener value="#{item}" target="#{usuarioBean.selectedUsuario}" />
+                                <f:setPropertyActionListener value="#{item}" target="#{acudienteBean.selectedAcudiente}" />
                             </p:commandButton>
                         </p:column> 
                     </p:dataTable>
                 </h:form>
 
                 <h:form id="formCreate">
-                    <p:dialog header="Crear Usuario" widgetVar="dialogCrearUsuario" resizable="false" id="dlgCreate"  
+                    <p:dialog header="Crear Acudiente" widgetVar="dialogCrearUsuario" resizable="false" id="dlgCreate"  
                               showEffect="fade" hideEffect="explode" modal="true" position="center">  
                         <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
+                            <h:outputText value="Identificacion:" />  
+                            <p:inputText value="#{acudienteBean.selectedAcudiente.identificacion}" style="font-weight:bold"/> 
                             <h:outputText value="Nombres:" />  
-                            <p:inputText value="#{usuarioBean.selectedUsuario.nombre}" style="font-weight:bold"/> 
+                            <p:inputText value="#{acudienteBean.selectedAcudiente.nombre}" style="font-weight:bold"/> 
                             <h:outputText value="Apellidos:" />  
-                            <p:inputText value="#{usuarioBean.selectedUsuario.apellido}" style="font-weight:bold"/>
+                            <p:inputText value="#{acudienteBean.selectedAcudiente.apellido}" style="font-weight:bold"/>
                             <h:outputText value="Telefono:" />  
-                            <p:inputText value="#{usuarioBean.selectedUsuario.telefono}" style="font-weight:bold"/> 
+                            <p:inputText value="#{acudienteBean.selectedAcudiente.telefono}" style="font-weight:bold"/> 
                             <h:outputText value="Direccion:" />  
-                            <p:inputText value="#{usuarioBean.selectedUsuario.direccion}" style="font-weight:bold"/> 
+                            <p:inputText value="#{acudienteBean.selectedAcudiente.direccion}" style="font-weight:bold"/> 
                             <h:outputText value="Email:" />  
-                            <p:inputText value="#{usuarioBean.selectedUsuario.email}" style="font-weight:bold"/> 
-                            <h:outputText value="UserName:" />  
-                            <p:inputText value="#{usuarioBean.selectedUsuario.userName}" style="font-weight:bold"/> 
-                            <h:outputText value="Password:" />  
-                            <p:password value="#{usuarioBean.selectedUsuario.password}" style="font-weight:bold"/> 
+                            <p:inputText value="#{acudienteBean.selectedAcudiente.email}" style="font-weight:bold"/> 
+                            <h:outputText value="Sexo:" />  
+                            <p:selectOneMenu id="sexo" value="#{acudienteBean.selectedAcudiente.sexo}" style="font-weight: bold">
+                                <f:selectItem itemLabel="Selecione su Sexo" itemValue="" />  
+                                <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                                <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+                            </p:selectOneMenu>
                             <f:facet name="footer">
                                 <p:separator/>
                                 <p:commandButton id="btnCreateAceptar" value="Guardar" 
-                                                 actionListener="#{usuarioBean.btnCreateUsuario(event)}" 
+                                                 actionListener="#{acudienteBean.btnCreateAcudiente(event)}" 
                                                  update=":formDataTable, :msgs" 
                                                  oncomplete="PF('dialogCrearUsuario').hide()" icon="ui-icon-disk"/>
                                 <p:commandButton id="btnCreateCancelar" value="Cancelar" 
@@ -94,27 +104,31 @@
 
 
                 <h:form id="formUpdateUsuario">
-                    <p:dialog header="Editar Usuario" id="dialogUpdate" widgetVar="dialogUpdateUsuario" showEffect="fade" 
+                    <p:dialog header="Editar Acudiente" id="dialogUpdate" widgetVar="dialogUpdateUsuario" showEffect="fade" 
                               hideEffect="explode" modal="true" minWidth="600" minHeight="500" position="center">
                         <h:panelGrid id="display" columns="2" style="margin:0 auto;"> 
+                            <h:outputText value="Identificacion:" />  
+                            <p:inputText value="#{acudienteBean.selectedAcudiente.identificacion}" style="font-weight:bold"/> 
                             <h:outputText value="Nombres:" />  
-                            <p:inputText value="#{usuarioBean.selectedUsuario.nombre}" style="font-weight:bold"/> 
+                            <p:inputText value="#{acudienteBean.selectedAcudiente.nombre}" style="font-weight:bold"/> 
                             <h:outputText value="Apellidos:" />  
-                            <p:inputText value="#{usuarioBean.selectedUsuario.apellido}" style="font-weight:bold"/>
+                            <p:inputText value="#{acudienteBean.selectedAcudiente.apellido}" style="font-weight:bold"/>
                             <h:outputText value="Telefono:" />  
-                            <p:inputText value="#{usuarioBean.selectedUsuario.telefono}" style="font-weight:bold"/> 
+                            <p:inputText value="#{acudienteBean.selectedAcudiente.telefono}" style="font-weight:bold"/> 
                             <h:outputText value="Direccion:" />  
-                            <p:inputText value="#{usuarioBean.selectedUsuario.direccion}" style="font-weight:bold"/> 
+                            <p:inputText value="#{acudienteBean.selectedAcudiente.direccion}" style="font-weight:bold"/> 
                             <h:outputText value="Email:" />  
-                            <p:inputText value="#{usuarioBean.selectedUsuario.email}" style="font-weight:bold"/> 
-                            <h:outputText value="UserName:" />  
-                            <p:inputText value="#{usuarioBean.selectedUsuario.userName}" style="font-weight:bold"/> 
-                            <h:outputText value="Password:" />  
-                            <p:password value="#{usuarioBean.selectedUsuario.password}" style="font-weight:bold"/>
+                            <p:inputText value="#{acudienteBean.selectedAcudiente.email}" style="font-weight:bold"/> 
+                            <h:outputText value="Sexo:" />  
+                            <p:selectOneMenu id="sexo" value="#{acudienteBean.selectedAcudiente.sexo}" style="font-weight: bold">
+                                <f:selectItem itemLabel="Selecione su Sexo" itemValue="" />  
+                                <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                                <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+                            </p:selectOneMenu>
                             <f:facet name="footer">
                                 <p:separator/>
                                 <p:commandButton id="btnUpdateAceptar" value="Guardar" 
-                                                 actionListener="#{usuarioBean.btnUpdateUsuario(event)}" 
+                                                 actionListener="#{acudienteBean.btnUpdateAcudiente(event)}" 
                                                  update=":formDataTable, :msgs" 
                                                  oncomplete="PF('dialogUpdateUsuario').hide()" icon="ui-icon-disk"/>
                                 <p:commandButton id="btnUpdateCancelar" value="Cancelar" 
@@ -125,35 +139,37 @@
                 </h:form>
 
                 <h:form id="formViewUsuario">
-                    <p:dialog header="Ver Usuario" id="dialogViewUsuario" widgetVar="dialogView" showEffect="fade" 
+                    <p:dialog header="Ver Acudiente" id="dialogViewUsuario" widgetVar="dialogView" showEffect="fade" 
                               hideEffect="explode" modal="true" position="center"
                               minWidth="350" minHeight="400">  
                         <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
+                            <h:outputText value="Identificacion:" />  
+                            <h:outputText value="#{acudienteBean.selectedAcudiente.identificacion}" style="font-weight:bold"/> 
                             <h:outputText value="Nombres:" />  
-                            <h:outputText value="#{usuarioBean.selectedUsuario.nombre}" style="font-weight:bold"/> 
+                            <h:outputText value="#{acudienteBean.selectedAcudiente.nombre}" style="font-weight:bold"/> 
                             <h:outputText value="Apellidos:" />  
-                            <h:outputText value="#{usuarioBean.selectedUsuario.apellido}" style="font-weight:bold"/>
+                            <h:outputText value="#{acudienteBean.selectedAcudiente.apellido}" style="font-weight:bold"/>
                             <h:outputText value="Telefono:" />  
-                            <h:outputText value="#{usuarioBean.selectedUsuario.telefono}" style="font-weight:bold"/> 
+                            <h:outputText value="#{acudienteBean.selectedAcudiente.telefono}" style="font-weight:bold"/> 
                             <h:outputText value="Direccion:" />  
-                            <h:outputText value="#{usuarioBean.selectedUsuario.direccion}" style="font-weight:bold"/> 
+                            <h:outputText value="#{acudienteBean.selectedAcudiente.direccion}" style="font-weight:bold"/> 
                             <h:outputText value="Email:" />  
-                            <h:outputText value="#{usuarioBean.selectedUsuario.email}" style="font-weight:bold"/> 
-                            <h:outputText value="UserName:" />  
-                            <h:outputText value="#{usuarioBean.selectedUsuario.userName}" style="font-weight:bold"/> 
+                            <h:outputText value="#{acudienteBean.selectedAcudiente.email}" style="font-weight:bold"/> 
+                            <h:outputText value="Sexo:" />  
+                            <h:outputText value="#{acudienteBean.selectedAcudiente.sexo}" style="font-weight:bold"/> 
                         </h:panelGrid> 
                     </p:dialog> 
                 </h:form>
                 
                 <h:form id="formDeleteUsuario">
                     <p:confirmDialog id="confirmDialog" showEffect="fade" hideEffect="explode" 
-                                     message="¿Esta seguro de eliminar el Registro?" header="Eliminar Usuario"
+                                     message="¿Esta seguro de eliminar el Registro?" header="Eliminar Acudiente"
                                      severity="alert" widgetVar="dialogDeleteUsuario">
-                        <h:inputHidden value="#{usuarioBean.selectedUsuario.idusuario}"/>
+                        <h:inputHidden value="#{acudienteBean.selectedAcudiente.idacudiente}"/>
                         <p:commandButton value="Aceptar" icon="ui-icon-check"
                                          update=":formDataTable, :msgs" 
                                          oncomplete="dialogDeleteUsuario.hide()" 
-                                         actionListener="#{usuarioBean.btnDeleteUsuario(event)}"/>
+                                         actionListener="#{acudienteBean.btnDeleteAcudiente(event)}"/>
                         <p:commandButton value="Cancelar" type="button" 
                                          styleClass="ui-confirmdialog-no" icon="ui-icon-close"
                                          onclick="dialogDeleteUsuario.hide();"/>     
