@@ -7,5 +7,12 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/georutas?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">12345</property>
+    <mapping resource="model/Vehiculo.hbm.xml"/>
+    <mapping resource="model/Ruta.hbm.xml"/>
+    <mapping resource="model/Acudiente.hbm.xml"/>
+    <mapping resource="model/Conductor.hbm.xml"/>
+    <mapping resource="model/Usuario.hbm.xml"/>
+    <mapping resource="model/Estudiante.hbm.xml"/>
+    <mapping resource="model/Recorrido.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

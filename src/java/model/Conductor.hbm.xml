@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 6/06/2014 11:50:35 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Conductor" table="conductor" catalog="georutas">
+        <id name="idconductor" type="java.lang.Integer">
+            <column name="idconductor" />
+            <generator class="identity" />
+        </id>
+        <property name="identificacion" type="int">
+            <column name="Identificacion" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="45" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="Apellido" length="45" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="45" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="45" not-null="true" />
+        </property>
+        <property name="nroPase" type="int">
+            <column name="NroPase" not-null="true" />
+        </property>
+        <property name="categoria" type="string">
+            <column name="Categoria" length="45" not-null="true" />
+        </property>
+        <set name="vehiculos" table="vehiculo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdConductor" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.Vehiculo" />
+        </set>
+        <set name="recorridos" table="recorrido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdConductor" not-null="true" />
+            </key>
+            <one-to-many class="model.Recorrido" />
+        </set>
+    </class>
+</hibernate-mapping>

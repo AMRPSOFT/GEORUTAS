@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 6/06/2014 11:50:35 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Acudiente" table="acudiente" catalog="georutas">
+        <id name="idacudiente" type="java.lang.Integer">
+            <column name="idacudiente" />
+            <generator class="identity" />
+        </id>
+        <property name="identificacion" type="string">
+            <column name="Identificacion" length="45" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="45" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="Apellido" length="45" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="150" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="15" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="100" not-null="true" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="Sexo" length="25" not-null="true" />
+        </property>
+        <set name="estudiantes" table="estudiante" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdAcudiente" not-null="true" />
+            </key>
+            <one-to-many class="model.Estudiante" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 6/06/2014 11:50:35 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Ruta" table="ruta" catalog="georutas">
+        <id name="idruta" type="java.lang.Integer">
+            <column name="idruta" />
+            <generator class="identity" />
+        </id>
+        <property name="latitud" type="double">
+            <column name="Latitud" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="longitud" type="double">
+            <column name="Longitud" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="nomBarrio" type="string">
+            <column name="NomBarrio" length="50" not-null="true" />
+        </property>
+        <set name="recorridos" table="recorrido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdRuta" not-null="true" />
+            </key>
+            <one-to-many class="model.Recorrido" />
+        </set>
+        <set name="vehiculos" table="vehiculo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdRuta" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.Vehiculo" />
+        </set>
+    </class>
+</hibernate-mapping>

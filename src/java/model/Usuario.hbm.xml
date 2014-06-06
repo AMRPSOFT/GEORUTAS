@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 6/06/2014 11:50:35 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Usuario" table="usuario" catalog="georutas">
+        <id name="idusuario" type="java.lang.Integer">
+            <column name="idusuario" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="45" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="Apellido" length="45" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="15" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="150" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="150" not-null="true" />
+        </property>
+        <property name="userName" type="string">
+            <column name="UserName" length="45" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="Password" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
