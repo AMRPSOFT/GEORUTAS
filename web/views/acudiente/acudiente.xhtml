@@ -22,7 +22,7 @@
                 <h:form id="formDataTable">
                     <p:dataTable id="usuario" var="item" value="#{acudienteBean.acudientes}" paginator="true" rows="8">
                         <f:facet name="header">
-                            <p:outputLabel style="font-size: 18px;" value="Listado de Usuario"/>
+                            <p:outputLabel style="font-size: 18px;" value="Listado de Acudientes"/>
                         </f:facet>
                         <p:column headerText="Id">  
                             <h:outputText value="#{item.idacudiente}" />  
@@ -128,7 +128,7 @@
                             <f:facet name="footer">
                                 <p:separator/>
                                 <p:commandButton id="btnUpdateAceptar" value="Guardar" 
-                                                 actionListener="#{acudienteBean.btnCreateAcudiente(event)}" 
+                                                 actionListener="#{acudienteBean.btnUpdateAcudiente(event)}" 
                                                  update=":formDataTable, :msgs" 
                                                  oncomplete="PF('dialogUpdateUsuario').hide()" icon="ui-icon-disk"/>
                                 <p:commandButton id="btnUpdateCancelar" value="Cancelar" 

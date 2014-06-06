@@ -81,7 +81,7 @@ public class AcudienteDaoImpl implements AcudienteDao{
         try {
             final Transaction transaction = sesion.beginTransaction();
             try {
-                sesion.saveOrUpdate(acudiente);
+                sesion.save(acudiente);
                 transaction.commit();
                 flag = true;
             } catch (Exception e) {
