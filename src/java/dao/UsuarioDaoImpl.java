@@ -22,7 +22,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
     public Usuario findByUsuario(Usuario usuario) {
         Usuario model = null;
         final Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-        String sql = "FROM Usuario WHERE username = '"+usuario.getUserName()+"'";
+        String sql = "FROM Usuario WHERE UserName = '"+usuario.getUserName()+"'";
         try {
             final Transaction transaction = sesion.beginTransaction();
             try {
