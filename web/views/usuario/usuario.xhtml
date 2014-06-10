@@ -111,6 +111,7 @@
                             <p:inputText value="#{usuarioBean.selectedUsuario.userName}" style="font-weight:bold"/> 
                             <h:outputText value="Password:" />  
                             <p:password value="#{usuarioBean.selectedUsuario.password}" style="font-weight:bold"/>
+                            <h:inputHidden value="#{usuarioBean.selectedUsuario.idusuario}"/>
                             <f:facet name="footer">
                                 <p:separator/>
                                 <p:commandButton id="btnUpdateAceptar" value="Guardar" 

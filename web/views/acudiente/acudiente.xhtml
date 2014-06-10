@@ -125,6 +125,7 @@
                                 <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
                                 <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
                             </p:selectOneMenu>
+                            <h:inputHidden value="#{acudienteBean.selectedAcudiente.idacudiente}"/>
                             <f:facet name="footer">
                                 <p:separator/>
                                 <p:commandButton id="btnUpdateAceptar" value="Guardar" 
