@@ -34,6 +34,7 @@ public class Acudiente  implements java.io.Serializable {
      private Set estudiantes = new HashSet(0);
 
     public Acudiente() {
+        this.idacudiente=0;
     }
 
 	
