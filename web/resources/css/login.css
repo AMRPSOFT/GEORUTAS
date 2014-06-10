@@ -11,6 +11,21 @@
 }
 
 .ui-state-default .icon-login{
-    background-image: url(../icons/Success.png);
+    background-image: url(../icons/User.png);
 }
 
+.ui-state-default .icon-add{
+    background-image: url(../icons/Add.png);
+}
+
+.ui-state-default .icon-save{
+    background-image: url(../icons/Save.png);
+}
+
+.ui-state-default .icon-search{
+    background-image: url(../icons/Search.png);
+}
+
+.ui-state-default .icon-delete{
+    background-image: url(../icons/Delete.png);
+}
