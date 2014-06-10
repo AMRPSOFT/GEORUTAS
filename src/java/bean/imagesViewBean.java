@@ -25,8 +25,8 @@ public class imagesViewBean {
     @PostConstruct
     public void init() {
         images = new ArrayList<String>();
-        for (int i = 1; i <= 12; i++) {
-            images.add("cartagena" + i + ".jpg");
+        for (int i = 1; i <= 5; i++) {
+            images.add("ruta" + i + ".jpg");
         }
     }
  
