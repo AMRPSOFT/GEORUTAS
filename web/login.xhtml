@@ -11,13 +11,10 @@
     <h:body>
 
         <p:layout fullPage="true">
-
-            <p:layoutUnit position="north" size="100" >
-                <div id="top">
-                    <h1>TRANSPORTE DE RUTAS ESCOLARES</h1> 
-                </div>
-            </p:layoutUnit>
-
+            <div id="top" class="ui-widget-header ui-corner-all">
+                <p:layoutUnit position="north" size="100" id="top"/>
+                <h1>TRANSPORTE DE RUTAS ESCOLARES</h1>
+            </div>
             <p:layoutUnit position="west" size="300">
                 <h:form>
                     <p:calendar id="inline" mode="inline" />
@@ -53,9 +50,9 @@
             </p:layoutUnit>
 
             <p:layoutUnit position="center">
-                <p:galleria value="#{imagesViewBean.images}" var="image" panelWidth="721" panelHeight="385" showCaption="true">
+                <p:galleria value="#{imagesViewBean.images}" var="image" panelWidth="721" panelHeight="495" showCaption="true">
                     <img src="resources/images/#{image}" alt="Imagenes de los sitios historicos #{image}" title="#{image}" 
-                         style="height: 381px; width: 720px;"/>
+                         style="height: 495px; width: 721px;"/>
                 </p:galleria>
             </p:layoutUnit>
 

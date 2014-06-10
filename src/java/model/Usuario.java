@@ -29,7 +29,6 @@ public class Usuario  implements java.io.Serializable {
      private String password;
 
     public Usuario() {
-        this.idusuario=0;
     }
 
     public Usuario(String nombre, String apellido, String telefono, String direccion, String email, String userName, String password) {
