@@ -3,6 +3,7 @@ package dao;
 
 import java.util.List;
 import model.Acudiente;
+import model.Estudiante;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -131,6 +132,29 @@ public class AcudienteDaoImpl implements AcudienteDao{
             
         }
         return flag;
+    }
+
+    @Override
+    public List<Estudiante> findByIdentificacion() {
+        Acudiente acudiente = new Acudiente();
+        List<Estudiante> listado = null;
+        final Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        String sql = "Acudiente a, Estudiante e WHERE a.identificacion='" + acudiente.getIdentificacion()+ "'";
+        try {
+            final Transaction transaction = sesion.beginTransaction();
+            try {
+                listado = (List<Estudiante>) sesion.createQuery(sql).list();
+                transaction.commit();
+                
+            } catch (Exception e) {
+                
+                transaction.rollback();
+                throw e;
+            }
+        } finally {
+            
+        }
+        return listado;
     }
     
 }

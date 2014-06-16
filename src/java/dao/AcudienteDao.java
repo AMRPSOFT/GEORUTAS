@@ -8,6 +8,7 @@ package dao;
 
 import java.util.List;
 import model.Acudiente;
+import model.Estudiante;
 
 /**
  *
@@ -21,5 +22,6 @@ public interface AcudienteDao {
     public boolean create(Acudiente acudiente);
     public boolean update(Acudiente acudiente);
     public boolean delete(Integer id);
+    public List<Estudiante> findByIdentificacion();
     
 }
