@@ -87,4 +87,8 @@ public class estudianteBean {
        }
         
     }
+    
+    public void btnBuscarEstudiantePorAcudiente(ActionEvent event){
+        
+    }
 }

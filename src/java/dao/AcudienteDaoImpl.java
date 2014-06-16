@@ -139,7 +139,7 @@ public class AcudienteDaoImpl implements AcudienteDao{
         Acudiente acudiente = new Acudiente();
         List<Estudiante> listado = null;
         final Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-        String sql = "Acudiente a, Estudiante e WHERE a.identificacion='" + acudiente.getIdentificacion()+ "'";
+        String sql = "SELECT e.nombre, e.apellido FROM Estudiante as e inner join e.acudiente as a WHERE a.identificacion ='" + acudiente.getIdentificacion()+ "'";
         try {
             final Transaction transaction = sesion.beginTransaction();
             try {
