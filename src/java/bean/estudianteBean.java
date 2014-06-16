@@ -72,7 +72,7 @@ public class estudianteBean {
        }
     }
     
-    public void btnDeleteAcudiente(ActionEvent event){
+    public void btnDeleteEstudiante(ActionEvent event){
        EstudianteDao estudianteDao = new EstudianteDaoImpl();
        String msng;
        if(estudianteDao.delete(this.selectedEstudiante.getIdestudiante())){

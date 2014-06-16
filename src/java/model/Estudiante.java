@@ -38,6 +38,7 @@ public class Estudiante  implements java.io.Serializable {
      private Set recorridos = new HashSet(0);
 
     public Estudiante() {
+        this.idestudiante=0;
     }
 
 	
