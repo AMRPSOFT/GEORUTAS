@@ -29,3 +29,7 @@
 .ui-state-default .icon-delete{
     background-image: url(../icons/Delete.png);
 }
+
+.ui-state-default .icon-edit{
+    background-image: url(../icons/save_labled_edit.png);
+}
