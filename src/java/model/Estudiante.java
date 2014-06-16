@@ -39,6 +39,7 @@ public class Estudiante  implements java.io.Serializable {
 
     public Estudiante() {
         this.idestudiante=0;
+        this.acudiente = new Acudiente();
     }
 
 	
