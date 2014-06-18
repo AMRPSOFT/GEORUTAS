@@ -107,7 +107,9 @@
                 <h:form id="formUpdateUsuario">
                     <p:dialog header="Editar Conductor" id="dialogUpdate" widgetVar="dialogUpdateUsuario" showEffect="fade" 
                               hideEffect="explode" modal="true" minWidth="600" minHeight="500" position="center">
-                        <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
+                        <h:panelGrid id="display" columns="2" style="margin:0 auto;">
+                            <h:outputText value="Id:" />  
+                            <p:inputText value="#{conductorBean.selectedConductor.idconductor}" style="font-weight:bold"/> 
                             <h:outputText value="Identificacion:" />  
                             <p:inputText value="#{conductorBean.selectedConductor.identificacion}" style="font-weight:bold"/> 
                             <h:outputText value="Nombres:" />  

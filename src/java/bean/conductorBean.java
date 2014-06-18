@@ -6,7 +6,7 @@ import dao.ConductorDaoImpl;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -18,7 +18,7 @@ import model.Conductor;
  * @author Alex Rodriguez
  */
 @Named(value = "conductorBean")
-@Dependent
+@RequestScoped
 public class conductorBean {
 
    private Conductor selectedConductor;
