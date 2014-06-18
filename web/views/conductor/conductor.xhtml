@@ -105,41 +105,30 @@
 
 
                 <h:form id="formUpdateUsuario">
-                    <p:dialog header="Editar Estudiante" id="dialogUpdate" widgetVar="dialogUpdateUsuario" showEffect="fade" 
+                    <p:dialog header="Editar Conductor" id="dialogUpdate" widgetVar="dialogUpdateUsuario" showEffect="fade" 
                               hideEffect="explode" modal="true" minWidth="600" minHeight="500" position="center">
                         <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
-                            <h:outputText value="Id:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.idestudiante}" style="font-weight:bold"/> 
                             <h:outputText value="Identificacion:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.identicacion}" style="font-weight:bold"/> 
+                            <p:inputText value="#{conductorBean.selectedConductor.identificacion}" style="font-weight:bold"/> 
                             <h:outputText value="Nombres:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.nombre}" style="font-weight:bold"/> 
+                            <p:inputText value="#{conductorBean.selectedConductor.nombre}" style="font-weight:bold"/> 
                             <h:outputText value="Apellidos:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.apellido}" style="font-weight:bold"/>
+                            <p:inputText value="#{conductorBean.selectedConductor.apellido}" style="font-weight:bold"/>
                             <h:outputText value="Telefono:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.telefono}" style="font-weight:bold"/> 
+                            <p:inputText value="#{conductorBean.selectedConductor.telefono}" style="font-weight:bold"/> 
                             <h:outputText value="Direccion:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.direccion}" style="font-weight:bold"/> 
+                            <p:inputText value="#{conductorBean.selectedConductor.direccion}" style="font-weight:bold"/> 
                             <h:outputText value="Email:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.email}" style="font-weight:bold"/> 
-                            <h:outputText value="Sexo:" />  
-                            <p:selectOneMenu id="sexo" value="#{estudianteBean.selectedEstudiante.sexo}" style="font-weight: bold">
-                                <f:selectItem itemLabel="Selecione su Sexo" itemValue="" />  
-                                <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
-                                <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
-                            </p:selectOneMenu>
-                            <h:outputText value="Colegio:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.colegio}" style="font-weight:bold"/>
-                            <h:outputText value="Nombre Acudiente:" />  
-                            <p:selectOneMenu id="nomAcudiente" value="#{estudianteBean.selectedEstudiante.acudiente.idacudiente}" style="font-weight: bold">
-                                <f:selectItem itemLabel="Selecione Acudiente" itemValue="" />  
-                                <f:selectItems value="#{acudienteBean.selectOneItemsAcudiente}"/>
-                            </p:selectOneMenu>
-                            <h:inputHidden value="#{estudianteBean.selectedEstudiante.idestudiante}"/>
+                            <p:inputText value="#{conductorBean.selectedConductor.email}" style="font-weight:bold"/> 
+                            <h:outputText value="Numero Pase:" />  
+                            <p:inputText value="#{conductorBean.selectedConductor.nroPase}" style="font-weight:bold"/>
+                            <h:outputText value="Categoria:" />  
+                            <p:inputText value="#{conductorBean.selectedConductor.categoria}" style="font-weight:bold"/>
+                            <h:inputHidden value="#{conductorBean.selectedConductor.idconductor}"/>
                             <f:facet name="footer">
                                 <p:separator/>
                                 <p:commandButton id="btnCreateAceptar" value="Guardar" 
-                                                 actionListener="#{estudianteBean.btnUpdateEstudiante(event)}" 
+                                                 actionListener="#{conductorBean.btnUpdateConductor(event)}" 
                                                  update=":formDataTable, :msgs" 
                                                  oncomplete="PF('dialogUpdateUsuario').hide()" icon="ui-icon-disk"/>
                                 <p:commandButton id="btnCreateCancelar" value="Cancelar" 
@@ -155,32 +144,34 @@
                               minWidth="350" minHeight="400">  
                         <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
                             <h:outputText value="Identificacion:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.identicacion}" style="font-weight:bold"/> 
+                            <h:outputText value="#{conductorBean.selectedConductor.identificacion}" style="font-weight:bold"/> 
                             <h:outputText value="Nombres:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.nombre}" style="font-weight:bold"/> 
+                            <h:outputText value="#{conductorBean.selectedConductor.nombre}" style="font-weight:bold"/> 
                             <h:outputText value="Apellidos:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.apellido}" style="font-weight:bold"/>
+                            <h:outputText value="#{conductorBean.selectedConductor.apellido}" style="font-weight:bold"/>
                             <h:outputText value="Telefono:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.telefono}" style="font-weight:bold"/> 
+                            <h:outputText value="#{conductorBean.selectedConductor.telefono}" style="font-weight:bold"/> 
                             <h:outputText value="Direccion:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.direccion}" style="font-weight:bold"/> 
+                            <h:outputText value="#{conductorBean.selectedConductor.direccion}" style="font-weight:bold"/> 
                             <h:outputText value="Email:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.email}" style="font-weight:bold"/> 
-                            <h:outputText value="Sexo:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.sexo}" style="font-weight:bold"/> 
+                            <h:outputText value="#{conductorBean.selectedConductor.email}" style="font-weight:bold"/> 
+                            <h:outputText value="Numero Pase:" />  
+                            <h:outputText value="#{conductorBean.selectedConductor.nroPase}" style="font-weight:bold"/> 
+                            <h:outputText value="Categoria:" />  
+                            <h:outputText value="#{conductorBean.selectedConductor.categoria}" style="font-weight:bold"/> 
                         </h:panelGrid> 
                     </p:dialog> 
                 </h:form>
 
                 <h:form id="formDeleteUsuario">
                     <p:confirmDialog id="confirmDialog" showEffect="fade" hideEffect="explode" 
-                                     message="¿Esta seguro de eliminar el Registro?" header="Eliminar Estudiante"
+                                     message="¿Esta seguro de eliminar el Registro?" header="Eliminar Conductor"
                                      severity="alert" widgetVar="dialogDeleteUsuario">
-                        <h:inputHidden value="#{estudianteBean.selectedEstudiante.idestudiante}"/>
+                        <h:inputHidden value="#{conductorBean.selectedConductor.idconductor}"/>
                         <p:commandButton value="Aceptar" icon="ui-icon-check"
                                          update=":formDataTable, :msgs" 
                                          oncomplete="dialogDeleteUsuario.hide()" 
-                                         actionListener="#{estudianteBean.btnDeleteEstudiante(event)}"/>
+                                         actionListener="#{conductorBean.btnDeleteAcudiente(event)}"/>
                         <p:commandButton value="Cancelar" type="button" 
                                          styleClass="ui-confirmdialog-no" icon="ui-icon-close"
                                          onclick="dialogDeleteUsuario.hide();"/>     
