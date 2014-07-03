@@ -31,80 +31,55 @@
                 </h:form>
                 
                 <h:form id="formDataTable">
-                    <p:dataTable id="usuario" var="item" value="#{conductorBean.conductores}" paginator="true" rows="8">
+                    <p:dataTable id="usuario" var="item" value="#{rutaBean.rutas}" paginator="true" rows="8">
                         <f:facet name="header">
-                            <p:outputLabel style="font-size: 18px;" value="Listado de Conductores"/>
+                            <p:outputLabel style="font-size: 18px;" value="Listado de Rutas"/>
                         </f:facet>
                         <p:column headerText="Id" style="font-size: 12px">  
-                            <h:outputText value="#{item.idconductor}"/>  
+                            <h:outputText value="#{item.idruta}"/>  
                         </p:column>
-                        <p:column headerText="Identificacion" style="font-size: 12px">  
-                            <h:outputText value="#{item.identificacion}" />  
+                        <p:column headerText="Latitud" style="font-size: 12px">  
+                            <h:outputText value="#{item.latitud}" />  
                         </p:column>
-                        <p:column headerText="Nombres" style="font-size: 12px">  
-                            <h:outputText value="#{item.nombre}" />  
+                        <p:column headerText="Longitud" style="font-size: 12px">  
+                            <h:outputText value="#{item.longitud}" />  
                         </p:column>
-                        <p:column headerText="Apellidos" style="font-size: 12px">  
-                            <h:outputText value="#{item.apellido}" />  
-                        </p:column>
-                        <p:column headerText="Telefono" style="font-size: 12px">  
-                            <h:outputText value="#{item.telefono}" />  
-                        </p:column>
-                        <p:column headerText="Direccion" style="font-size: 12px">  
-                            <h:outputText value="#{item.direccion}" />  
-                        </p:column>
-                        <p:column headerText="Email" style="font-size: 12px">  
-                            <h:outputText value="#{item.email}" />  
-                        </p:column>
-                        <p:column headerText="Numero Pase" style="font-size: 12px">  
-                            <h:outputText value="#{item.nroPase}" />  
-                        </p:column>
-                        <p:column headerText="Categoria" style="font-size: 12px">  
-                            <h:outputText value="#{item.categoria}" />  
+                        <p:column headerText="Nombre Barrio" style="font-size: 12px">  
+                            <h:outputText value="#{item.nomBarrio}" />  
                         </p:column>
                         <p:column headerText="Aciones">
                             <p:commandButton id="btnEdit" icon="ui-icon-pencil"  
                                              value="Edit" update=":formUpdateUsuario" 
                                              oncomplete="PF('dialogUpdateUsuario').show()">  
-                                <f:setPropertyActionListener value="#{item}" target="#{conductorBean.selectedConductor}" />
+                                <f:setPropertyActionListener value="#{item}" target="#{rutaBean.selectedRuta}" />
                             </p:commandButton>
                             <p:commandButton id="btnVer" icon="ui-icon-search" 
                                              value="View" update=":formViewUsuario" oncomplete="PF('dialogView').show()">  
-                                <f:setPropertyActionListener value="#{item}" target="#{conductorBean.selectedConductor}" />
+                                <f:setPropertyActionListener value="#{item}" target="#{rutaBean.selectedRuta}" />
                             </p:commandButton>
                             <p:commandButton id="btnEliminar" icon="ui-icon-close" 
                                              value="Delete" update=":formDeleteUsuario" 
                                              oncomplete="PF('dialogDeleteUsuario').show()">  
-                                <f:setPropertyActionListener value="#{item}" target="#{conductorBean.selectedConductor}" />
+                                <f:setPropertyActionListener value="#{item}" target="#{rutaBean.selectedRuta}" />
                             </p:commandButton>
                         </p:column> 
                     </p:dataTable>
                 </h:form>
 
                 <h:form id="formCreate">
-                    <p:dialog header="Crear Conductor" widgetVar="dialogCrearUsuario" resizable="false" id="dlgCreate"  
+                    <p:dialog header="Crear Ruta" widgetVar="dialogCrearUsuario" resizable="false" id="dlgCreate"  
                               showEffect="fade" hideEffect="explode" modal="true" position="center">  
                         <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
-                            <h:outputText value="Identificacion:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.identificacion}" style="font-weight:bold"/> 
-                            <h:outputText value="Nombres:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.nombre}" style="font-weight:bold"/> 
-                            <h:outputText value="Apellidos:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.apellido}" style="font-weight:bold"/>
-                            <h:outputText value="Telefono:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.telefono}" style="font-weight:bold"/> 
-                            <h:outputText value="Direccion:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.direccion}" style="font-weight:bold"/> 
-                            <h:outputText value="Email:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.email}" style="font-weight:bold"/> 
-                            <h:outputText value="Numero Pase:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.nroPase}" style="font-weight:bold"/>
-                            <h:outputText value="Categoria:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.categoria}" style="font-weight:bold"/>
+                            <h:outputText value="Latitud:" />  
+                            <p:inputText value="#{rutaBean.selectedRuta.latitud}" style="font-weight:bold"/> 
+                            <h:outputText value="Longitud:" />  
+                            <p:inputText value="#{rutaBean.selectedRuta.longitud}" style="font-weight:bold"/> 
+                            <h:outputText value="Nombre Barrio:" />  
+                            <p:inputText value="#{rutaBean.selectedRuta.nomBarrio}" style="font-weight:bold"/>
                             <f:facet name="footer">
                                 <p:separator/>
                                 <p:commandButton id="btnCreateAceptar" value="Guardar" 
-                                                 actionListener="#{conductorBean.btnCreateConductor(event)}" 
+                                                 actionListener="#{rutaBean.btnCreateRuta(event)}" 
                                                  update=":formDataTable, :msgs" 
                                                  oncomplete="PF('dialogCrearUsuario').hide()" icon="ui-icon-disk"/>
                                 <p:commandButton id="btnCreateCancelar" value="Cancelar" 
@@ -116,32 +91,20 @@
 
 
                 <h:form id="formUpdateUsuario">
-                    <p:dialog header="Editar Conductor" id="dialogUpdate" widgetVar="dialogUpdateUsuario" showEffect="fade" 
+                    <p:dialog header="Editar Ruta" id="dialogUpdate" widgetVar="dialogUpdateUsuario" showEffect="fade" 
                               hideEffect="explode" modal="true" minWidth="600" minHeight="500" position="center">
                         <h:panelGrid id="display" columns="2" style="margin:0 auto;">
-                            <h:outputText value="Id:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.idconductor}" style="font-weight:bold"/> 
-                            <h:outputText value="Identificacion:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.identificacion}" style="font-weight:bold"/> 
-                            <h:outputText value="Nombres:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.nombre}" style="font-weight:bold"/> 
-                            <h:outputText value="Apellidos:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.apellido}" style="font-weight:bold"/>
-                            <h:outputText value="Telefono:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.telefono}" style="font-weight:bold"/> 
-                            <h:outputText value="Direccion:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.direccion}" style="font-weight:bold"/> 
-                            <h:outputText value="Email:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.email}" style="font-weight:bold"/> 
-                            <h:outputText value="Numero Pase:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.nroPase}" style="font-weight:bold"/>
-                            <h:outputText value="Categoria:" />  
-                            <p:inputText value="#{conductorBean.selectedConductor.categoria}" style="font-weight:bold"/>
-                            <h:inputHidden value="#{conductorBean.selectedConductor.idconductor}"/>
+                            <h:outputText value="Latitud:" />  
+                            <p:inputText value="#{rutaBean.selectedRuta.latitud}" style="font-weight:bold"/> 
+                            <h:outputText value="Longitud:" />  
+                            <p:inputText value="#{rutaBean.selectedRuta.longitud}" style="font-weight:bold"/> 
+                            <h:outputText value="Nombre Barrio:" />  
+                            <p:inputText value="#{rutaBean.selectedRuta.nomBarrio}" style="font-weight:bold"/>
+                            <h:inputHidden value="#{rutaBean.selectedRuta.idruta}"/>
                             <f:facet name="footer">
                                 <p:separator/>
                                 <p:commandButton id="btnCreateAceptar" value="Guardar" 
-                                                 actionListener="#{conductorBean.btnUpdateConductor(event)}" 
+                                                 actionListener="#{rutaBean.btnUpdateRuta(event)}" 
                                                  update=":formDataTable, :msgs" 
                                                  oncomplete="PF('dialogUpdateUsuario').hide()" icon="ui-icon-disk"/>
                                 <p:commandButton id="btnCreateCancelar" value="Cancelar" 
@@ -152,39 +115,31 @@
                 </h:form>
 
                 <h:form id="formViewUsuario">
-                    <p:dialog header="Ver Estudiante" id="dialogViewUsuario" widgetVar="dialogView" showEffect="fade" 
+                    <p:dialog header="Ver Ruta" id="dialogViewUsuario" widgetVar="dialogView" showEffect="fade" 
                               hideEffect="explode" modal="true" position="center"
                               minWidth="350" minHeight="400">  
                         <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
-                            <h:outputText value="Identificacion:" />  
-                            <h:outputText value="#{conductorBean.selectedConductor.identificacion}" style="font-weight:bold"/> 
-                            <h:outputText value="Nombres:" />  
-                            <h:outputText value="#{conductorBean.selectedConductor.nombre}" style="font-weight:bold"/> 
-                            <h:outputText value="Apellidos:" />  
-                            <h:outputText value="#{conductorBean.selectedConductor.apellido}" style="font-weight:bold"/>
-                            <h:outputText value="Telefono:" />  
-                            <h:outputText value="#{conductorBean.selectedConductor.telefono}" style="font-weight:bold"/> 
-                            <h:outputText value="Direccion:" />  
-                            <h:outputText value="#{conductorBean.selectedConductor.direccion}" style="font-weight:bold"/> 
-                            <h:outputText value="Email:" />  
-                            <h:outputText value="#{conductorBean.selectedConductor.email}" style="font-weight:bold"/> 
-                            <h:outputText value="Numero Pase:" />  
-                            <h:outputText value="#{conductorBean.selectedConductor.nroPase}" style="font-weight:bold"/> 
-                            <h:outputText value="Categoria:" />  
-                            <h:outputText value="#{conductorBean.selectedConductor.categoria}" style="font-weight:bold"/> 
+                            <h:outputText value="Id:" />  
+                            <h:outputText value="#{rutaBean.selectedRuta.idruta}" style="font-weight:bold"/> 
+                            <h:outputText value="Latitud:" />  
+                            <h:outputText value="#{rutaBean.selectedRuta.latitud}" style="font-weight:bold"/> 
+                            <h:outputText value="Longitud:" />  
+                            <h:outputText value="#{rutaBean.selectedRuta.longitud}" style="font-weight:bold"/>
+                            <h:outputText value="Nombre Barrio:" />  
+                            <h:outputText value="#{rutaBean.selectedRuta.nomBarrio}" style="font-weight:bold"/> 
                         </h:panelGrid> 
                     </p:dialog> 
                 </h:form>
 
                 <h:form id="formDeleteUsuario">
                     <p:confirmDialog id="confirmDialog" showEffect="fade" hideEffect="explode" 
-                                     message="¿Esta seguro de eliminar el Registro?" header="Eliminar Conductor"
+                                     message="¿Esta seguro de eliminar el Registro?" header="Eliminar Ruta"
                                      severity="alert" widgetVar="dialogDeleteUsuario">
-                        <h:inputHidden value="#{conductorBean.selectedConductor.idconductor}"/>
+                        <h:inputHidden value="#{rutaBean.selectedRuta.idruta}"/>
                         <p:commandButton value="Aceptar" icon="ui-icon-check"
                                          update=":formDataTable, :msgs" 
                                          oncomplete="dialogDeleteUsuario.hide()" 
-                                         actionListener="#{conductorBean.btnDeleteAcudiente(event)}"/>
+                                         actionListener="#{rutaBean.btnDeleteRuta(event)}"/>
                         <p:commandButton value="Cancelar" type="button" 
                                          styleClass="ui-confirmdialog-no" icon="ui-icon-close"
                                          onclick="dialogDeleteUsuario.hide();"/>     

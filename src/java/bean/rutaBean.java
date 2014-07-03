@@ -70,7 +70,7 @@ public class rutaBean {
        }
     }
     
-    public void btnUpdateAcudiente(ActionEvent event){
+    public void btnUpdateRuta(ActionEvent event){
        RutaDao rutaDao = new RutaDaoImpl();
        String msng;
        if(rutaDao.update(this.selectedRuta)){
@@ -85,7 +85,7 @@ public class rutaBean {
        }
     }
     
-    public void btnDeleteAcudiente(ActionEvent event){
+    public void btnDeleteRuta(ActionEvent event){
        RutaDao rutaDao = new RutaDaoImpl();
        String msng;
        if(rutaDao.delete(this.selectedRuta.getIdruta())){
