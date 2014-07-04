@@ -17,10 +17,10 @@
 
             <ui:define name="content">
                 <h:form>
-                    <p:commandButton id="btn" type="button" icon="ui-icon-pin-s" value="Show Map" onclick="PF('dlg').show();" />
-
-                    <p:dialog id="gmapDialog" widgetVar="dlg" width="625" height="400" modal="true">
-                        <p:gmap id="gmap" center="10.41373, -75.5335769" zoom="15" type="HYBRID" style="width:600px;height:400px" />
+                      <p:dialog id="gmapDialog" widgetVar="dlg" width="625" height="400" modal="true">
+                          <p:gmap id="gmap" center="#{rutaBean.selectedRuta.latitud},#{rutaBean.selectedRuta.longitud}" 
+                                  zoom="15" type="HYBRID" style="width:600px;height:400px" 
+                                  model="#{viewRutaMap.simpleModel}"/>
                     </p:dialog>
                 </h:form>
                 <p:growl id="msgs" showDetail="true" />
@@ -62,6 +62,10 @@
                                              oncomplete="PF('dialogDeleteUsuario').show()">  
                                 <f:setPropertyActionListener value="#{item}" target="#{rutaBean.selectedRuta}" />
                             </p:commandButton>
+                            <p:commandButton id="btnGmaps" icon="ui-icon-pin-s" value="Ver Mapa" oncomplete="PF('dlg').show()">
+                                <f:setPropertyActionListener value="#{item}" target="#{rutaBean.selectedRuta}" />
+                            </p:commandButton>
+                                             
                         </p:column> 
                     </p:dataTable>
                 </h:form>
