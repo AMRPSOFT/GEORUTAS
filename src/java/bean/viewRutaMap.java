@@ -36,12 +36,20 @@ public class viewRutaMap implements Serializable {
         LatLng coord3 = new LatLng(10.38659, -75.49600);
         LatLng coord4 = new LatLng(10.38318, -75.49600);
         LatLng coord5 = new LatLng(10.38028, -75.50001);
+        LatLng coord6 = new LatLng(10.38183, -75.48909);
+        LatLng coord7 = new LatLng(10.38496, -75.49018);
+        LatLng coord8 = new LatLng(10.3825, -75.50365);
+        
         //Basic marker
+        
         simpleModel.addOverlay(new Marker(coord1, "Caracoles"));
         simpleModel.addOverlay(new Marker(coord2, "Blas de Lezo"));
         simpleModel.addOverlay(new Marker(coord3, "Almirante Colon"));
         simpleModel.addOverlay(new Marker(coord4, "El Campestre"));
         simpleModel.addOverlay(new Marker(coord5, "Vista Hermosa"));
+        simpleModel.addOverlay(new Marker(coord6, "El Carmelo"));
+        simpleModel.addOverlay(new Marker(coord7, "La Central"));
+        simpleModel.addOverlay(new Marker(coord8, "Santa Clara"));
     }
   
     public MapModel getSimpleModel() {
