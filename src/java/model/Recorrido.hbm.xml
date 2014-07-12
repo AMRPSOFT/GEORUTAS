@@ -23,5 +23,8 @@
         <property name="apellEstudiante" type="string">
             <column name="apellEstudiante" length="45" not-null="true" />
         </property>
+        <property name="jornada" type="string">
+            <column name="jornada" length="5" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>
