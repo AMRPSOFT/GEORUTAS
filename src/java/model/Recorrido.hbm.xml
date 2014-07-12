@@ -20,5 +20,23 @@
         <many-to-one name="vehiculo" class="model.Vehiculo" fetch="select">
             <column name="IdVehiculo" not-null="true" />
         </many-to-one>
+        <property name="nomBarrio" type="string">
+            <column name="nomBarrio" length="45" not-null="true" />
+        </property>
+        <property name="placaVehiculo" type="string">
+            <column name="placaVehiculo" length="8" not-null="true" />
+        </property>
+        <property name="nomEstudiante" type="string">
+            <column name="nomEstudiante" length="45" not-null="true" />
+        </property>
+        <property name="apellEstudiante" type="string">
+            <column name="apellEstudiante" length="45" not-null="true" />
+        </property>
+        <property name="nomConductor" type="string">
+            <column name="nomConductor" length="45" not-null="true" />
+        </property>
+        <property name="apellConductor" type="string">
+            <column name="apellConductor" length="45" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>
