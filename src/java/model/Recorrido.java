@@ -25,30 +25,20 @@ public class Recorrido  implements java.io.Serializable {
      private Integer idrecorrido;
      private Estudiante estudiante;
      private Ruta ruta;
-     private Conductor conductor;
-     private Vehiculo vehiculo;
      private String nomBarrio;
-     private String placaVehiculo;
      private String nomEstudiante;
      private String apellEstudiante;
-     private String nomConductor;
-     private String apellConductor;
-     
+ 
     public Recorrido() {
     }
 
-    public Recorrido(Estudiante estudiante, Ruta ruta, Conductor conductor, Vehiculo vehiculo, String nomBarrio, 
-            String placaVehiculo, String nomEstudiante, String apellEstudiante, String nomConductor, String apellConductor) {
+    public Recorrido(Estudiante estudiante, Ruta ruta, String nomBarrio, String nomEstudiante, String apellEstudiante) {
        this.estudiante = estudiante;
        this.ruta = ruta;
-       this.conductor = conductor;
-       this.vehiculo = vehiculo;
        this.nomBarrio = nomBarrio;
-       this.placaVehiculo = placaVehiculo;
        this.nomEstudiante = nomEstudiante;
        this.apellEstudiante = apellEstudiante;
-       this.nomConductor = nomConductor;
-       this.apellConductor = apellConductor;
+       
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -83,26 +73,6 @@ public class Recorrido  implements java.io.Serializable {
         this.ruta = ruta;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IdConductor", nullable=false)
-    public Conductor getConductor() {
-        return this.conductor;
-    }
-    
-    public void setConductor(Conductor conductor) {
-        this.conductor = conductor;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IdVehiculo", nullable=false)
-    public Vehiculo getVehiculo() {
-        return this.vehiculo;
-    }
-    
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
-    }
-
     public String getNomBarrio() {
         return nomBarrio;
     }
@@ -111,15 +81,7 @@ public class Recorrido  implements java.io.Serializable {
         this.nomBarrio = nomBarrio;
     }
 
-    public String getPlacaVehiculo() {
-        return placaVehiculo;
-    }
-
-    public void setPlacaVehiculo(String placaVehiculo) {
-        this.placaVehiculo = placaVehiculo;
-    }
-
-    public String getNomEstudiante() {
+   public String getNomEstudiante() {
         return nomEstudiante;
     }
 
@@ -134,23 +96,5 @@ public class Recorrido  implements java.io.Serializable {
     public void setApellEstudiante(String apellEstudiante) {
         this.apellEstudiante = apellEstudiante;
     }
-
-    public String getNomConductor() {
-        return nomConductor;
-    }
-
-    public void setNomConductor(String nomConductor) {
-        this.nomConductor = nomConductor;
-    }
-
-    public String getApellConductor() {
-        return apellConductor;
-    }
-
-    public void setApellConductor(String apellConductor) {
-        this.apellConductor = apellConductor;
-    }
     
 }
-
-
