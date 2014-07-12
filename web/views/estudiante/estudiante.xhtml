@@ -53,6 +53,9 @@
                         <p:column headerText="Colegio">  
                             <h:outputText value="#{item.colegio}" />  
                         </p:column>
+                        <p:column headerText="Jornada">  
+                            <h:outputText value="#{item.jornada}" />  
+                        </p:column>
                         <p:column headerText="Aciones">
                             <p:commandButton id="btnEdit" icon="ui-icon-pencil"  
                                              value="Edit" update=":formUpdateUsuario" 
@@ -96,6 +99,12 @@
                             </p:selectOneMenu>
                             <h:outputText value="Colegio:" />  
                             <p:inputText value="#{estudianteBean.selectedEstudiante.colegio}" style="font-weight:bold"/>
+                            <h:outputText value="Jornada:" />  
+                            <p:selectOneMenu id="jornada" value="#{estudianteBean.selectedEstudiante.sexo}" style="font-weight: bold">
+                                <f:selectItem itemLabel="Selecione su Jornada" itemValue="" />  
+                                <f:selectItem itemLabel="AM" itemValue="AM" />
+                                <f:selectItem itemLabel="PM" itemValue="PM" />
+                            </p:selectOneMenu>
                             <h:outputText value="Nombre Acudiente:" />  
                             <p:selectOneMenu id="nomAcudiente" value="#{estudianteBean.selectedEstudiante.acudiente.idacudiente}" style="font-weight: bold">
                                 <f:selectItem itemLabel="Selecione Acudiente" itemValue="" />  
@@ -141,6 +150,12 @@
                             </p:selectOneMenu>
                             <h:outputText value="Colegio:" />  
                             <p:inputText value="#{estudianteBean.selectedEstudiante.colegio}" style="font-weight:bold"/>
+                            <h:outputText value="Jornada:" />  
+                            <p:selectOneMenu id="jornada" value="#{estudianteBean.selectedEstudiante.sexo}" style="font-weight: bold">
+                                <f:selectItem itemLabel="Selecione su Jornada" itemValue="" />  
+                                <f:selectItem itemLabel="AM" itemValue="AM" />
+                                <f:selectItem itemLabel="PM" itemValue="PM" />
+                            </p:selectOneMenu>
                             <h:outputText value="Nombre Acudiente:" />  
                             <p:selectOneMenu id="nomAcudiente" value="#{estudianteBean.selectedEstudiante.acudiente.idacudiente}" style="font-weight: bold">
                                 <f:selectItem itemLabel="Selecione Acudiente" itemValue="" />  
@@ -176,7 +191,11 @@
                             <h:outputText value="Direccion:" />  
                             <h:outputText value="#{estudianteBean.selectedEstudiante.direccion}" style="font-weight:bold"/> 
                             <h:outputText value="Email:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.email}" style="font-weight:bold"/> 
+                            <h:outputText value="#{estudianteBean.selectedEstudiante.email}" style="font-weight:bold"/>
+                            <h:outputText value="Colegio:" />  
+                            <h:outputText value="#{estudianteBean.selectedEstudiante.colegio}" style="font-weight:bold"/>
+                            <h:outputText value="Jornada:" />  
+                            <h:outputText value="#{estudianteBean.selectedEstudiante.jornada}" style="font-weight:bold"/>
                             <h:outputText value="Sexo:" />  
                             <h:outputText value="#{estudianteBean.selectedEstudiante.sexo}" style="font-weight:bold"/> 
                         </h:panelGrid> 

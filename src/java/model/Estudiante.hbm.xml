@@ -32,6 +32,9 @@
         <property name="colegio" type="string">
             <column name="Colegio" length="100" not-null="true" />
         </property>
+        <property name="jornada" type="string">
+            <column name="jornada" length="5" not-null="true" />
+        </property>
         <property name="sexo" type="string">
             <column name="Sexo" length="20" not-null="true" />
         </property>

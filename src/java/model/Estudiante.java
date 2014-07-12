@@ -35,6 +35,7 @@ public class Estudiante  implements java.io.Serializable {
      private String email;
      private String colegio;
      private String sexo;
+     private String jornada;
      private Set recorridos = new HashSet(0);
 
     public Estudiante() {
@@ -43,7 +44,7 @@ public class Estudiante  implements java.io.Serializable {
     }
 
 	
-    public Estudiante(Acudiente acudiente, int identicacion, String nombre, String apellido, String telefono, String direccion, String email, String colegio, String sexo) {
+    public Estudiante(Acudiente acudiente, int identicacion, String nombre, String apellido, String telefono, String direccion, String email, String colegio, String sexo, String jornada) {
         this.acudiente = acudiente;
         this.identicacion = identicacion;
         this.nombre = nombre;
@@ -53,8 +54,9 @@ public class Estudiante  implements java.io.Serializable {
         this.email = email;
         this.colegio = colegio;
         this.sexo = sexo;
+        this.jornada = jornada;
     }
-    public Estudiante(Acudiente acudiente, int identicacion, String nombre, String apellido, String telefono, String direccion, String email, String colegio, String sexo, Set recorridos) {
+    public Estudiante(Acudiente acudiente, int identicacion, String nombre, String apellido, String telefono, String direccion, String email, String colegio, String sexo, Set recorridos, String jornada) {
        this.acudiente = acudiente;
        this.identicacion = identicacion;
        this.nombre = nombre;
@@ -64,6 +66,7 @@ public class Estudiante  implements java.io.Serializable {
        this.email = email;
        this.colegio = colegio;
        this.sexo = sexo;
+       this.jornada = jornada;
        this.recorridos = recorridos;
     }
    
@@ -168,6 +171,16 @@ public class Estudiante  implements java.io.Serializable {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+    
+    @Column(name="Jornada", nullable=false, length=5)
+    public String getJornada() {
+        return jornada;
+    }
+
+    public void setJornada(String jornada) {
+        this.jornada = jornada;
+    }
+    
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="estudiante")
     public Set getRecorridos() {
