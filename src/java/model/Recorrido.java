@@ -28,17 +28,19 @@ public class Recorrido  implements java.io.Serializable {
      private String nomBarrio;
      private String nomEstudiante;
      private String apellEstudiante;
+     private String jornada;
  
     public Recorrido() {
     }
 
-    public Recorrido(Estudiante estudiante, Ruta ruta, String nomBarrio, String nomEstudiante, String apellEstudiante) {
+    public Recorrido(Estudiante estudiante, Ruta ruta, String nomBarrio, String nomEstudiante, String apellEstudiante,
+                     String jornada) {
        this.estudiante = estudiante;
        this.ruta = ruta;
        this.nomBarrio = nomBarrio;
        this.nomEstudiante = nomEstudiante;
        this.apellEstudiante = apellEstudiante;
-       
+       this.jornada = jornada;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -73,6 +75,7 @@ public class Recorrido  implements java.io.Serializable {
         this.ruta = ruta;
     }
 
+    @Column(name="NomBarrio", nullable=false, length=45)
     public String getNomBarrio() {
         return nomBarrio;
     }
@@ -81,20 +84,31 @@ public class Recorrido  implements java.io.Serializable {
         this.nomBarrio = nomBarrio;
     }
 
-   public String getNomEstudiante() {
+    @Column(name="NomEstudiante", nullable=false, length=45)
+    public String getNomEstudiante() {
         return nomEstudiante;
     }
 
     public void setNomEstudiante(String nomEstudiante) {
         this.nomEstudiante = nomEstudiante;
     }
-
+    
+    @Column(name="ApellEstudiante", nullable=false, length=45)
     public String getApellEstudiante() {
         return apellEstudiante;
     }
 
     public void setApellEstudiante(String apellEstudiante) {
         this.apellEstudiante = apellEstudiante;
+    }
+
+    @Column(name="Jornada", nullable=false, length=45)
+    public String getJornada() {
+        return jornada;
+    }
+
+    public void setJornada(String jornada) {
+        this.jornada = jornada;
     }
     
 }

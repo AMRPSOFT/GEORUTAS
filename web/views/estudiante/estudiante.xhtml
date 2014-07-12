@@ -26,34 +26,34 @@
                         <f:facet name="header">
                             <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes"/>
                         </f:facet>
-                        <p:column headerText="Id">  
+                        <p:column headerText="Id" style="font-size: 10px;">  
                             <h:outputText value="#{item.idestudiante}" />  
                         </p:column>
-                        <p:column headerText="Identificacion">  
+                        <p:column headerText="Identificacion" style="font-size: 10px;">  
                             <h:outputText value="#{item.identicacion}" />  
                         </p:column>
-                        <p:column headerText="Nombres">  
+                        <p:column headerText="Nombres" style="font-size: 10px;">  
                             <h:outputText value="#{item.nombre}" />  
                         </p:column>
-                        <p:column headerText="Apellidos">  
+                        <p:column headerText="Apellidos" style="font-size: 10px;">  
                             <h:outputText value="#{item.apellido}" />  
                         </p:column>
-                        <p:column headerText="Telefono">  
+                        <p:column headerText="Telefono" style="font-size: 10px;">  
                             <h:outputText value="#{item.telefono}" />  
                         </p:column>
-                        <p:column headerText="Direccion">  
+                        <p:column headerText="Direccion" style="font-size: 10px;">  
                             <h:outputText value="#{item.direccion}" />  
                         </p:column>
-                        <p:column headerText="Email">  
+                        <p:column headerText="Email" style="font-size: 10px;">  
                             <h:outputText value="#{item.email}" />  
                         </p:column>
-                        <p:column headerText="Sexo">  
+                        <p:column headerText="Sexo" style="font-size: 10px;">  
                             <h:outputText value="#{item.sexo}" />  
                         </p:column>
-                        <p:column headerText="Colegio">  
+                        <p:column headerText="Colegio" style="font-size: 10px;">  
                             <h:outputText value="#{item.colegio}" />  
                         </p:column>
-                        <p:column headerText="Jornada">  
+                        <p:column headerText="Jornada" style="font-size: 10px;">  
                             <h:outputText value="#{item.jornada}" />  
                         </p:column>
                         <p:column headerText="Aciones">
@@ -100,7 +100,7 @@
                             <h:outputText value="Colegio:" />  
                             <p:inputText value="#{estudianteBean.selectedEstudiante.colegio}" style="font-weight:bold"/>
                             <h:outputText value="Jornada:" />  
-                            <p:selectOneMenu id="jornada" value="#{estudianteBean.selectedEstudiante.sexo}" style="font-weight: bold">
+                            <p:selectOneMenu id="jornada" value="#{estudianteBean.selectedEstudiante.jornada}" style="font-weight: bold">
                                 <f:selectItem itemLabel="Selecione su Jornada" itemValue="" />  
                                 <f:selectItem itemLabel="AM" itemValue="AM" />
                                 <f:selectItem itemLabel="PM" itemValue="PM" />
@@ -151,7 +151,7 @@
                             <h:outputText value="Colegio:" />  
                             <p:inputText value="#{estudianteBean.selectedEstudiante.colegio}" style="font-weight:bold"/>
                             <h:outputText value="Jornada:" />  
-                            <p:selectOneMenu id="jornada" value="#{estudianteBean.selectedEstudiante.sexo}" style="font-weight: bold">
+                            <p:selectOneMenu id="jornada" value="#{estudianteBean.selectedEstudiante.jornada}" style="font-weight: bold">
                                 <f:selectItem itemLabel="Selecione su Jornada" itemValue="" />  
                                 <f:selectItem itemLabel="AM" itemValue="AM" />
                                 <f:selectItem itemLabel="PM" itemValue="PM" />
