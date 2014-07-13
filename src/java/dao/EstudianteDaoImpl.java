@@ -8,6 +8,7 @@ package dao;
 
 import java.util.List;
 import model.Estudiante;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -120,6 +121,12 @@ public class EstudianteDaoImpl implements EstudianteDao{
             
         }
         return flag;
+    }
+
+    @Override
+    public Estudiante getByIdEstdiante(Session sesion, Integer idestudiante) {
+        
+        return (Estudiante) sesion.load(Estudiante.class, idestudiante);
     }
     
 }

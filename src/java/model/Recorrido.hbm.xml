@@ -11,9 +11,6 @@
         <many-to-one name="estudiante" class="model.Estudiante" fetch="select">
             <column name="IdEstudiante" not-null="true" />
         </many-to-one>
-        <many-to-one name="ruta" class="model.Ruta" fetch="select">
-            <column name="IdRuta" not-null="true" />
-        </many-to-one>
         <property name="nomBarrio" type="string">
             <column name="nomBarrio" length="45" not-null="true" />
         </property>
@@ -22,6 +19,9 @@
         </property>
         <property name="apellEstudiante" type="string">
             <column name="apellEstudiante" length="45" not-null="true" />
+        </property>
+        <property name="colegio" type="string">
+            <column name="colegio" length="45" not-null="true" />
         </property>
         <property name="jornada" type="string">
             <column name="jornada" length="5" not-null="true" />

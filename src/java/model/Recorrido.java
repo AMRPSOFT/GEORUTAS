@@ -24,22 +24,22 @@ public class Recorrido  implements java.io.Serializable {
 
      private Integer idrecorrido;
      private Estudiante estudiante;
-     private Ruta ruta;
      private String nomBarrio;
      private String nomEstudiante;
      private String apellEstudiante;
+     private String colegio;
      private String jornada;
  
     public Recorrido() {
     }
 
-    public Recorrido(Estudiante estudiante, Ruta ruta, String nomBarrio, String nomEstudiante, String apellEstudiante,
+    public Recorrido(Estudiante estudiante, String nomBarrio, String nomEstudiante, String apellEstudiante, String colegio,
                      String jornada) {
        this.estudiante = estudiante;
-       this.ruta = ruta;
        this.nomBarrio = nomBarrio;
        this.nomEstudiante = nomEstudiante;
        this.apellEstudiante = apellEstudiante;
+       this.colegio = colegio;
        this.jornada = jornada;
     }
    
@@ -63,16 +63,6 @@ public class Recorrido  implements java.io.Serializable {
     
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IdRuta", nullable=false)
-    public Ruta getRuta() {
-        return this.ruta;
-    }
-    
-    public void setRuta(Ruta ruta) {
-        this.ruta = ruta;
     }
 
     @Column(name="NomBarrio", nullable=false, length=45)
@@ -109,6 +99,15 @@ public class Recorrido  implements java.io.Serializable {
 
     public void setJornada(String jornada) {
         this.jornada = jornada;
+    }
+    
+    @Column(name="colegio", nullable=false, length=45)
+    public String getColegio() {
+        return colegio;
+    }
+
+    public void setColegio(String colegio) {
+        this.colegio = colegio;
     }
     
 }

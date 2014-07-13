@@ -8,6 +8,7 @@ package dao;
 
 import java.util.List;
 import model.Estudiante;
+import org.hibernate.Session;
 
 /**
  *
@@ -21,5 +22,5 @@ public interface EstudianteDao {
     public boolean create(Estudiante estudiante);
     public boolean update(Estudiante estudiante);
     public boolean delete(Integer id);
-    
+    public Estudiante getByIdEstdiante(Session sesion, Integer idestudiante);
 }
