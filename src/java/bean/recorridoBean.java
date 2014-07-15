@@ -50,6 +50,10 @@ public class recorridoBean {
         return recorridos;
     }
 
+    public void setRecorridos(List<Recorrido> recorridos) {
+        this.recorridos = recorridos;
+    }
+    
     public void agregarListadeEstudiantes(Integer idEstudiante) {
         this.sesion = null;
         this.transaction = null;
