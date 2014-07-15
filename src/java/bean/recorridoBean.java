@@ -50,17 +50,17 @@ public class recorridoBean {
     
     
     
-    public void agregarListadeEstudiantes (Integer idestudiante) {
+    public void agregarListadeEstudiantes (Integer idEstudiante) {
         this.sesion=null;
         this.transaction=null;
         EstudianteDao estudianteDao = new EstudianteDaoImpl();
-        this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
+        this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idEstudiante);
         this.recorridos.add(new Recorrido(null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
                                           this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada()));
         this.transaction.commit();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
         RequestContext.getCurrentInstance().update("formCreate:tablaListaEstudiantes");
-        RequestContext.getCurrentInstance().update("formCreate:msgs");
+        RequestContext.getCurrentInstance().update("frmRealizarRecorrido:mensajeGeneral");
     }
     
 }
