@@ -125,8 +125,16 @@ public class EstudianteDaoImpl implements EstudianteDao{
 
     @Override
     public Estudiante getByIdEstdiante(Session sesion, Integer idestudiante) {
-        
         return (Estudiante) sesion.load(Estudiante.class, idestudiante);
+    }
+
+    @Override
+    public Estudiante getByIdentificacion(Session sesion, Integer identificacion) {
+        String hql="from Estudiante where identificacion=:identificacion";
+        Query query=sesion.createQuery(hql);
+        query.setParameter("identificacion", identificacion);
+        
+        return (Estudiante) query.uniqueResult();
     }
     
 }

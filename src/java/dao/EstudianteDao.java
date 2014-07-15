@@ -24,4 +24,5 @@ public interface EstudianteDao {
     public boolean update(Estudiante estudiante);
     public boolean delete(Integer id);
     public Estudiante getByIdEstdiante(Session sesion, Integer idestudiante);
+    public Estudiante getByIdentificacion(Session sesion, Integer identificacion);
 }

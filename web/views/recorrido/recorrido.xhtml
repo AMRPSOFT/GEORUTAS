@@ -66,9 +66,9 @@
 
                 <h:form id="formCreate">
                     <p:dialog header="Crear Recorrido" widgetVar="dialogCrearUsuario" resizable="false" id="dlgCreate"  
-                              showEffect="fade" hideEffect="explode" modal="true" position="top">  
-                        <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
-                            <p:dataTable id="usuario" var="itemes" value="#{recorridoBean.allEstudiantes}" paginator="true" rows="6">
+                              showEffect="fade" hideEffect="explode" modal="true" position="top" height="600" width="600">  
+                        <h:panelGrid id="display" style="margin:0 auto;">
+                           <p:dataTable id="usuario" var="itemes" value="#{recorridoBean.allEstudiantes}" paginator="true" rows="6">
                                 <f:facet name="header">
                                     <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes"/>
                                 </f:facet>
