@@ -50,11 +50,11 @@ public class recorridoBean {
     
     
     
-    public void agregarListadeEstudiantes (Integer idEstudiante) {
+    public void agregarListadeEstudiantes (Integer idestudiante) {
         this.sesion=null;
         this.transaction=null;
         EstudianteDao estudianteDao = new EstudianteDaoImpl();
-        this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idEstudiante);
+        this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
         this.recorridos.add(new Recorrido(null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
                                           this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada()));
         this.transaction.commit();

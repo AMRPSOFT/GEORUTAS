@@ -68,31 +68,31 @@
                     <p:dialog header="Crear Recorrido" widgetVar="dialogCrearUsuario" resizable="false" id="dlgCreate"  
                               showEffect="fade" hideEffect="explode" modal="true" position="top">  
                         <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
-                            <p:dataTable id="usuario" var="item" value="#{recorridoBean.allEstudiantes}" paginator="true" rows="8">
+                            <p:dataTable id="usuario" var="itemes" value="#{recorridoBean.allEstudiantes}" paginator="true" rows="8">
                                 <f:facet name="header">
                                     <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes"/>
                                 </f:facet>
                                 <p:column headerText="Id" style="font-size: 10px;">  
-                                    <h:outputText value="#{item.idestudiante}" />  
+                                    <h:outputText value="#{itemes.idestudiante}" />  
                                 </p:column>
                                 <p:column headerText="Nombres" style="font-size: 10px;">  
-                                    <h:outputText value="#{item.nombre}" />  
+                                    <h:outputText value="#{itemes.nombre}" />  
                                 </p:column>
                                 <p:column headerText="Apellidos" style="font-size: 10px;">  
-                                    <h:outputText value="#{item.apellido}" />  
+                                    <h:outputText value="#{itemes.apellido}" />  
                                 </p:column>
                                 <p:column headerText="Direccion" style="font-size: 10px;">  
-                                    <h:outputText value="#{item.direccion}" />  
+                                    <h:outputText value="#{itemes.direccion}" />  
                                 </p:column>
                                 <p:column headerText="Colegio" style="font-size: 10px;">  
-                                    <h:outputText value="#{item.colegio}" />  
+                                    <h:outputText value="#{itemes.colegio}" />  
                                 </p:column>
                                 <p:column headerText="Jornada" style="font-size: 10px;">  
-                                    <h:outputText value="#{item.jornada}" />  
+                                    <h:outputText value="#{itemes.jornada}" />  
                                 </p:column>
                                 <p:column headerText="Acciones">
                                     <p:column>
-                                        <p:commandButton value="Agregar" ajax="true" actionListener="#{recorridoBean.agregarListadeEstudiantes(item.estudiante.idestudiante)}"/>
+                                        <p:commandButton value="Agregar" ajax="true" actionListener="#{recorridoBean.agregarListadeEstudiantes(itemes.idestudiante)}"/>
                                     </p:column>
                                 </p:column> 
                             </p:dataTable>
