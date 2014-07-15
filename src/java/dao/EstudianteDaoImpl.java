@@ -136,5 +136,10 @@ public class EstudianteDaoImpl implements EstudianteDao{
         
         return (Estudiante) query.uniqueResult();
     }
+
+    @Override
+    public List<Estudiante> getAll(Session sesion) throws Exception {
+        return sesion.createCriteria(Estudiante.class).list();
+    }
     
 }

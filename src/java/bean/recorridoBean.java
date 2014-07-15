@@ -41,20 +41,45 @@ public class recorridoBean {
     }
 
     public List<Estudiante> getAllEstudiantes() {
-        EstudianteDao estudianteDao = new EstudianteDaoImpl();
-        this.estudiantes = estudianteDao.findAll();
-        return estudiantes;
+        this.sesion=null;
+        this.transaction=null;
+        
+        try
+        {
+            this.sesion=HibernateUtil.getSessionFactory().openSession();
+            
+            EstudianteDao estudianteDao = new EstudianteDaoImpl();
+            
+            this.transaction=this.sesion.beginTransaction();
+            
+            this.estudiantes=estudianteDao.getAll(this.sesion);
+            
+            this.transaction.commit();
+            
+            return this.estudiantes;
+        }
+        catch(Exception ex)
+        {
+            if(this.transaction!=null)
+            {
+                transaction.rollback();
+            }
+            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", ex.getMessage()));
+            
+            return null;
+        }
+        finally
+        {
+            if(this.sesion!=null)
+            {
+                this.sesion.close();
+            }
+        }
     }
 
-    public List<Recorrido> getRecorridos() {
-        return recorridos;
-    }
-
-    public void setRecorridos(List<Recorrido> recorridos) {
-        this.recorridos = recorridos;
-    }
     
-    public void agregarListadeEstudiantes(Integer idEstudiante) {
+    public void agregarListadeEstudiantes(Integer idestudiante) {
         this.sesion = null;
         this.transaction = null;
 
@@ -62,13 +87,13 @@ public class recorridoBean {
             this.sesion = HibernateUtil.getSessionFactory().openSession();
             EstudianteDao estudianteDao = new EstudianteDaoImpl();
             this.transaction=this.sesion.beginTransaction();
-            this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idEstudiante);
+            this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
             this.recorridos.add(new Recorrido(null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
                     this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada()));
             this.transaction.commit();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
             RequestContext.getCurrentInstance().update("formCreate:tablaListaEstudiantes");
-            RequestContext.getCurrentInstance().update("formCreate:msgs");
+            RequestContext.getCurrentInstance().update("formDataTable:msgs");
         } 
         catch(Exception ex) {
         if(this.transaction!=null)
@@ -174,4 +199,11 @@ public class recorridoBean {
         this.estudiantes = estudiantes;
     }
     
+    public List<Recorrido> getRecorridos() {
+        return recorridos;
+    }
+
+    public void setRecorridos(List<Recorrido> recorridos) {
+        this.recorridos = recorridos;
+    }
 }
