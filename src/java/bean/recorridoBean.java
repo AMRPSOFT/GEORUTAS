@@ -3,6 +3,8 @@ package bean;
 
 import dao.EstudianteDao;
 import dao.EstudianteDaoImpl;
+import dao.RecorridoDao;
+import dao.RecorridoDaoImpl;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -41,6 +43,12 @@ public class recorridoBean {
         this.estudiantes = estudianteDao.findAll();
         return estudiantes;
     }
+
+    public List<Recorrido> getRecorridos() {
+        return recorridos;
+    }
+    
+    
     
     public void agregarListadeEstudiantes (Integer idEstudiante) {
         this.sesion=null;
