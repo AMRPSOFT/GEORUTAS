@@ -1,4 +1,3 @@
-
 package bean;
 
 import dao.EstudianteDao;
@@ -16,6 +15,7 @@ import model.Recorrido;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.primefaces.context.RequestContext;
+import util.HibernateUtil;
 
 /**
  *
@@ -24,10 +24,10 @@ import org.primefaces.context.RequestContext;
 @Named(value = "recorridoBean")
 @RequestScoped
 public class recorridoBean {
-    
+
     Session sesion;
     Transaction transaction;
-    
+
     private Estudiante estudiante;
     private List<Estudiante> estudiantes;
     private Recorrido recorrido;
@@ -47,20 +47,38 @@ public class recorridoBean {
     public List<Recorrido> getRecorridos() {
         return recorridos;
     }
-    
-    
-    
-    public void agregarListadeEstudiantes (Integer idEstudiante) {
-        this.sesion=null;
-        this.transaction=null;
-        EstudianteDao estudianteDao = new EstudianteDaoImpl();
-        this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idEstudiante);
-        this.recorridos.add(new Recorrido(null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
-                                          this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada()));
-        this.transaction.commit();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
-        RequestContext.getCurrentInstance().update("formCreate:tablaListaEstudiantes");
-        RequestContext.getCurrentInstance().update("frmRealizarRecorrido:mensajeGeneral");
+
+    public void agregarListadeEstudiantes(Integer idEstudiante) {
+        this.sesion = null;
+        this.transaction = null;
+
+        try {
+            this.sesion = HibernateUtil.getSessionFactory().openSession();
+            EstudianteDao estudianteDao = new EstudianteDaoImpl();
+            this.transaction=this.sesion.beginTransaction();
+            this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idEstudiante);
+            this.recorridos.add(new Recorrido(null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
+                    this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada()));
+            this.transaction.commit();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
+            RequestContext.getCurrentInstance().update("formCreate:tablaListaEstudiantes");
+            RequestContext.getCurrentInstance().update("frmRealizarRecorrido:mensajeGeneral");
+        } 
+        catch(Exception ex) {
+        if(this.transaction!=null)
+            {
+                transaction.rollback();
+            }
+            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", ex.getMessage()));
+        }
+        finally
+        {
+            if(this.sesion!=null)
+            {
+                this.sesion.close();
+            }
+        }
     }
-    
+
 }
