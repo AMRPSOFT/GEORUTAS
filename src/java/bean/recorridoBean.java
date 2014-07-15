@@ -62,7 +62,7 @@ public class recorridoBean {
             this.transaction.commit();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
             RequestContext.getCurrentInstance().update("formCreate:tablaListaEstudiantes");
-            RequestContext.getCurrentInstance().update("frmRealizarRecorrido:mensajeGeneral");
+            RequestContext.getCurrentInstance().update("frmRealizarRecorrido:msgs");
         } 
         catch(Exception ex) {
         if(this.transaction!=null)
