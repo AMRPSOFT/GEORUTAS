@@ -1,15 +1,11 @@
 package model;
 // Generated 6/06/2014 11:50:31 AM by Hibernate Tools 3.6.0
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -23,13 +19,13 @@ public class Recorrido  implements java.io.Serializable {
 
 
      private Integer idrecorrido;
-     private Integer numEstudiantes;
+     private int numEstudiantes;
      private String jornada;
  
     public Recorrido() {
     }
 
-    public Recorrido( Integer numEstudiantes, String jornada) {
+    public Recorrido( int numEstudiantes, String jornada) {
        this. numEstudiantes= numEstudiantes;
        this.jornada = jornada;
     }
@@ -47,11 +43,11 @@ public class Recorrido  implements java.io.Serializable {
     }
 
     @Column(name="NumEstudiantes", nullable=false)
-    public Integer getNumEstudiantes() {
+    public int getNumEstudiantes() {
         return numEstudiantes;
     }
 
-    public void setNumEstudiantes(Integer numEstudiantes) {
+    public void setNumEstudiantes(int numEstudiantes) {
         this.numEstudiantes = numEstudiantes;
     }
 
