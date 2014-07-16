@@ -16,10 +16,6 @@ import javax.persistence.Table;
  * @author Alex Rodriguez
  */
 
-@Entity
-@Table(name="detallerecorridoestudiante"
-    ,catalog="georutas"
-)
 public class Detallerecorridoestudiante implements java.io.Serializable{
     
     private Integer iddetallerecorridoestudiante;
@@ -45,10 +41,6 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
         this.jornada = jornada;
     }
 
-    @Id @GeneratedValue(strategy=IDENTITY)
-
-    
-    @Column(name="iddetallerecorridoestudiante", unique=true, nullable=false)
     public Integer getIddetallerecorridoestudiante() {
         return iddetallerecorridoestudiante;
     }
@@ -57,8 +49,6 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
         this.iddetallerecorridoestudiante = iddetallerecorridoestudiante;
     }
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IdEstudiante", nullable=false)
     public Estudiante getEstudiante() {
         return estudiante;
     }
@@ -67,8 +57,6 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
         this.estudiante = estudiante;
     }
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IdRecorrido", nullable=false)
     public Recorrido getRecorrido() {
         return recorrido;
     }
@@ -77,7 +65,6 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
         this.recorrido = recorrido;
     }
 
-    @Column(name="Nombre", nullable=false)
     public String getNombre() {
         return nombre;
     }
@@ -86,7 +73,6 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
         this.nombre = nombre;
     }
 
-    @Column(name="Apellido", nullable=false)
     public String getApellido() {
         return apellido;
     }
@@ -95,7 +81,6 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
         this.apellido = apellido;
     }
 
-    @Column(name="Direccion", nullable=false)
     public String getDireccion() {
         return direccion;
     }
@@ -104,7 +89,6 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
         this.direccion = direccion;
     }
 
-    @Column(name="Colegio", nullable=false)
     public String getColegio() {
         return colegio;
     }
@@ -113,7 +97,6 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
         this.colegio = colegio;
     }
 
-    @Column(name="Jornada", nullable=false)
     public String getJornada() {
         return jornada;
     }
