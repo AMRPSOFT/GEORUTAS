@@ -46,12 +46,12 @@ public class Recorrido  implements java.io.Serializable {
         this.idrecorrido = idrecorrido;
     }
 
-    @Column(name="NumEstudiantes", nullable=false, length=11)
+    @Column(name="NumEstudiantes", nullable=false)
     public Integer getNumEstudiantes() {
         return numEstudiantes;
     }
 
-    public void setNomBarrio(Integer numEstudiantes) {
+    public void setNumEstudiantes(Integer numEstudiantes) {
         this.numEstudiantes = numEstudiantes;
     }
 
