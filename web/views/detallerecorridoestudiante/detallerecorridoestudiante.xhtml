@@ -23,21 +23,21 @@
                                      icon="ui-icon-document" title="Nuevo Estudiante"/>  
                 </h:form>
                 <h:form id="formDataTable">
-                    <p:dataTable id="usuario" var="item" value="#{recorridoBean.recorridos}" paginator="true" rows="8">
+                    <p:dataTable id="usuario" var="item" value="#{detalleRecorridoEstudiantesBean.allEstudiantes}" paginator="true" rows="8">
                         <f:facet name="header">
                             <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes"/>
                         </f:facet>
                         <p:column headerText="Id" style="font-size: 10px;">  
-                            <h:outputText value="#{item.idrecorrido}" />  
+                            <h:outputText value="#{item.idestudiante}" />  
                         </p:column>
                         <p:column headerText="Nombres" style="font-size: 10px;">  
-                            <h:outputText value="#{item.nomEstudiante}" />  
+                            <h:outputText value="#{item.nombre}" />  
                         </p:column>
                         <p:column headerText="Apellidos" style="font-size: 10px;">  
-                            <h:outputText value="#{item.apellEstudiante}" />  
+                            <h:outputText value="#{item.apellido}" />  
                         </p:column>
                         <p:column headerText="Direccion" style="font-size: 10px;">  
-                            <h:outputText value="#{item.nomBarrio}" />  
+                            <h:outputText value="#{item.direccion}" />  
                         </p:column>
                         <p:column headerText="Colegio" style="font-size: 10px;">  
                             <h:outputText value="#{item.colegio}" />  
@@ -97,19 +97,19 @@
                                 </p:column> 
                             </p:dataTable>
                             <hr />
-                            <p:dataTable id="tablaListaEstudiantes" value="#{recorridoBean.recorridos}" 
+                            <p:dataTable id="tablaListaEstudiantes" value="#{detalleRecorridoEstudiantesBean.listaDetallerecorridoestudiante}" 
                                          var="item" style="font-size: 10px;" paginator="true" rows="4">
                                 <f:facet name="header">
                                     <p:outputLabel style="font-size: 18px;" value="Listado de Recorrido"/>
                                 </f:facet>
                                 <p:column headerText="Nombre" style="text-align: left;">
-                                    <h:outputText value="#{item.nomEstudiante}"/>
+                                    <h:outputText value="#{item.nombre}"/>
                                 </p:column>
                                 <p:column headerText="Apellido" style="text-align: center;">
-                                    <h:outputText value="#{item.apellEstudiante}"/>
+                                    <h:outputText value="#{item.apellido}"/>
                                 </p:column>
                                 <p:column headerText="Direccion" style="text-align: center;">
-                                    <h:outputText value="#{item.nomBarrio}" style="text-align: center;" />                    
+                                    <h:outputText value="#{item.direccion}" style="text-align: center;" />                    
                                 </p:column>
                                 <p:column headerText="Colegio" style="text-align: center;">
                                     <h:outputText value="#{item.colegio}"/>
