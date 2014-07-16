@@ -2,10 +2,12 @@ package bean;
 
 import dao.EstudianteDao;
 import dao.EstudianteDaoImpl;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import model.Detallerecorridoestudiante;
@@ -21,8 +23,8 @@ import util.HibernateUtil;
  * @author Alex Rodriguez
  */
 @Named(value = "detalleRecorridoEstudiantesBean")
-@RequestScoped
-public class detalleRecorridoEstudiantesBean {
+@ViewScoped
+public class detalleRecorridoEstudiantesBean implements Serializable{
 
     Session sesion;
     Transaction transaction;
@@ -87,8 +89,8 @@ public class detalleRecorridoEstudiantesBean {
             EstudianteDao estudianteDao = new EstudianteDaoImpl();
             this.transaction=this.sesion.beginTransaction();
             this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
-            this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
-                    this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada()));
+            this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getNombre(),
+                    this.estudiante.getApellido(), this.estudiante.getDireccion(), this.estudiante.getColegio(), this.estudiante.getJornada()));
             this.transaction.commit();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
             RequestContext.getCurrentInstance().update("frmrealizarRecorrido:tablaListaEstudiantes");

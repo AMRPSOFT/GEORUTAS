@@ -31,12 +31,12 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
      public Detallerecorridoestudiante(){
      }
 
-    public Detallerecorridoestudiante(Estudiante estudiante, Recorrido recorrido, String nombre, String apellido, String direccion, String colegio, String jornada) {
+    public Detallerecorridoestudiante(Estudiante estudiante, Recorrido recorrido, String nombreestudiante, String apellidoestudiante, String direccionestudiante, String colegio, String jornada) {
         this.estudiante = estudiante;
         this.recorrido = recorrido;
-        this.nombreestudiante = nombre;
-        this.apellidoestudiante = apellido;
-        this.direccionestudiante = direccion;
+        this.nombreestudiante = nombreestudiante;
+        this.apellidoestudiante = apellidoestudiante;
+        this.direccionestudiante = direccionestudiante;
         this.colegio = colegio;
         this.jornada = jornada;
     }
@@ -65,28 +65,28 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
         this.recorrido = recorrido;
     }
 
-    public String getNombreEstudiante() {
+    public String getNombreestudiante() {
         return nombreestudiante;
     }
 
-    public void setNombreEstudiante(String nombre) {
-        this.nombreestudiante = nombre;
+    public void setNombreestudiante(String nombreestudiante) {
+        this.nombreestudiante = nombreestudiante;
     }
 
-    public String getApellidoEstudiante() {
+    public String getApellidoestudiante() {
         return apellidoestudiante;
     }
 
-    public void setApellidoEstudiante(String apellido) {
-        this.apellidoestudiante = apellido;
+    public void setApellidoestudiante(String apellidoestudiante) {
+        this.apellidoestudiante = apellidoestudiante;
     }
 
-    public String getDireccionEstudiante() {
+    public String getDireccionestudiante() {
         return direccionestudiante;
     }
 
-    public void setDireccionEstudiante(String direccion) {
-        this.direccionestudiante = direccion;
+    public void setDireccionestudiante(String direccionestudiante) {
+        this.direccionestudiante = direccionestudiante;
     }
 
     public String getColegio() {
@@ -104,6 +104,5 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
     public void setJornada(String jornada) {
         this.jornada = jornada;
     }
-    
      
 }
