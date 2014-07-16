@@ -9,4 +9,5 @@
   <table-filter match-name="usuario"/>
   <table-filter match-name="conductor"/>
   <table-filter match-name="recorrido"/>
+  <table-filter match-name="detallerecorridoestudiante"/>
 </hibernate-reverse-engineering>
