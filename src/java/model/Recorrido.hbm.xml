@@ -8,8 +8,8 @@
             <column name="idrecorrido" />
             <generator class="identity" />
         </id>
-        <property name="numEstudiantes" type="Integer">
-            <column name="numEstudiantes" length="11" not-null="true" />
+        <property name="numEstudiantes" type="int">
+            <column name="numEstudiantes" not-null="true" />
         </property>
         <property name="jornada" type="string">
             <column name="jornada" length="5" not-null="true" />

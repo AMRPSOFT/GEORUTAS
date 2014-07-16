@@ -91,8 +91,8 @@ public class detalleRecorridoEstudiantesBean {
                     this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada()));
             this.transaction.commit();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
-            RequestContext.getCurrentInstance().update("formCreate:tablaListaEstudiantes");
-            RequestContext.getCurrentInstance().update("formDataTable:msgs");
+            RequestContext.getCurrentInstance().update("frmrealizarRecorrido:tablaListaEstudiantes");
+            RequestContext.getCurrentInstance().update("frmrealizarRecorrido:mensajeGeneral");
         } 
         catch(Exception ex) {
         if(this.transaction!=null)

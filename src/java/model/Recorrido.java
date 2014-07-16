@@ -19,7 +19,7 @@ public class Recorrido  implements java.io.Serializable {
     }
 
     public Recorrido( int numEstudiantes, String jornada) {
-       this. numEstudiantes= numEstudiantes;
+       this. numEstudiantes = numEstudiantes;
        this.jornada = jornada;
     }
 

@@ -21,9 +21,9 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
     private Integer iddetallerecorridoestudiante;
      private Estudiante estudiante;
      private Recorrido recorrido;
-     private String nombre;
-     private String apellido;
-     private String direccion;
+     private String nombreestudiante;
+     private String apellidoestudiante;
+     private String direccionestudiante;
      private String colegio;
      private String jornada;
      
@@ -34,9 +34,9 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
     public Detallerecorridoestudiante(Estudiante estudiante, Recorrido recorrido, String nombre, String apellido, String direccion, String colegio, String jornada) {
         this.estudiante = estudiante;
         this.recorrido = recorrido;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.direccion = direccion;
+        this.nombreestudiante = nombre;
+        this.apellidoestudiante = apellido;
+        this.direccionestudiante = direccion;
         this.colegio = colegio;
         this.jornada = jornada;
     }
@@ -65,28 +65,28 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
         this.recorrido = recorrido;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreEstudiante() {
+        return nombreestudiante;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreEstudiante(String nombre) {
+        this.nombreestudiante = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidoEstudiante() {
+        return apellidoestudiante;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellidoEstudiante(String apellido) {
+        this.apellidoestudiante = apellido;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getDireccionEstudiante() {
+        return direccionestudiante;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDireccionEstudiante(String direccion) {
+        this.direccionestudiante = direccion;
     }
 
     public String getColegio() {
