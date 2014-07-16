@@ -23,23 +23,14 @@ public class Recorrido  implements java.io.Serializable {
 
 
      private Integer idrecorrido;
-     private Estudiante estudiante;
-     private String nomBarrio;
-     private String nomEstudiante;
-     private String apellEstudiante;
-     private String colegio;
+     private Integer numEstudiantes;
      private String jornada;
  
     public Recorrido() {
     }
 
-    public Recorrido(Estudiante estudiante, String nomBarrio, String nomEstudiante, String apellEstudiante, String colegio,
-                     String jornada) {
-       this.estudiante = estudiante;
-       this.nomBarrio = nomBarrio;
-       this.nomEstudiante = nomEstudiante;
-       this.apellEstudiante = apellEstudiante;
-       this.colegio = colegio;
+    public Recorrido( Integer numEstudiantes, String jornada) {
+       this. numEstudiantes= numEstudiantes;
        this.jornada = jornada;
     }
    
@@ -55,44 +46,16 @@ public class Recorrido  implements java.io.Serializable {
         this.idrecorrido = idrecorrido;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IdEstudiante", nullable=false)
-    public Estudiante getEstudiante() {
-        return this.estudiante;
-    }
-    
-    public void setEstudiante(Estudiante estudiante) {
-        this.estudiante = estudiante;
+    @Column(name="NumEstudiantes", nullable=false, length=11)
+    public Integer getNumEstudiantes() {
+        return numEstudiantes;
     }
 
-    @Column(name="NomBarrio", nullable=false, length=45)
-    public String getNomBarrio() {
-        return nomBarrio;
+    public void setNomBarrio(Integer numEstudiantes) {
+        this.numEstudiantes = numEstudiantes;
     }
 
-    public void setNomBarrio(String nomBarrio) {
-        this.nomBarrio = nomBarrio;
-    }
-
-    @Column(name="NomEstudiante", nullable=false, length=45)
-    public String getNomEstudiante() {
-        return nomEstudiante;
-    }
-
-    public void setNomEstudiante(String nomEstudiante) {
-        this.nomEstudiante = nomEstudiante;
-    }
-    
-    @Column(name="ApellEstudiante", nullable=false, length=45)
-    public String getApellEstudiante() {
-        return apellEstudiante;
-    }
-
-    public void setApellEstudiante(String apellEstudiante) {
-        this.apellEstudiante = apellEstudiante;
-    }
-
-    @Column(name="Jornada", nullable=false, length=45)
+    @Column(name="Jornada", nullable=false, length=5)
     public String getJornada() {
         return jornada;
     }
@@ -100,14 +63,5 @@ public class Recorrido  implements java.io.Serializable {
     public void setJornada(String jornada) {
         this.jornada = jornada;
     }
-    
-    @Column(name="colegio", nullable=false, length=45)
-    public String getColegio() {
-        return colegio;
-    }
 
-    public void setColegio(String colegio) {
-        this.colegio = colegio;
-    }
-    
 }

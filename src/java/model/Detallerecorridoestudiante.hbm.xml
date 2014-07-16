@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="model.Detallerecorridoestudiante" table="detallerecorridoestudiante" catalog="georutas">
+        <id name="iddetallerecorridoestudiante" type="java.lang.Integer">
+            <column name="iddetallerecorridoestudiante" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="estudiante" class="model.Estudiante" fetch="select">
+            <column name="IdEstudiante" not-null="true" />
+        </many-to-one>
+        <many-to-one name="recorrido" class="model.Recorrido" fetch="select">
+            <column name="IdRecorrido" not-null="true" />
+        </many-to-one>
+        
+        <property name="nombreestudiante" type="string">
+            <column name="nombreestudiante" length="45" not-null="true" />
+        </property>
+        <property name="apellidoestudiante" type="string">
+            <column name="apellidoestudiante" length="45" not-null="true" />
+        </property>
+        <property name="direccionestudiante" type="string">
+            <column name="direccionestudiante" length="100" not-null="true" />
+        </property>
+        <property name="colegio" type="string">
+            <column name="colegio" length="45" not-null="true" />
+        </property>
+        <property name="jornada" type="string">
+            <column name="jornada" length="5" not-null="true" />
+        </property>
+    </class>
+  
+
+</hibernate-mapping>
