@@ -2,14 +2,13 @@ package bean;
 
 import dao.EstudianteDao;
 import dao.EstudianteDaoImpl;
-import dao.DetalleRecorridoEstudianteDao;
-import dao.DetalleRecorridoEstudianteDaoImpl;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import model.Detallerecorridoestudiante;
 import model.Estudiante;
 import model.Recorrido;
 import org.hibernate.Session;
@@ -21,7 +20,7 @@ import util.HibernateUtil;
  *
  * @author Alex Rodriguez
  */
-@Named(value = "recorridoBean")
+@Named(value = "detalleRecorridoEstudiantesBean")
 @RequestScoped
 public class detalleRecorridoEstudiantesBean {
 
@@ -31,13 +30,13 @@ public class detalleRecorridoEstudiantesBean {
     private Estudiante estudiante;
     private List<Estudiante> estudiantes;
     private Recorrido recorrido;
-    private List<Recorrido> recorridos;
+    private List<Detallerecorridoestudiante> listaDetallerecorridoestudiante;
     
     private Integer identificacion;
 
     public detalleRecorridoEstudiantesBean() {
         this.recorrido = new Recorrido();
-        this.recorridos = new ArrayList<>();
+        this.listaDetallerecorridoestudiante = new ArrayList<>();
     }
 
     public List<Estudiante> getAllEstudiantes() {
@@ -88,7 +87,7 @@ public class detalleRecorridoEstudiantesBean {
             EstudianteDao estudianteDao = new EstudianteDaoImpl();
             this.transaction=this.sesion.beginTransaction();
             this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
-            this.recorridos.add(new Recorrido(null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
+            this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
                     this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada()));
             this.transaction.commit();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
@@ -131,7 +130,7 @@ public class detalleRecorridoEstudiantesBean {
             
             if(this.estudiante!=null)
             {
-                this.recorridos.add(new Recorrido(null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
+                this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
                     this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada()));
 
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante agregado"));
@@ -198,12 +197,13 @@ public class detalleRecorridoEstudiantesBean {
     public void setEstudiantes(List<Estudiante> estudiantes) {
         this.estudiantes = estudiantes;
     }
-    
-    public List<Recorrido> getRecorridos() {
-        return recorridos;
+
+    public List<Detallerecorridoestudiante> getListaDetallerecorridoestudiante() {
+        return listaDetallerecorridoestudiante;
     }
 
-    public void setRecorridos(List<Recorrido> recorridos) {
-        this.recorridos = recorridos;
+    public void setListaDetallerecorridoestudiante(List<Detallerecorridoestudiante> listaDetallerecorridoestudiante) {
+        this.listaDetallerecorridoestudiante = listaDetallerecorridoestudiante;
     }
+
 }

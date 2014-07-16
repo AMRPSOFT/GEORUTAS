@@ -9,7 +9,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,7 +17,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="estudiante"
+@Table(name="detallerecorridoestudiante"
     ,catalog="georutas"
 )
 public class Detallerecorridoestudiante implements java.io.Serializable{
