@@ -35,6 +35,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
     private List<Detallerecorridoestudiante> listaDetallerecorridoestudiante;
     
     private Integer identificacion;
+    private Integer numestudiante;
 
     public detalleRecorridoEstudiantesBean() {
         this.recorrido = new Recorrido();
@@ -90,7 +91,8 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             this.transaction=this.sesion.beginTransaction();
             this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
             this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getNombre(),
-                    this.estudiante.getApellido(), this.estudiante.getDireccion(), this.estudiante.getColegio(), this.estudiante.getJornada()));
+                    this.estudiante.getApellido(), this.estudiante.getDireccion(), this.estudiante.getColegio(), 
+                    this.estudiante.getJornada(), this.numestudiante));
             this.transaction.commit();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
             RequestContext.getCurrentInstance().update("frmrealizarRecorrido:tablaListaEstudiantes");
@@ -133,7 +135,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             if(this.estudiante!=null)
             {
                 this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
-                    this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada()));
+                    this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada(), this.numestudiante));
 
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante agregado"));
             }

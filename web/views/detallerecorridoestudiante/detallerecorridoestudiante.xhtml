@@ -44,7 +44,7 @@
                             <p:column>
                                 <p:commandButton value="Agregar" ajax="true" actionListener="#{detalleRecorridoEstudiantesBean.agregarListadeEstudiantes(item.idestudiante)}"/>
                             </p:column>
-                        </p:dataTable>
+                        </p:dataTable><hr/>
                         <p:dataTable id="tablaListaEstudiantes" paginator="true" rows="4" 
                                      value="#{detalleRecorridoEstudiantesBean.listaDetallerecorridoestudiante}" var="itemes" style="font-size: 10px;">
                             <f:facet name="header">
@@ -73,7 +73,6 @@
                         <h:panelGroup>
                             <h:outputText value="Numero de Registros"/>
                             <p:inputText value="#{detalleRecorridoEstudiantesBean.recorrido.numEstudiantes}"/>
-                            <p:commandButton value="Actualizar Registros" actionListener="#{mbVVenta.calcularCostos()}" />
                             <p:commandButton value="Guardar Recorrido" ajax="false" actionListener="#{mbVVenta.realizarVenta()}"/>
                         </h:panelGroup>
                     </p:panelGrid>
