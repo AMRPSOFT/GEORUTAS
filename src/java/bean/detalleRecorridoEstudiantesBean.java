@@ -9,7 +9,6 @@ import dao.RecorridoDaoImpl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -96,7 +95,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
             this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getNombre(),
                     this.estudiante.getApellido(), this.estudiante.getDireccion(), this.estudiante.getColegio(), 
-                    this.estudiante.getJornada()));
+                    this.estudiante.getJornada(), this.numestudiante));
             this.transaction.commit();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
             RequestContext.getCurrentInstance().update("frmrealizarRecorrido:tablaListaEstudiantes");
@@ -139,7 +138,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             if(this.estudiante!=null)
             {
                 this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
-                    this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada()));
+                    this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada(), this.numestudiante));
 
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante agregado"));
             }
