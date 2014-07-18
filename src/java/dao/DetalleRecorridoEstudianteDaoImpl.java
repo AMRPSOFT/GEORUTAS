@@ -1,10 +1,8 @@
 
 package dao;
 
-import model.Recorrido;
+import model.Detallerecorridoestudiante;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-import util.HibernateUtil;
 
 /**
  *
@@ -13,24 +11,8 @@ import util.HibernateUtil;
 public class DetalleRecorridoEstudianteDaoImpl  implements DetalleRecorridoEstudianteDao{
 
     @Override
-    public boolean insert(Recorrido recorrido) {
-        boolean flag = false;
-        final Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-        try {
-            final Transaction transaction = sesion.beginTransaction();
-            try {
-                sesion.save(recorrido);
-                transaction.commit();
-                flag = true;
-            } catch (Exception e) {
-                flag = false;
-                transaction.rollback();
-                throw e;
-            }
-        } finally {
-            
-        }
-        return flag;
+    public boolean insert(Session sesion, Detallerecorridoestudiante detallaRecorridoEstudiante) {
+        sesion.save(detallaRecorridoEstudiante);
+        return true;
     }
-    
 }

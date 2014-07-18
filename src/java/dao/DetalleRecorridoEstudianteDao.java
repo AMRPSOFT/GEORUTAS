@@ -1,12 +1,13 @@
 
 package dao;
 
-import model.Recorrido;
+import model.Detallerecorridoestudiante;
+import org.hibernate.Session;
 
 /**
  *
  * @author Alex Rodriguez
  */
 public interface DetalleRecorridoEstudianteDao {
-    public boolean insert(Recorrido recorrido);
+    public boolean insert(Session sesion, Detallerecorridoestudiante dtellaRecorridoEstudiante);
 }

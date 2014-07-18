@@ -32,10 +32,6 @@
         <property name="jornada" type="string">
             <column name="jornada" length="5" not-null="true" />
         </property>
-        <property name="numestudiante" type="int">
-            <column name="numestudiante" not-null="true" />
-        </property>
     </class>
   
-
 </hibernate-mapping>
