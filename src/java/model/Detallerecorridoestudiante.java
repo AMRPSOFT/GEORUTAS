@@ -17,12 +17,13 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
      private String colegio;
      private String jornada;
      private int numestudiante;
+     public Integer identificacion;
           
     
      public Detallerecorridoestudiante(){
      }
 
-    public Detallerecorridoestudiante(Estudiante estudiante, Recorrido recorrido, String nombreestudiante, String apellidoestudiante, String direccionestudiante, String colegio, String jornada, int numestudiante) {
+    public Detallerecorridoestudiante(Estudiante estudiante, Recorrido recorrido, String nombreestudiante, String apellidoestudiante, String direccionestudiante, String colegio, String jornada) {
         this.estudiante = estudiante;
         this.recorrido = recorrido;
         this.nombreestudiante = nombreestudiante;
@@ -30,7 +31,6 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
         this.direccionestudiante = direccionestudiante;
         this.colegio = colegio;
         this.jornada = jornada;
-        this.numestudiante = numestudiante;
     }
 
     public Integer getIddetallerecorridoestudiante() {
@@ -103,6 +103,14 @@ public class Detallerecorridoestudiante implements java.io.Serializable{
 
     public void setJornada(String jornada) {
         this.jornada = jornada;
+    }
+
+    public Integer getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(Integer identificacion) {
+        this.identificacion = identificacion;
     }
      
 }

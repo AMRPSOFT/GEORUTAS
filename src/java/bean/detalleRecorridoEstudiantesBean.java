@@ -95,7 +95,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
             this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getNombre(),
                     this.estudiante.getApellido(), this.estudiante.getDireccion(), this.estudiante.getColegio(), 
-                    this.estudiante.getJornada(), this.numestudiante));
+                    this.estudiante.getJornada()));
             this.transaction.commit();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
             RequestContext.getCurrentInstance().update("frmrealizarRecorrido:tablaListaEstudiantes");
@@ -138,7 +138,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             if(this.estudiante!=null)
             {
                 this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
-                    this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada(), this.numestudiante));
+                    this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada()));
 
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante agregado"));
             }
@@ -173,6 +173,28 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
         }
     }
     
+    public void calcularNumeroEstudiantesAgregados()
+    {
+        try
+        {   
+            int numEstudiante = 1;
+            
+            for(Detallerecorridoestudiante item : this.listaDetallerecorridoestudiante)
+            {
+               numEstudiante = item.getNumestudiante() + 1;
+            }
+            
+            this.recorrido.setNumEstudiantes(numEstudiante);
+            
+            RequestContext.getCurrentInstance().update("frmrealizarRecorrido:tablaListaEstudiantes");
+            RequestContext.getCurrentInstance().update("frmrealizarRecorrido:panelFinalVenta");
+        }
+        catch(Exception ex)
+        {            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", ex.getMessage()));
+        }
+    }
+    
     public void guardarRecorrido()
     {
         this.sesion=null;
@@ -193,7 +215,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             
             for(Detallerecorridoestudiante item : this.listaDetallerecorridoestudiante)
             {
-                this.estudiante = estudianteDao.getByIdentificacion(this.sesion, estudiante.getIdenticacion());
+                this.estudiante = estudianteDao.getByIdentificacion(this.sesion, item.getIdentificacion());
                 item.setRecorrido(this.recorrido);
                 item.setEstudiante(this.estudiante);
                 

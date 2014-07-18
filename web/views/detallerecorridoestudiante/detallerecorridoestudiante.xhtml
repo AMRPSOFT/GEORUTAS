@@ -18,61 +18,65 @@
             <ui:define name="content">
                 <h:form id="frmrealizarRecorrido">
                     <p:growl id="mensajeGeneral" showDetail="true"/>
-                        <p:dataTable  value="#{detalleRecorridoEstudiantesBean.allEstudiantes}" 
-                                      paginator="true" rows="3" var="item" style="font-size: 10px;">
-                            <f:facet name="header">
-                                <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes"/>
-                            </f:facet>
-                            <p:column headerText="Id">
-                                <h:outputText value="#{item.idestudiante}"/>
-                            </p:column>
-                            <p:column headerText="Nombre" filterBy="nombre">
-                                <h:outputText value="#{item.nombre}"/>
-                            </p:column>
-                            <p:column headerText="Apellido">
-                                <h:outputText value="#{item.apellido}"/>
-                            </p:column>
-                            <p:column headerText="Direccion">
-                                <h:outputText value="#{item.direccion}"/>
-                            </p:column>
-                            <p:column headerText="Colegio">
-                                <h:outputText value="#{item.colegio}"/>
-                            </p:column>
-                            <p:column headerText="Jornada">
-                                <h:outputText value="#{item.jornada}"/>
-                            </p:column>
-                            <p:column>
-                                <p:commandButton value="Agregar" ajax="true" actionListener="#{detalleRecorridoEstudiantesBean.agregarListadeEstudiantes(item.idestudiante)}"/>
-                            </p:column>
-                        </p:dataTable><hr/>
-                        <p:dataTable id="tablaListaEstudiantes" paginator="true" rows="4" 
-                                     value="#{detalleRecorridoEstudiantesBean.listaDetallerecorridoestudiante}" var="itemes" style="font-size: 10px;">
-                            <f:facet name="header">
+                    <p:dataTable  value="#{detalleRecorridoEstudiantesBean.allEstudiantes}" 
+                                  paginator="true" rows="3" var="item" style="font-size: 10px;">
+                        <f:facet name="header">
+                            <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes"/>
+                        </f:facet>
+                        <p:column headerText="Id">
+                            <h:outputText value="#{item.idestudiante}"/>
+                        </p:column>
+                        <p:column headerText="Nombre" filterBy="nombre">
+                            <h:outputText value="#{item.nombre}"/>
+                        </p:column>
+                        <p:column headerText="Apellido">
+                            <h:outputText value="#{item.apellido}"/>
+                        </p:column>
+                        <p:column headerText="Direccion">
+                            <h:outputText value="#{item.direccion}"/>
+                        </p:column>
+                        <p:column headerText="Colegio">
+                            <h:outputText value="#{item.colegio}"/>
+                        </p:column>
+                        <p:column headerText="Jornada">
+                            <h:outputText value="#{item.jornada}"/>
+                        </p:column>
+                        <p:column>
+                            <p:commandButton value="Agregar" ajax="true" actionListener="#{detalleRecorridoEstudiantesBean.agregarListadeEstudiantes(item.idestudiante)}"/>
+                        </p:column>
+                    </p:dataTable><hr/>
+                    <p:dataTable id="tablaListaEstudiantes" paginator="true" rows="4" 
+                                 value="#{detalleRecorridoEstudiantesBean.listaDetallerecorridoestudiante}" var="itemes" style="font-size: 10px;">
+                        <f:facet name="header">
                             <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes Agregados"/>
                         </f:facet>
-                            <p:column headerText="Nombres" style="text-align: center;">
-                                <h:outputText value="#{itemes.nombreestudiante}"/>
-                            </p:column>
-                            <p:column headerText="Apellidos" style="text-align: left;">
-                                <h:outputText value="#{itemes.apellidoestudiante}"/>
-                            </p:column>
-                            <p:column headerText="Direccion" style="text-align: center;">
-                                <h:outputText value="#{itemes.direccionestudiante}"/>
-                            </p:column>
-                            <p:column headerText="Colegio" style="text-align: center;">
-                                <h:outputText value="#{itemes.colegio}" style="text-align: center;" />                    
-                            </p:column>
-                            <p:column headerText="Jornada" style="text-align: center;">
-                                <h:outputText value="#{itemes.jornada}"/>
-                            </p:column>
-                            <p:column style="text-align: center;">
-                                <p:commandButton value="Retirar de la lista" ajax="true" actionListener="#{mbVVenta.retirarListaVentaDetalle(item.codigoBarrasProducto)}"/>
-                            </p:column>
-                        </p:dataTable>
+                        <p:column headerText="Nombres" style="text-align: center;">
+                            <h:outputText value="#{itemes.nombreestudiante}"/>
+                        </p:column>
+                        <p:column headerText="Apellidos" style="text-align: left;">
+                            <h:outputText value="#{itemes.apellidoestudiante}"/>
+                        </p:column>
+                        <p:column headerText="Direccion" style="text-align: center;">
+                            <h:outputText value="#{itemes.direccionestudiante}"/>
+                        </p:column>
+                        <p:column headerText="Colegio" style="text-align: center;">
+                            <h:outputText value="#{itemes.colegio}" style="text-align: center;" />                    
+                        </p:column>
+                        <p:column headerText="Jornada" style="text-align: center;">
+                            <h:outputText value="#{itemes.jornada}"/>
+                        </p:column>
+                        <p:column headerText="Numero Estudiante" style="text-align: center;">
+                            <p:inputText value="#{itemes.numestudiante}" style="text-align: center;" />                    
+                        </p:column>
+                        <p:column style="text-align: center;">
+                            <p:commandButton value="Retirar de la lista" ajax="true" actionListener="#{mbVVenta.retirarListaVentaDetalle(item.codigoBarrasProducto)}"/>
+                        </p:column>
+                    </p:dataTable>
                     <p:panelGrid id="panelFinalVenta" columns="1" style="text-align: right;width: 100%;">
                         <h:panelGroup>
                             <h:outputText value="Numero de Registros"/>
                             <p:inputText value="#{detalleRecorridoEstudiantesBean.recorrido.numEstudiantes}"/>
+                            <p:commandButton value="Actualizar registros" actionListener="#{detalleRecorridoEstudiantesBean.calcularNumeroEstudiantesAgregados()}" />
                             <p:commandButton value="Guardar Recorrido" ajax="false" actionListener="#{detalleRecorridoEstudiantesBean.guardarRecorrido()}"/>
                         </h:panelGroup>
                     </p:panelGrid>
