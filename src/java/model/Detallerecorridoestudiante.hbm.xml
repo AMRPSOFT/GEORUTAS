@@ -17,6 +17,9 @@
             <column name="IdRecorrido" not-null="true" />
         </many-to-one>
         
+        <property name="identificacion" type="int">
+            <column name="identificacion" not-null="true" />
+        </property>
         <property name="nombreestudiante" type="string">
             <column name="nombreestudiante" length="45" not-null="true" />
         </property>

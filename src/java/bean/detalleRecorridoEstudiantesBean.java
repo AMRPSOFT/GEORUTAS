@@ -36,9 +36,8 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
     private List<Estudiante> estudiantes;
     private Recorrido recorrido;
     private List<Detallerecorridoestudiante> listaDetallerecorridoestudiante;
-    
-    private Integer identificacion;
-    private Integer numestudiante;
+    private int identificacion;
+    private int numestudiante;
 
     public detalleRecorridoEstudiantesBean() {
         this.recorrido = new Recorrido();
@@ -93,7 +92,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             EstudianteDao estudianteDao = new EstudianteDaoImpl();
             this.transaction=this.sesion.beginTransaction();
             this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
-            this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getNombre(),
+            this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getIdenticacion() , this.estudiante.getNombre(),
                     this.estudiante.getApellido(), this.estudiante.getDireccion(), this.estudiante.getColegio(), 
                     this.estudiante.getJornada()));
             this.transaction.commit();
@@ -137,8 +136,8 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             
             if(this.estudiante!=null)
             {
-                this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getDireccion(), this.estudiante.getNombre(),
-                    this.estudiante.getApellido(), this.estudiante.getColegio(), this.estudiante.getJornada()));
+                this.listaDetallerecorridoestudiante.add(new Detallerecorridoestudiante(null, null, this.estudiante.getIdenticacion(), this.estudiante.getNombre(),
+                    this.estudiante.getApellido(), this.estudiante.getDireccion(), this.estudiante.getColegio(), this.estudiante.getJornada()));
 
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante agregado"));
             }
@@ -173,28 +172,6 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
         }
     }
     
-    public void calcularNumeroEstudiantesAgregados()
-    {
-        try
-        {   
-            int numEstudiante = 1;
-            
-            for(Detallerecorridoestudiante item : this.listaDetallerecorridoestudiante)
-            {
-               numEstudiante = item.getNumestudiante() + 1;
-            }
-            
-            this.recorrido.setNumEstudiantes(numEstudiante);
-            
-            RequestContext.getCurrentInstance().update("frmrealizarRecorrido:tablaListaEstudiantes");
-            RequestContext.getCurrentInstance().update("frmrealizarRecorrido:panelFinalVenta");
-        }
-        catch(Exception ex)
-        {            
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", ex.getMessage()));
-        }
-    }
-    
     public void guardarRecorrido()
     {
         this.sesion=null;
@@ -215,13 +192,12 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             
             for(Detallerecorridoestudiante item : this.listaDetallerecorridoestudiante)
             {
-                this.estudiante = estudianteDao.getByIdentificacion(this.sesion, item.getIdentificacion());
+                this.estudiante = estudianteDao.getByIdentificacion(this.sesion, item.getEstudiante().getIdenticacion());
                 item.setRecorrido(this.recorrido);
                 item.setEstudiante(this.estudiante);
-                
                 detallerecorridoestudianteDao.insert(this.sesion, item);
+                
             }
-            
             this.transaction.commit();
             
             this.listaDetallerecorridoestudiante = new ArrayList<>();

@@ -26,6 +26,9 @@
                         <p:column headerText="Id">
                             <h:outputText value="#{item.idestudiante}"/>
                         </p:column>
+                        <p:column headerText="Identificacion" filterBy="identificacion">
+                            <h:outputText value="#{item.identicacion}"/>
+                        </p:column>
                         <p:column headerText="Nombre" filterBy="nombre">
                             <h:outputText value="#{item.nombre}"/>
                         </p:column>
@@ -42,7 +45,7 @@
                             <h:outputText value="#{item.jornada}"/>
                         </p:column>
                         <p:column>
-                            <p:commandButton value="Agregar" ajax="true" actionListener="#{detalleRecorridoEstudiantesBean.agregarListadeEstudiantes(item.idestudiante)}"/>
+                            <p:commandButton value="Agregar" ajax="false" actionListener="#{detalleRecorridoEstudiantesBean.agregarListadeEstudiantes(item.idestudiante)}"/>
                         </p:column>
                     </p:dataTable><hr/>
                     <p:dataTable id="tablaListaEstudiantes" paginator="true" rows="4" 
@@ -50,6 +53,9 @@
                         <f:facet name="header">
                             <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes Agregados"/>
                         </f:facet>
+                        <p:column headerText="Identificacion">
+                            <h:outputText value="#{itemes.identificacion}"/>
+                        </p:column>
                         <p:column headerText="Nombres" style="text-align: center;">
                             <h:outputText value="#{itemes.nombreestudiante}"/>
                         </p:column>
@@ -76,7 +82,7 @@
                         <h:panelGroup>
                             <h:outputText value="Numero de Registros"/>
                             <p:inputText value="#{detalleRecorridoEstudiantesBean.recorrido.numEstudiantes}"/>
-                            <p:commandButton value="Actualizar registros" actionListener="#{detalleRecorridoEstudiantesBean.calcularNumeroEstudiantesAgregados()}" />
+                            <p:commandButton ajax="false" value="Actualizar registros" actionListener="#{detalleRecorridoEstudiantesBean.calcularNumeroEstudiantesAgregados()}" />
                             <p:commandButton value="Guardar Recorrido" ajax="false" actionListener="#{detalleRecorridoEstudiantesBean.guardarRecorrido()}"/>
                         </h:panelGroup>
                     </p:panelGrid>
