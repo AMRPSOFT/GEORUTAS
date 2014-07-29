@@ -130,9 +130,9 @@ public class EstudianteDaoImpl implements EstudianteDao{
 
     @Override
     public Estudiante getByIdentificacion(Session sesion, Integer identificacion) {
-        String hql="from Estudiante where identificacion=:identificacion";
+        String hql="from Estudiante where identicacion=:identicacion";
         Query query=sesion.createQuery(hql);
-        query.setParameter("identificacion", identificacion);
+        query.setParameter("identicacion", identificacion);
         
         return (Estudiante) query.uniqueResult();
     }

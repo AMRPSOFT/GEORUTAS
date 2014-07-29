@@ -69,10 +69,11 @@
                             <h:outputText value="#{itemes.colegio}" style="text-align: center;" />                    
                         </p:column>
                         <p:column headerText="Jornada" style="text-align: center;">
-                            <h:outputText value="#{itemes.jornada}"/>
-                        </p:column>
-                        <p:column headerText="Numero Estudiante" style="text-align: center;">
-                            <p:inputText value="#{itemes.numestudiante}" style="text-align: center;" />                    
+                            <p:selectOneMenu id="jornada" value="#{detalleRecorridoEstudiantesBean.recorrido.jornada}" style="font-weight: bold">
+                                <f:selectItem itemLabel="Selecione su Jornada" itemValue="" />  
+                                <f:selectItem itemLabel="Am" itemValue="Am" />
+                                <f:selectItem itemLabel="Pm" itemValue="Pm" />
+                            </p:selectOneMenu>                            
                         </p:column>
                         <p:column style="text-align: center;">
                             <p:commandButton value="Retirar de la lista" ajax="true" actionListener="#{mbVVenta.retirarListaVentaDetalle(item.codigoBarrasProducto)}"/>
@@ -82,7 +83,6 @@
                         <h:panelGroup>
                             <h:outputText value="Numero de Registros"/>
                             <p:inputText value="#{detalleRecorridoEstudiantesBean.recorrido.numEstudiantes}"/>
-                            <p:commandButton ajax="false" value="Actualizar registros" actionListener="#{detalleRecorridoEstudiantesBean.calcularNumeroEstudiantesAgregados()}" />
                             <p:commandButton value="Guardar Recorrido" ajax="false" actionListener="#{detalleRecorridoEstudiantesBean.guardarRecorrido()}"/>
                         </h:panelGroup>
                     </p:panelGrid>

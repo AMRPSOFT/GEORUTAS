@@ -192,11 +192,10 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             
             for(Detallerecorridoestudiante item : this.listaDetallerecorridoestudiante)
             {
-                this.estudiante = estudianteDao.getByIdentificacion(this.sesion, item.getEstudiante().getIdenticacion());
+                this.estudiante = estudianteDao.getByIdentificacion(this.sesion, item.getIdentificacion());
                 item.setRecorrido(this.recorrido);
                 item.setEstudiante(this.estudiante);
                 detallerecorridoestudianteDao.insert(this.sesion, item);
-                
             }
             this.transaction.commit();
             
