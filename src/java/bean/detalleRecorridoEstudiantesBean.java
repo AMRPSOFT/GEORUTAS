@@ -37,7 +37,6 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
     private Recorrido recorrido;
     private List<Detallerecorridoestudiante> listaDetallerecorridoestudiante;
     private int identificacion;
-    private int numestudiante;
 
     public detalleRecorridoEstudiantesBean() {
         this.recorrido = new Recorrido();
@@ -193,8 +192,8 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             for(Detallerecorridoestudiante item : this.listaDetallerecorridoestudiante)
             {
                 this.estudiante = estudianteDao.getByIdentificacion(this.sesion, item.getIdentificacion());
-                item.setRecorrido(this.recorrido);
                 item.setEstudiante(this.estudiante);
+                item.setRecorrido(this.recorrido);
                 detallerecorridoestudianteDao.insert(this.sesion, item);
             }
             this.transaction.commit();
