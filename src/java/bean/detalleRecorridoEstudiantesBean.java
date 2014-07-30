@@ -36,7 +36,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
     private List<Estudiante> estudiantes;
     private Recorrido recorrido;
     private List<Detallerecorridoestudiante> listaDetallerecorridoestudiante;
-    private int identificacion;
+    
 
     public detalleRecorridoEstudiantesBean() {
         this.recorrido = new Recorrido();
@@ -123,7 +123,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
         
         try
         {
-            if(this.identificacion == 0){return;}
+            if(estudiante.getIdenticacion() == 0){return;}
             
             this.sesion=HibernateUtil.getSessionFactory().openSession();
             
@@ -131,7 +131,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             
             this.transaction=this.sesion.beginTransaction();
             
-            this.estudiante=estudianteDao.getByIdentificacion(this.sesion, this.identificacion);
+            this.estudiante=estudianteDao.getByIdentificacion(this.sesion, this.estudiante.getIdenticacion());
             
             if(this.estudiante!=null)
             {
@@ -144,8 +144,6 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
             {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Identificacion Invalida", "Estudiante no encontrado"));
             }
-            
-            this.identificacion = 0;
             
             this.transaction.commit();
             
@@ -235,14 +233,6 @@ public class detalleRecorridoEstudiantesBean implements Serializable{
 
     public void setRecorrido(Recorrido recorrido) {
         this.recorrido = recorrido;
-    }
-
-    public Integer getIdentificacion() {
-        return identificacion;
-    }
-
-    public void setIdentificacion(Integer identificacion) {
-        this.identificacion = identificacion;
     }
 
     public List<Estudiante> getEstudiantes() {

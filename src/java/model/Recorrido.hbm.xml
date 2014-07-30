@@ -17,7 +17,7 @@
         
         <set name="detallerecorridoestudiante" table="detallerecorridoestudiante" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="iddetallerecorridoestudiante" not-null="true" />
+                <column name="idrecorrido" not-null="true" />
             </key>
             <one-to-many class="model.Detallerecorridoestudiante" />
         </set>

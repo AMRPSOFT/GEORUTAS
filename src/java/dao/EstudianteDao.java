@@ -8,7 +8,6 @@ package dao;
 
 import java.util.List;
 import model.Estudiante;
-import model.Recorrido;
 import org.hibernate.Session;
 
 /**

@@ -38,11 +38,11 @@
         <property name="sexo" type="string">
             <column name="Sexo" length="20" not-null="true" />
         </property>
-        <set name="recorridos" table="recorrido" inverse="true" lazy="true" fetch="select">
+        <set name="detallerecorridoestudiante" table="detallerecorridoestudiante" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="IdEstudiante" not-null="true" />
             </key>
-            <one-to-many class="model.Recorrido" />
+            <one-to-many class="model.Detallerecorridoestudiante" />
         </set>
     </class>
 </hibernate-mapping>

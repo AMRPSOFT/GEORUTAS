@@ -11,10 +11,10 @@
             <generator class="identity" />
         </id>
         <many-to-one name="estudiante" class="model.Estudiante" fetch="select">
-            <column name="IdEstudiante" not-null="true" />
+            <column name="idEstudiante" not-null="true" />
         </many-to-one>
         <many-to-one name="recorrido" class="model.Recorrido" fetch="select">
-            <column name="IdRecorrido" not-null="true" />
+            <column name="idRecorrido" not-null="true" />
         </many-to-one>
         
         <property name="identificacion" type="int">
@@ -34,9 +34,6 @@
         </property>
         <property name="jornada" type="string">
             <column name="jornada" length="5" not-null="true" />
-        </property>
-        <property name="numestudiante" type="int">
-            <column name="numestudiante" not-null="true" />
         </property>
     </class>
   
