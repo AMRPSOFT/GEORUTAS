@@ -7,7 +7,6 @@
 package dao;
 
 import java.util.List;
-import model.Estudiante;
 import model.Factura;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -37,11 +36,6 @@ public class FacturaDaoImpl implements FacturaDao{
             
         }
         return model;
-    }
-
-    @Override
-    public List<Estudiante> selectItems() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

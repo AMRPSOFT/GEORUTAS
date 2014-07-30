@@ -7,7 +7,6 @@
 package dao;
 
 import java.util.List;
-import model.Estudiante;
 import model.Factura;
 
 /**
@@ -16,7 +15,6 @@ import model.Factura;
  */
 public interface FacturaDao {
     public Factura findByFactura(Factura factura);
-    public List<Estudiante> selectItems();
     public List<Factura> findAll();
     public boolean create(Factura factura);
     public boolean update(Factura factura);
