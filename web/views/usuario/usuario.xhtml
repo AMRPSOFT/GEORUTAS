@@ -24,25 +24,25 @@
                         <f:facet name="header">
                             <p:outputLabel style="font-size: 18px;" value="Listado de Usuario"/>
                         </f:facet>
-                        <p:column headerText="Id">  
+                        <p:column headerText="Id" style="font-size: 10px;">  
                             <h:outputText value="#{item.idusuario}" />  
                         </p:column>
-                        <p:column headerText="Nombres">  
+                        <p:column headerText="Nombres" style="font-size: 10px;">  
                             <h:outputText value="#{item.nombre}" />  
                         </p:column>
-                        <p:column headerText="Apellidos">  
+                        <p:column headerText="Apellidos" style="font-size: 10px;">  
                             <h:outputText value="#{item.apellido}" />  
                         </p:column>
-                        <p:column headerText="Telefono">  
+                        <p:column headerText="Telefono" style="font-size: 10px;">  
                             <h:outputText value="#{item.telefono}" />  
                         </p:column>
-                        <p:column headerText="Direccion">  
+                        <p:column headerText="Direccion" style="font-size: 10px;">  
                             <h:outputText value="#{item.direccion}" />  
                         </p:column>
-                        <p:column headerText="Email">  
+                        <p:column headerText="Email" style="font-size: 10px;">  
                             <h:outputText value="#{item.email}" />  
                         </p:column>
-                        <p:column headerText="Aciones">
+                        <p:column headerText="Aciones" style="font-size: 10px;">
                             <p:commandButton id="btnEdit" icon="ui-icon-pencil"  
                                              value="Edit" update=":formUpdateUsuario" 
                                              oncomplete="PF('dialogUpdateUsuario').show()">  
