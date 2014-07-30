@@ -9,6 +9,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.inject.Named;
 import model.Estudiante;
 
@@ -22,6 +23,7 @@ public class estudianteBean {
 
     private Estudiante selectedEstudiante;
     private List<Estudiante> estudiantes;
+    private List<SelectItem> selectOneItemsEstudiante;
     
     public estudianteBean() {
         this.estudiantes = new ArrayList<Estudiante>();
@@ -36,6 +38,17 @@ public class estudianteBean {
         this.selectedEstudiante = selectedEstudiante;
     }
 
+    public List<SelectItem> getSelectOneItemsEstudiante() {
+        this.selectOneItemsEstudiante = new ArrayList<SelectItem>();
+        EstudianteDao estudianteDao = new EstudianteDaoImpl();
+        estudiantes = estudianteDao.selectItems();
+        for (Estudiante estudiante : estudiantes) {
+            SelectItem selectItem = new SelectItem(estudiante.getIdestudiante(), estudiante.getNombre());
+            this.selectOneItemsEstudiante.add(selectItem);
+        }
+        return selectOneItemsEstudiante;
+    }
+    
     public List<Estudiante> getEstudiantes() {
         EstudianteDao estudianteDao = new EstudianteDaoImpl();
         this.estudiantes = estudianteDao.findAll();

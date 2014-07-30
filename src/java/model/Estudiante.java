@@ -11,7 +11,6 @@ import java.util.Set;
 
 public class Estudiante  implements java.io.Serializable {
 
-
      private Integer idestudiante;
      private Acudiente acudiente;
      private int identicacion;

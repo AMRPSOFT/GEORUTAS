@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="model.Factura" table="factura" catalog="georutas">
+        <id name="idfactura" type="java.lang.Integer">
+            <column name="idfactura" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="estudiante" class="model.Estudiante" fetch="select">
+            <column name="IdEstudiante" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="45" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="Apellido" length="45" not-null="true" />
+        </property>
+        <property name="colegio" type="string">
+            <column name="Colegio" length="100" not-null="true" />
+        </property>
+        <property name="periodoinicio" type="timestamp">
+            <column name="Periodoinicio" length="19" not-null="true" />
+        </property>
+        <property name="periodofinal" type="timestamp">
+            <column name="Periodofinal" length="19" not-null="true" />
+        </property>
+        <property name="valor" type="big_decimal">
+            <column name="Valor" length="18" not-null="true" />
+        </property>
+    </class>
+  
+
+</hibernate-mapping>

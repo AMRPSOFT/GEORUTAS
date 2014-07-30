@@ -17,7 +17,7 @@ import org.hibernate.Session;
 public interface EstudianteDao {
     
     public Estudiante findByEstudiante(Estudiante estudiante);
-    //public List<Acudiente> selectItems();
+    public List<Estudiante> selectItems();
     public List<Estudiante> findAll();
     public boolean create(Estudiante estudiante);
     public boolean update(Estudiante estudiante);
