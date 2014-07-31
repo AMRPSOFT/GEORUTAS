@@ -22,15 +22,12 @@
                                      icon="ui-icon-document" title="Nueva Factura"/>  
                 </h:form>
                 <h:form id="formDataTable">
-                    <p:dataTable id="usuario" var="item" value="#{estudianteBean.estudiantes}" paginator="true" rows="8">
+                    <p:dataTable id="usuario" var="item" value="#{facturaBean.facturas}" paginator="true" rows="8">
                         <f:facet name="header">
-                            <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes"/>
+                            <p:outputLabel style="font-size: 18px;" value="Listado de Facturas"/>
                         </f:facet>
                         <p:column headerText="Id" style="font-size: 10px;">  
-                            <h:outputText value="#{item.idestudiante}" />  
-                        </p:column>
-                        <p:column headerText="Identificacion" style="font-size: 10px;">  
-                            <h:outputText value="#{item.identicacion}" />  
+                            <h:outputText value="#{item.idfactura}" />  
                         </p:column>
                         <p:column headerText="Nombres" style="font-size: 10px;">  
                             <h:outputText value="#{item.nombre}" />  
@@ -38,23 +35,14 @@
                         <p:column headerText="Apellidos" style="font-size: 10px;">  
                             <h:outputText value="#{item.apellido}" />  
                         </p:column>
-                        <p:column headerText="Telefono" style="font-size: 10px;">  
-                            <h:outputText value="#{item.telefono}" />  
+                        <p:column headerText="Periodo Inicio" style="font-size: 10px;">  
+                            <h:outputText value="#{item.periodoinicio}" />  
                         </p:column>
-                        <p:column headerText="Direccion" style="font-size: 10px;">  
-                            <h:outputText value="#{item.direccion}" />  
+                        <p:column headerText="Periodo Final" style="font-size: 10px;">  
+                            <h:outputText value="#{item.periodofinal}" />  
                         </p:column>
-                        <p:column headerText="Email" style="font-size: 10px;">  
-                            <h:outputText value="#{item.email}" />  
-                        </p:column>
-                        <p:column headerText="Sexo" style="font-size: 10px;">  
-                            <h:outputText value="#{item.sexo}" />  
-                        </p:column>
-                        <p:column headerText="Colegio" style="font-size: 10px;">  
-                            <h:outputText value="#{item.colegio}" />  
-                        </p:column>
-                        <p:column headerText="Jornada" style="font-size: 10px;">  
-                            <h:outputText value="#{item.jornada}" />  
+                        <p:column headerText="Mensualidad" style="font-size: 10px;">  
+                            <h:outputText value="#{item.valor}" />  
                         </p:column>
                         <p:column headerText="Aciones" style="font-size: 10px;">
                             <p:commandButton id="btnEdit" icon="ui-icon-pencil"  
