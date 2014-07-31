@@ -13,7 +13,6 @@ public class Estudiante  implements java.io.Serializable {
 
      private Integer idestudiante;
      private Acudiente acudiente;
-     private Factura factura;
      private int identicacion;
      private String nombre;
      private String apellido;
@@ -28,13 +27,11 @@ public class Estudiante  implements java.io.Serializable {
      public Estudiante() {
         this.idestudiante=0;
         this.acudiente = new Acudiente();
-        this.factura = new Factura();
     }
 
 	
-    public Estudiante(Acudiente acudiente, Factura factura, int identicacion, String nombre, String apellido, String telefono, String direccion, String email, String colegio, String sexo, String jornada) {
+    public Estudiante(Acudiente acudiente, int identicacion, String nombre, String apellido, String telefono, String direccion, String email, String colegio, String sexo, String jornada) {
         this.acudiente = acudiente;
-        this.factura = factura;
         this.identicacion = identicacion;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -45,7 +42,7 @@ public class Estudiante  implements java.io.Serializable {
         this.sexo = sexo;
         this.jornada = jornada;
     }
-    public Estudiante(Acudiente acudiente, Factura factura, int identicacion, String nombre, String apellido, String telefono, String direccion, String email, String colegio, String sexo, Set detallerecorridoestudiante, String jornada, Set facturas) {
+    public Estudiante(Acudiente acudiente, int identicacion, String nombre, String apellido, String telefono, String direccion, String email, String colegio, String sexo, Set detallerecorridoestudiante, String jornada, Set facturas) {
        this.acudiente = acudiente;
        this.identicacion = identicacion;
        this.nombre = nombre;
@@ -57,7 +54,6 @@ public class Estudiante  implements java.io.Serializable {
        this.sexo = sexo;
        this.jornada = jornada;
        this.detallerecorridoestudiante = detallerecorridoestudiante;
-       this.factura = factura;
     }
    
     public Integer getIdestudiante() {
@@ -76,14 +72,6 @@ public class Estudiante  implements java.io.Serializable {
         this.acudiente = acudiente;
     }
 
-    public Factura getFactura() {
-        return factura;
-    }
-
-    public void setFactura(Factura factura) {
-        this.factura = factura;
-    }
-
     public int getIdenticacion() {
         return this.identicacion;
     }
@@ -91,7 +79,6 @@ public class Estudiante  implements java.io.Serializable {
     public void setIdenticacion(int identicacion) {
         this.identicacion = identicacion;
     }
-
     
     public String getNombre() {
         return this.nombre;
