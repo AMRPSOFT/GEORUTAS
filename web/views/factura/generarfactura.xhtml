@@ -64,11 +64,11 @@
                 </h:form>
 
                 <h:form id="formCreate">
-                    <p:dialog header="Crear Estudiante" widgetVar="dialogCrearUsuario" resizable="false" id="dlgCreate"  
+                    <p:dialog header="Crear Factura" widgetVar="dialogCrearUsuario" resizable="false" id="dlgCreate"  
                               showEffect="fade" hideEffect="explode" modal="true" position="center">  
                         <h:outputText value="Identificacion:"/>
-                        <p:inputText value="#{estudianteBean.selectedEstudiante.identicacion}" style="font-weight:bold"/>
-                        <p:commandButton icon="" actionListener="#{facturaBean.buscarPorIdentificacion()}"/>
+                        <p:inputText value="#{facturaBean.selectedEstudiante.identicacion}" style="font-weight:bold"/>
+                        <p:commandButton icon="ui-icon-search" actionListener="#{facturaBean.buscarPorIdentificacion()}"/>
                         <hr />               
                         <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
                             <h:outputText value="Nombres:" />  
@@ -86,7 +86,7 @@
                             <f:facet name="footer">
                                 <p:separator/>
                                 <p:commandButton id="btnCreateAceptar" value="Guardar" 
-                                                 actionListener="#{facturaBean.btnCreateUsuario(event)}" 
+                                                 actionListener="#{facturaBean.btnCreateFactura(event)}" 
                                                  update=":formDataTable, :msgs" 
                                                  oncomplete="PF('dialogCrearUsuario').hide()" icon="ui-icon-disk"/>
                                 <p:commandButton id="btnCreateCancelar" value="Cancelar" 
