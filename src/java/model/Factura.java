@@ -3,6 +3,7 @@ package model;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Set;
 
 /**
  *
@@ -11,21 +12,19 @@ import java.util.Date;
 public class Factura implements java.io.Serializable{
     
      private Integer idfactura;
-     private Estudiante estudiante;
      private String nombre;
      private String apellido;
      private String colegio;
      private Date periodoinicio;
      private Date periodofinal;
      private BigDecimal valor;
+     private Set estudiantes;
      
      public Factura (){
         this.idfactura=0;
-        this.estudiante = new Estudiante();
      }
      
-     public Factura(Estudiante estudiante, String nombre, String apellido, String colegio, Date periodoinicio, Date periodofinal, BigDecimal valor) {
-        this.estudiante = estudiante;
+     public Factura(String nombre, String apellido, String colegio, Date periodoinicio, Date periodofinal, BigDecimal valor) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.colegio = colegio;
@@ -34,20 +33,23 @@ public class Factura implements java.io.Serializable{
         this.valor = valor;
     }
 
+    public Factura(Integer idfactura, String nombre, String apellido, String colegio, Date periodoinicio, Date periodofinal, BigDecimal valor, Set estudiantes) {
+        this.idfactura = idfactura;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.colegio = colegio;
+        this.periodoinicio = periodoinicio;
+        this.periodofinal = periodofinal;
+        this.valor = valor;
+        this.estudiantes = estudiantes;
+    }
+    
     public Integer getIdfactura() {
         return idfactura;
     }
 
     public void setIdfactura(Integer idfactura) {
         this.idfactura = idfactura;
-    }
-
-    public Estudiante getEstudiante() {
-        return estudiante;
-    }
-
-    public void setEstudiante(Estudiante estudiante) {
-        this.estudiante = estudiante;
     }
 
     public String getNombre() {
@@ -96,6 +98,14 @@ public class Factura implements java.io.Serializable{
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
+    }
+
+    public Set getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(Set estudiantes) {
+        this.estudiantes = estudiantes;
     }
     
 }
