@@ -54,8 +54,9 @@
                             <p:menuitem value="Detalle Recorrido" icon="ui-icon-gear"/>
                         </p:submenu>
                     </p:submenu>
-                    
+
                     <p:menuitem value="Logout" actionListener="#{loginBean.logout}" icon="ui-icon-close" oncomplete="handleLoginRequest(xhr, status, args)" />   
+                    <p:menuitem value="Bienvenido:  #{loginBean.usuario.userName}"/>
                 </p:menubar>  
             </h:form>  
         </div>
@@ -67,11 +68,11 @@
         <div id="bottom" class="ui-widget-header ui-corner-all">
             <ui:insert name="bottom">GEORUTAS Todos los Derechos Reservados &copy; 2014</ui:insert>
         </div>
-        
+
         <script type="text/javascript">
             function handleLoginRequest(xhr, status, args) {
                 if (args.loggetOut) {
-                   location.href = args.ruta;
+                    location.href = args.ruta;
                 }
             }
         </script>  

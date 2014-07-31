@@ -44,7 +44,7 @@
                         <p:column headerText="Jornada">
                             <h:outputText value="#{item.jornada}"/>
                         </p:column>
-                        <p:column>
+                        <p:column headerText="Acciones">
                             <p:commandButton value="Agregar" ajax="false" actionListener="#{detalleRecorridoEstudiantesBean.agregarListadeEstudiantes(item.idestudiante)}"/>
                         </p:column>
                     </p:dataTable><hr/>
