@@ -13,8 +13,8 @@ public class Factura implements java.io.Serializable{
     
      private Integer idfactura;
      private Estudiante estudiante;
-     private String nombre;
-     private String apellido;
+     private String nombreestudiante;
+     private String apellidoestudiante;
      private String colegio;
      private Date periodoinicio;
      private Date periodofinal;
@@ -25,14 +25,22 @@ public class Factura implements java.io.Serializable{
         this.estudiante = new Estudiante();
      }
      
-     public Factura(Estudiante estudiante, String nombre, String apellido, String colegio, Date periodoinicio, Date periodofinal, BigDecimal valor) {
+     public Factura(Estudiante estudiante, String nombreestudiante, String apellidoestudiante, String colegio, Date periodoinicio, Date periodofinal, BigDecimal valor) {
         this.estudiante = estudiante;
-        this.nombre = nombre;
-        this.apellido = apellido;
+        this.nombreestudiante = nombreestudiante;
+        this.apellidoestudiante = apellidoestudiante;
         this.colegio = colegio;
         this.periodoinicio = periodoinicio;
         this.periodofinal = periodofinal;
         this.valor = valor;
+    }
+
+    public Integer getIdfactura() {
+        return idfactura;
+    }
+
+    public void setIdfactura(Integer idfactura) {
+        this.idfactura = idfactura;
     }
 
     public Estudiante getEstudiante() {
@@ -42,29 +50,21 @@ public class Factura implements java.io.Serializable{
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
     }
-    
-    public Integer getIdfactura() {
-        return idfactura;
+
+    public String getNombreestudiante() {
+        return nombreestudiante;
     }
 
-    public void setIdfactura(Integer idfactura) {
-        this.idfactura = idfactura;
+    public void setNombreestudiante(String nombreestudiante) {
+        this.nombreestudiante = nombreestudiante;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getApellidoestudiante() {
+        return apellidoestudiante;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellidoestudiante(String apellidoestudiante) {
+        this.apellidoestudiante = apellidoestudiante;
     }
 
     public String getColegio() {
@@ -98,5 +98,6 @@ public class Factura implements java.io.Serializable{
     public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
-
+     
+    
 }

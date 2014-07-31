@@ -13,11 +13,11 @@
         <many-to-one name="estudiante" class="model.Estudiante" fetch="select">
             <column name="IdEstudiante" not-null="true" />
         </many-to-one>
-        <property name="nombre" type="string">
-            <column name="Nombre" length="45" not-null="true" />
+        <property name="nombreestudiante" type="string">
+            <column name="nombreestudiante" length="45" not-null="true" />
         </property>
-        <property name="apellido" type="string">
-            <column name="Apellido" length="45" not-null="true" />
+        <property name="apellidoestudiante" type="string">
+            <column name="apellidoestudiante" length="45" not-null="true" />
         </property>
         <property name="colegio" type="string">
             <column name="Colegio" length="100" not-null="true" />

@@ -23,6 +23,7 @@ public class Estudiante  implements java.io.Serializable {
      private String sexo;
      private String jornada;
      private Set detallerecorridoestudiante = new HashSet(0);
+     private Set facturas = new HashSet(0);
 
      public Estudiante() {
         this.idestudiante=0;
@@ -54,6 +55,7 @@ public class Estudiante  implements java.io.Serializable {
        this.sexo = sexo;
        this.jornada = jornada;
        this.detallerecorridoestudiante = detallerecorridoestudiante;
+       this.facturas = facturas;
     }
    
     public Integer getIdestudiante() {
@@ -158,4 +160,12 @@ public class Estudiante  implements java.io.Serializable {
         this.detallerecorridoestudiante = detallerecorridoestudiante;
     }
 
+    public Set getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(Set facturas) {
+        this.facturas = facturas;
+    }
+    
 }
