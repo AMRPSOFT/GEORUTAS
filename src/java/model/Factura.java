@@ -19,13 +19,14 @@ public class Factura implements java.io.Serializable{
      private Date periodoinicio;
      private Date periodofinal;
      private BigDecimal valor;
+     private int identificacion;
      
      public Factura (){
         this.idfactura=0;
         this.estudiante = new Estudiante();
      }
      
-     public Factura(Estudiante estudiante, String nombreestudiante, String apellidoestudiante, String colegio, Date periodoinicio, Date periodofinal, BigDecimal valor) {
+     public Factura(Estudiante estudiante, int identificacion, String nombreestudiante, String apellidoestudiante, String colegio, Date periodoinicio, Date periodofinal, BigDecimal valor) {
         this.estudiante = estudiante;
         this.nombreestudiante = nombreestudiante;
         this.apellidoestudiante = apellidoestudiante;
@@ -33,6 +34,7 @@ public class Factura implements java.io.Serializable{
         this.periodoinicio = periodoinicio;
         this.periodofinal = periodofinal;
         this.valor = valor;
+        this.identificacion = identificacion;
     }
 
     public Integer getIdfactura() {
@@ -51,6 +53,14 @@ public class Factura implements java.io.Serializable{
         this.estudiante = estudiante;
     }
 
+    public int getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(int identificacion) {
+        this.identificacion = identificacion;
+    }
+    
     public String getNombreestudiante() {
         return nombreestudiante;
     }

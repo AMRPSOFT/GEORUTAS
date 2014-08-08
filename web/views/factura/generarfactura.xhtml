@@ -16,18 +16,22 @@
 
             <ui:define name="content">
                 <p:growl id="msgs" showDetail="true" />
-                <h:form>
-                    <p:commandButton id="btnCreate" value="Crear" update=":formCreate" 
-                                     oncomplete="PF('dialogCrearUsuario').show()" 
-                                     icon="ui-icon-document" title="Nueva Factura"/>  
-                </h:form>
                 <h:form id="formDataTable">
-                    <p:dataTable id="usuario" var="item" value="#{facturaBean.facturas}" paginator="true" rows="8">
+                    <h:panelGroup>
+                        <br/>
+                        Numero de Identificacion : <p:inputText id="txtIdentificacion" value="#{facturaBean.identificacion}"/>
+                        <p:commandButton id="btnBuscar" icon="ui-icon-search" actionListener="#{facturaBean.buscarPorIdentificacion()}"/>
+                    </h:panelGroup>
+                    <hr />
+                    <p:dataTable id="usuario" var="item" value="#{facturaBean.facturas}" paginator="true" rows="10">
                         <f:facet name="header">
                             <p:outputLabel style="font-size: 18px;" value="Listado de Facturas"/>
                         </f:facet>
                         <p:column headerText="Id" style="font-size: 10px;">  
                             <h:outputText value="#{item.idfactura}" />  
+                        </p:column>
+                        <p:column headerText="Identificacion" style="font-size: 10px;">  
+                            <h:outputText value="#{item.identificacion}" />  
                         </p:column>
                         <p:column headerText="Nombres" style="font-size: 10px;">  
                             <h:outputText value="#{item.nombreestudiante}" />  
@@ -35,20 +39,20 @@
                         <p:column headerText="Apellidos" style="font-size: 10px;">  
                             <h:outputText value="#{item.apellidoestudiante}" />  
                         </p:column>
+                        <p:column headerText="Colegio" style="font-size: 10px;">  
+                            <h:outputText value="#{item.colegio}" />  
+                        </p:column>
                         <p:column headerText="Periodo Inicio" style="font-size: 10px;">  
-                            <h:outputText value="#{item.periodoinicio}" />  
+                            <p:calendar value="#{item.periodoinicio}" style="font-weight:bold"/>
                         </p:column>
                         <p:column headerText="Periodo Final" style="font-size: 10px;">  
-                            <h:outputText value="#{item.periodofinal}" />  
-                        </p:column>
-                        <p:column headerText="Mensualidad" style="font-size: 10px;">  
-                            <h:outputText value="#{item.valor}" />  
+                            <p:calendar value="#{item.periodofinal}" style="font-weight:bold"/>
                         </p:column>
                         <p:column headerText="Aciones" style="font-size: 10px;">
                             <p:commandButton id="btnEdit" icon="ui-icon-pencil"  
                                              value="Edit" update=":formUpdateUsuario" 
                                              oncomplete="PF('dialogUpdateUsuario').show()">  
-                                <f:setPropertyActionListener value="#{item}" target="#{facturaBean.selectedFactura}" />
+                                <f:setPropertyActionListener value="#{item}" target="#{estudianteBean.selectedEstudiante}" />
                             </p:commandButton>
                             <p:commandButton id="btnVer" icon="ui-icon-search" 
                                              value="View" update=":formViewUsuario" oncomplete="PF('dialogView').show()">  
@@ -98,47 +102,28 @@
 
 
                 <h:form id="formUpdateUsuario">
-                    <p:dialog header="Editar Estudiante" id="dialogUpdate" widgetVar="dialogUpdateUsuario" showEffect="fade" 
+                    <p:dialog header="Crear Factura" id="dialogUpdate" widgetVar="dialogUpdateUsuario" showEffect="fade" 
                               hideEffect="explode" modal="true" minWidth="600" minHeight="500" position="center">
                         <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
                             <h:outputText value="Id:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.idestudiante}" style="font-weight:bold"/> 
-                            <h:outputText value="Identificacion:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.identicacion}" style="font-weight:bold"/> 
+                            <p:inputText value="#{facturaBean.selectedFactura.idfactura}" style="font-weight:bold"/> 
                             <h:outputText value="Nombres:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.nombre}" style="font-weight:bold"/> 
+                            <p:inputText value="#{facturaBean.selectedFactura.nombreestudiante}" style="font-weight:bold"/> 
                             <h:outputText value="Apellidos:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.apellido}" style="font-weight:bold"/>
-                            <h:outputText value="Telefono:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.telefono}" style="font-weight:bold"/> 
-                            <h:outputText value="Direccion:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.direccion}" style="font-weight:bold"/> 
-                            <h:outputText value="Email:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.email}" style="font-weight:bold"/> 
-                            <h:outputText value="Sexo:" />  
-                            <p:selectOneMenu id="sexo" value="#{estudianteBean.selectedEstudiante.sexo}" style="font-weight: bold">
-                                <f:selectItem itemLabel="Selecione su Sexo" itemValue="" />  
-                                <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
-                                <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
-                            </p:selectOneMenu>
+                            <p:inputText value="#{facturaBean.selectedFactura.apellidoestudiante}" style="font-weight:bold"/>
                             <h:outputText value="Colegio:" />  
-                            <p:inputText value="#{estudianteBean.selectedEstudiante.colegio}" style="font-weight:bold"/>
-                            <h:outputText value="Jornada:" />  
-                            <p:selectOneMenu id="jornada" value="#{estudianteBean.selectedEstudiante.jornada}" style="font-weight: bold">
-                                <f:selectItem itemLabel="Selecione su Jornada" itemValue="" />  
-                                <f:selectItem itemLabel="AM" itemValue="AM" />
-                                <f:selectItem itemLabel="PM" itemValue="PM" />
-                            </p:selectOneMenu>
-                            <h:outputText value="Nombre Acudiente:" />  
-                            <p:selectOneMenu id="nomAcudiente" value="#{estudianteBean.selectedEstudiante.acudiente.idacudiente}" style="font-weight: bold">
-                                <f:selectItem itemLabel="Selecione Acudiente" itemValue="" />  
-                                <f:selectItems value="#{acudienteBean.selectOneItemsAcudiente}"/>
-                            </p:selectOneMenu>
+                            <p:inputText value="#{facturaBean.selectedFactura.colegio}" style="font-weight:bold"/>
+                            <h:outputText value="Periodo Inicio:" /> 
+                            <p:calendar value="#{facturaBean.selectedFactura.periodoinicio}" style="font-weight:bold"/>
+                            <h:outputText value="Periodo Final:" /> 
+                            <p:calendar value="#{facturaBean.selectedFactura.periodofinal}" style="font-weight:bold"/>
+                            <h:outputText value="Mensualidad:" /> 
+                            <p:inputText value="#{facturaBean.selectedFactura.valor}" style="font-weight:bold"/>
                             <h:inputHidden value="#{estudianteBean.selectedEstudiante.idestudiante}"/>
                             <f:facet name="footer">
                                 <p:separator/>
                                 <p:commandButton id="btnCreateAceptar" value="Guardar" 
-                                                 actionListener="#{estudianteBean.btnUpdateEstudiante(event)}" 
+                                                 actionListener="#{facturaBean.btnCreateFactura(event)}" 
                                                  update=":formDataTable, :msgs" 
                                                  oncomplete="PF('dialogUpdateUsuario').hide()" icon="ui-icon-disk"/>
                                 <p:commandButton id="btnCreateCancelar" value="Cancelar" 

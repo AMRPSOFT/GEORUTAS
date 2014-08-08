@@ -38,6 +38,7 @@ public class facturaBean {
     private Estudiante selectedEstudiante;
     private Session sesion;
     private Transaction transaction;
+    private int identificacion;
     
     public facturaBean() {
         this.selectedFactura = new Factura();
@@ -66,6 +67,15 @@ public class facturaBean {
         this.facturas = facturaDao.findAll();
         return facturas;
     }
+
+    public int getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(int identificacion) {
+        this.identificacion = identificacion;
+    }
+    
     
     public void btnCreateFactura(ActionEvent event){
        FacturaDao facturaDao = new FacturaDaoImpl();
@@ -127,11 +137,11 @@ public class facturaBean {
             
             this.transaction=this.sesion.beginTransaction();
             
-            this.selectedEstudiante = estudianteDao.getByIdentificacion(this.sesion, this.selectedEstudiante.getIdenticacion());
+            this.selectedEstudiante = estudianteDao.getByIdentificacion(this.sesion, this.identificacion);
             
             if(this.selectedEstudiante!=null)
             {
-                this.facturas.add(new Factura(null, this.selectedEstudiante.getNombre(), this.selectedEstudiante.getApellido(), this.selectedFactura.getColegio(), this.selectedFactura.getPeriodoinicio(), this.selectedFactura.getPeriodofinal(), new BigDecimal("0")));
+                this.facturas.add(new Factura(null, this.selectedEstudiante.getIdenticacion(), this.selectedEstudiante.getNombre(), this.selectedEstudiante.getApellido(), this.selectedFactura.getColegio(), this.selectedFactura.getPeriodoinicio(), this.selectedFactura.getPeriodofinal(), new BigDecimal("0")));
 
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Factura Realizada"));
             }
@@ -142,9 +152,8 @@ public class facturaBean {
             
             this.transaction.commit();
             
-            RequestContext.getCurrentInstance().update("formCreate:txtNombre");
-            RequestContext.getCurrentInstance().update("formCreate:txtApellido");
-            RequestContext.getCurrentInstance().update("formCreate:txtColegio");
+            RequestContext.getCurrentInstance().update("formDataTable:usuario");
+            RequestContext.getCurrentInstance().update("formDataTable:txtIdentificacion");
         }
         catch(Exception ex)
         {
