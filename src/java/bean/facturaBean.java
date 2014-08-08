@@ -17,6 +17,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import model.Estudiante;
 import model.Factura;
@@ -30,7 +31,7 @@ import util.HibernateUtil;
  * @author Alex Rodriguez
  */
 @Named(value = "facturaBean")
-@RequestScoped
+@ViewScoped
 public class facturaBean {
 
     private Factura selectedFactura;
