@@ -44,5 +44,11 @@
             </key>
             <one-to-many class="model.Detallerecorridoestudiante" />
         </set>
+        <set name="detallefactura" table="detallefactura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdEstudiante" not-null="true" />
+            </key>
+            <one-to-many class="model.Detallefactura" />
+        </set>
     </class>
 </hibernate-mapping>

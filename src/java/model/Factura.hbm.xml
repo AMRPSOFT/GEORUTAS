@@ -10,21 +10,6 @@
             <column name="idfactura" />
             <generator class="identity" />
         </id>
-        <many-to-one name="estudiante" class="model.Estudiante" fetch="select">
-            <column name="IdEstudiante" not-null="true" />
-        </many-to-one>
-        <property name="identificacion" type="int">
-            <column name="identificacion"  not-null="true" />
-        </property>
-        <property name="nombreestudiante" type="string">
-            <column name="nombreestudiante" length="45" not-null="true" />
-        </property>
-        <property name="apellidoestudiante" type="string">
-            <column name="apellidoestudiante" length="45" not-null="true" />
-        </property>
-        <property name="colegio" type="string">
-            <column name="Colegio" length="100" not-null="true" />
-        </property>
         <property name="periodoinicio" type="timestamp">
             <column name="Periodoinicio" length="19" not-null="true" />
         </property>
@@ -34,6 +19,13 @@
         <property name="valor" type="big_decimal">
             <column name="Valor" length="18" not-null="true" />
         </property>
+        
+        <set name="detallefactura" table="detallefactura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idfactura" not-null="true" />
+            </key>
+            <one-to-many class="model.Detallefactura" />
+        </set>
     </class>
   
 

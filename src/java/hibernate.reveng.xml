@@ -11,4 +11,5 @@
   <table-filter match-name="recorrido"/>
   <table-filter match-name="detallerecorridoestudiante"/>
   <table-filter match-name="factura"/>
+  <table-filter match-name="detallefactura"/>
 </hibernate-reverse-engineering>

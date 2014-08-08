@@ -8,7 +8,7 @@ package model;
 
 public class Detallerecorridoestudiante implements java.io.Serializable{
     
-    private Integer iddetallerecorridoestudiante;
+     private Integer iddetallerecorridoestudiante;
      private Estudiante estudiante;
      private Recorrido recorrido;
      private int identificacion;

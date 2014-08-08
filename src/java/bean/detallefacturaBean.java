@@ -11,14 +11,13 @@ import dao.EstudianteDaoImpl;
 import dao.FacturaDao;
 import dao.FacturaDaoImpl;
 import java.awt.event.ActionEvent;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import model.Detallefactura;
 import model.Estudiante;
 import model.Factura;
 import org.hibernate.Session;
@@ -32,19 +31,20 @@ import util.HibernateUtil;
  */
 @Named(value = "facturaBean")
 @ViewScoped
-public class facturaBean {
+public class detallefacturaBean {
 
-    private Factura selectedFactura;
-    private List<Factura> facturas;
-    private Estudiante selectedEstudiante;
-    private Session sesion;
-    private Transaction transaction;
-    private int identificacion;
+    Session sesion;
+    Transaction transaction;
     
-    public facturaBean() {
-        this.selectedFactura = new Factura();
-        this.selectedEstudiante = new Estudiante();
-        this.facturas = new ArrayList<Factura>();
+    private Estudiante estudiante;
+    private List<Estudiante> estudiantes;
+    private Factura factura;
+    private List<Detallefactura> listaDetalleFactura;
+    
+    
+    public detallefacturaBean() {
+        this.factura = new Factura();
+        this.listaDetalleFactura = new ArrayList<>();
     }
 
     public Estudiante getSelectedEstudiante() {
@@ -69,6 +69,10 @@ public class facturaBean {
         return facturas;
     }
 
+    public List<Estudiante> getEstudiantes() {
+        return estudiantes;
+    }
+    
     public int getIdentificacion() {
         return identificacion;
     }
@@ -77,7 +81,44 @@ public class facturaBean {
         this.identificacion = identificacion;
     }
     
-    
+    public List<Estudiante> getAllEstudiantes() {
+        this.sesion=null;
+        this.transaction=null;
+        
+        try
+        {
+            this.sesion=HibernateUtil.getSessionFactory().openSession();
+            
+            EstudianteDao estudianteDao = new EstudianteDaoImpl();
+            
+            this.transaction=this.sesion.beginTransaction();
+            
+            this.estudiantes=estudianteDao.getAll(this.sesion);
+            
+            this.transaction.commit();
+            
+            return this.estudiantes;
+        }
+        catch(Exception ex)
+        {
+            if(this.transaction!=null)
+            {
+                transaction.rollback();
+            }
+            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", ex.getMessage()));
+            
+            return null;
+        }
+        finally
+        {
+            if(this.sesion!=null)
+            {
+                this.sesion.close();
+            }
+        }
+    }
+
     public void btnCreateFactura(ActionEvent event){
        FacturaDao facturaDao = new FacturaDaoImpl();
        String msng;
@@ -123,42 +164,26 @@ public class facturaBean {
        }
         
     }
-    
-    public void buscarPorIdentificacion()
-    {
-        this.sesion=null;
-        this.transaction=null;
-        try
-        {
-            if(this.selectedEstudiante.getIdenticacion()==0){return;}
-            
-            this.sesion=HibernateUtil.getSessionFactory().openSession();
-            
-            EstudianteDao estudianteDao = new EstudianteDaoImpl();
-            
-            this.transaction=this.sesion.beginTransaction();
-            
-            this.selectedEstudiante = estudianteDao.getByIdentificacion(this.sesion, this.identificacion);
-            
-            if(this.selectedEstudiante!=null)
-            {
-                this.facturas.add(new Factura(null, this.selectedEstudiante.getIdenticacion(), this.selectedEstudiante.getNombre(), this.selectedEstudiante.getApellido(), this.selectedFactura.getColegio(), this.selectedFactura.getPeriodoinicio(), this.selectedFactura.getPeriodofinal(), new BigDecimal("0")));
 
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Factura Realizada"));
-            }
-            else
-            {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Identificacion Invalida", "Estudiante no encontrado"));
-            }
-            
+    public void agregarListadeEstudiantes(Integer idestudiante) {
+        this.sesion = null;
+        this.transaction = null;
+
+        try {
+            this.sesion = HibernateUtil.getSessionFactory().openSession();
+            EstudianteDao estudianteDao = new EstudianteDaoImpl();
+            this.transaction=this.sesion.beginTransaction();
+            this.selectedEstudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
+            this.facturas.add(new  (null, this.selectedEstudiante.getIdenticacion(), this.selectedEstudiante.getNombre(), 
+                    this.selectedEstudiante.getApellido(), this.selectedEstudiante.getColegio(), 
+                    this.selectedFactura.getPeriodoinicio(), this.selectedFactura.getPeriodofinal(), this.selectedFactura.getValor()));
             this.transaction.commit();
-            
-            RequestContext.getCurrentInstance().update("formDataTable:usuario");
-            RequestContext.getCurrentInstance().update("formDataTable:txtIdentificacion");
-        }
-        catch(Exception ex)
-        {
-            if(this.transaction!=null)
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
+            RequestContext.getCurrentInstance().update("frmrealizarRecorrido:tablaListaEstudiantes");
+            RequestContext.getCurrentInstance().update("frmrealizarRecorrido:mensajeGeneral");
+        } 
+        catch(Exception ex) {
+        if(this.transaction!=null)
             {
                 transaction.rollback();
             }

@@ -23,7 +23,7 @@ public class Estudiante  implements java.io.Serializable {
      private String sexo;
      private String jornada;
      private Set detallerecorridoestudiante = new HashSet(0);
-     private Set facturas = new HashSet(0);
+     private Set detallefactura = new HashSet(0);
 
      public Estudiante() {
         this.idestudiante=0;
@@ -43,7 +43,7 @@ public class Estudiante  implements java.io.Serializable {
         this.sexo = sexo;
         this.jornada = jornada;
     }
-    public Estudiante(Acudiente acudiente, int identicacion, String nombre, String apellido, String telefono, String direccion, String email, String colegio, String sexo, Set detallerecorridoestudiante, String jornada, Set facturas) {
+    public Estudiante(Acudiente acudiente, int identicacion, String nombre, String apellido, String telefono, String direccion, String email, String colegio, String sexo, Set detallerecorridoestudiante, String jornada, Set detallefactura) {
        this.acudiente = acudiente;
        this.identicacion = identicacion;
        this.nombre = nombre;
@@ -55,7 +55,7 @@ public class Estudiante  implements java.io.Serializable {
        this.sexo = sexo;
        this.jornada = jornada;
        this.detallerecorridoestudiante = detallerecorridoestudiante;
-       this.facturas = facturas;
+       this.detallefactura = detallefactura;
     }
    
     public Integer getIdestudiante() {
@@ -160,12 +160,12 @@ public class Estudiante  implements java.io.Serializable {
         this.detallerecorridoestudiante = detallerecorridoestudiante;
     }
 
-    public Set getFacturas() {
-        return facturas;
+    public Set getDetallefactura() {
+        return detallefactura;
     }
 
-    public void setFacturas(Set facturas) {
-        this.facturas = facturas;
+    public void setDetallefactura(Set detallefactura) {
+        this.detallefactura = detallefactura;
     }
     
 }

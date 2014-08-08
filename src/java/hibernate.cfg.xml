@@ -18,5 +18,6 @@
     <mapping resource="model/Recorrido.hbm.xml"/>
     <mapping resource="model/Detallerecorridoestudiante.hbm.xml"/>
     <mapping resource="model/Factura.hbm.xml"/>
+    <mapping resource="model/Detallefactura.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

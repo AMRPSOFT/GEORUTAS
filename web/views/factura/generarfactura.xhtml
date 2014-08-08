@@ -15,165 +15,48 @@
         <ui:composition template="./../template.xhtml">
 
             <ui:define name="content">
-                <p:growl id="msgs" showDetail="true" />
-                <h:form id="formDataTable">
-                    <h:panelGroup>
-                        <br/>
-                        Numero de Identificacion : <p:inputText id="txtIdentificacion" value="#{facturaBean.identificacion}"/>
-                        <p:commandButton id="btnBuscar" icon="ui-icon-search" actionListener="#{facturaBean.buscarPorIdentificacion()}"/>
-                    </h:panelGroup>
-                    <hr />
-                    <p:dataTable id="usuario" var="item" value="#{facturaBean.facturas}" paginator="true" rows="10">
+                <h:form id="frmrealizarRecorrido">
+                    <p:growl id="mensajeGeneral" showDetail="true"/>
+                    <p:dataTable  value="#{facturaBean.allEstudiantes}" 
+                                  paginator="true" rows="10" var="item" style="font-size: 10px;">
                         <f:facet name="header">
-                            <p:outputLabel style="font-size: 18px;" value="Listado de Facturas"/>
+                            <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes"/>
                         </f:facet>
-                        <p:column headerText="Id" style="font-size: 10px;">  
-                            <h:outputText value="#{item.idfactura}" />  
+                        <p:column headerText="Id">
+                            <h:outputText value="#{item.idestudiante}"/>
                         </p:column>
-                        <p:column headerText="Identificacion" style="font-size: 10px;">  
-                            <h:outputText value="#{item.identificacion}" />  
+                        <p:column headerText="Identificacion" filterBy="identificacion">
+                            <h:outputText value="#{item.identicacion}"/>
                         </p:column>
-                        <p:column headerText="Nombres" style="font-size: 10px;">  
-                            <h:outputText value="#{item.nombreestudiante}" />  
+                        <p:column headerText="Nombre" filterBy="nombre">
+                            <h:outputText value="#{item.nombre}"/>
                         </p:column>
-                        <p:column headerText="Apellidos" style="font-size: 10px;">  
-                            <h:outputText value="#{item.apellidoestudiante}" />  
+                        <p:column headerText="Apellido">
+                            <h:outputText value="#{item.apellido}"/>
                         </p:column>
-                        <p:column headerText="Colegio" style="font-size: 10px;">  
-                            <h:outputText value="#{item.colegio}" />  
+                        <p:column headerText="Colegio">
+                            <h:outputText value="#{item.colegio}"/>
                         </p:column>
-                        <p:column headerText="Periodo Inicio" style="font-size: 10px;">  
-                            <p:calendar value="#{item.periodoinicio}" style="font-weight:bold"/>
+                        <p:column headerText="Periodo Inicio" style="text-align: center;">
+                            <p:calendar value="#{facturaBean.selectedFactura.periodoinicio}" showOn="button" style="text-align: center;" />                    
                         </p:column>
-                        <p:column headerText="Periodo Final" style="font-size: 10px;">  
-                            <p:calendar value="#{item.periodofinal}" style="font-weight:bold"/>
+                        <p:column headerText="Periodo Final" style="text-align: center;">
+                            <p:calendar value="#{facturaBean.selectedFactura.periodofinal}" showOn="button" style="text-align: center;" />                    
                         </p:column>
-                        <p:column headerText="Aciones" style="font-size: 10px;">
-                            <p:commandButton id="btnEdit" icon="ui-icon-pencil"  
-                                             value="Edit" update=":formUpdateUsuario" 
-                                             oncomplete="PF('dialogUpdateUsuario').show()">  
-                                <f:setPropertyActionListener value="#{item}" target="#{estudianteBean.selectedEstudiante}" />
-                            </p:commandButton>
-                            <p:commandButton id="btnVer" icon="ui-icon-search" 
-                                             value="View" update=":formViewUsuario" oncomplete="PF('dialogView').show()">  
-                                <f:setPropertyActionListener value="#{item}" target="#{facturaBean.selectedFactura}" />
-                            </p:commandButton>
-                            <p:commandButton id="btnEliminar" icon="ui-icon-close" 
-                                             value="Delete" update=":formDeleteUsuario" 
-                                             oncomplete="PF('dialogDeleteUsuario').show()">  
-                                <f:setPropertyActionListener value="#{item}" target="#{facturaBean.selectedFactura}" />
-                            </p:commandButton>
-                        </p:column> 
+                        <p:column headerText="Mensualida" style="text-align: center;">
+                            <p:inputText value="#{facturaBean.selectedFactura.valor}" style="text-align: center;" />                    
+                        </p:column>
+                        <p:column headerText="Acciones">
+                            <p:commandButton value="Agregar" ajax="false" actionListener="#{facturaBean.agregarListadeEstudiantes(item.idestudiante)}"/>
+                        </p:column>
                     </p:dataTable>
-                </h:form>
-
-                <h:form id="formCreate">
-                    <p:dialog header="Crear Factura" widgetVar="dialogCrearUsuario" resizable="false" id="dlgCreate"  
-                              showEffect="fade" hideEffect="explode" modal="true" position="center">  
-                        <h:outputText value="Identificacion:"/>
-                        <p:inputText value="#{facturaBean.selectedEstudiante.identicacion}" style="font-weight:bold"/>
-                        <p:commandButton icon="ui-icon-search" actionListener="#{facturaBean.buscarPorIdentificacion()}"/>
-                        <hr />               
-                        <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
-                            <h:outputText value="Nombres:" />  
-                            <p:inputText id="txtNombre" value="#{facturaBean.selectedFactura.nombreestudiante}" style="font-weight:bold"/> 
-                            <h:outputText value="Apellidos:" />  
-                            <p:inputText id="txtApellido" value="#{facturaBean.selectedFactura.apellidoestudiante}" style="font-weight:bold"/>
-                            <h:outputText value="Colegio:" />  
-                            <p:inputText id="txtColegio" value="#{facturaBean.selectedFactura.colegio}" style="font-weight:bold"/>
-                            <h:outputText value="Periodo Inicio:" /> 
-                            <p:calendar value="#{facturaBean.selectedFactura.periodoinicio}" style="font-weight:bold"/>
-                            <h:outputText value="Periodo Final:" /> 
-                            <p:calendar value="#{facturaBean.selectedFactura.periodofinal}" style="font-weight:bold"/>
-                            <h:outputText value="Mensualidad:" /> 
-                            <p:inputText value="#{facturaBean.selectedFactura.valor}" style="font-weight:bold"/>
-                            <f:facet name="footer">
-                                <p:separator/>
-                                <p:commandButton id="btnCreateAceptar" value="Guardar" 
-                                                 actionListener="#{facturaBean.btnCreateFactura(event)}" 
-                                                 update=":formDataTable, :msgs" 
-                                                 oncomplete="PF('dialogCrearUsuario').hide()" icon="ui-icon-disk"/>
-                                <p:commandButton id="btnCreateCancelar" value="Cancelar" 
-                                                 oncomplete="PF('dialogCrearUsuario').hide()" icon="ui-icon-close"/>
-                            </f:facet> 
-                        </h:panelGrid>  
-                    </p:dialog>  
-                </h:form>
-
-
-                <h:form id="formUpdateUsuario">
-                    <p:dialog header="Crear Factura" id="dialogUpdate" widgetVar="dialogUpdateUsuario" showEffect="fade" 
-                              hideEffect="explode" modal="true" minWidth="600" minHeight="500" position="center">
-                        <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
-                            <h:outputText value="Id:" />  
-                            <p:inputText value="#{facturaBean.selectedFactura.idfactura}" style="font-weight:bold"/> 
-                            <h:outputText value="Nombres:" />  
-                            <p:inputText value="#{facturaBean.selectedFactura.nombreestudiante}" style="font-weight:bold"/> 
-                            <h:outputText value="Apellidos:" />  
-                            <p:inputText value="#{facturaBean.selectedFactura.apellidoestudiante}" style="font-weight:bold"/>
-                            <h:outputText value="Colegio:" />  
-                            <p:inputText value="#{facturaBean.selectedFactura.colegio}" style="font-weight:bold"/>
-                            <h:outputText value="Periodo Inicio:" /> 
-                            <p:calendar value="#{facturaBean.selectedFactura.periodoinicio}" style="font-weight:bold"/>
-                            <h:outputText value="Periodo Final:" /> 
-                            <p:calendar value="#{facturaBean.selectedFactura.periodofinal}" style="font-weight:bold"/>
-                            <h:outputText value="Mensualidad:" /> 
-                            <p:inputText value="#{facturaBean.selectedFactura.valor}" style="font-weight:bold"/>
-                            <h:inputHidden value="#{estudianteBean.selectedEstudiante.idestudiante}"/>
-                            <f:facet name="footer">
-                                <p:separator/>
-                                <p:commandButton id="btnCreateAceptar" value="Guardar" 
-                                                 actionListener="#{facturaBean.btnCreateFactura(event)}" 
-                                                 update=":formDataTable, :msgs" 
-                                                 oncomplete="PF('dialogUpdateUsuario').hide()" icon="ui-icon-disk"/>
-                                <p:commandButton id="btnCreateCancelar" value="Cancelar" 
-                                                 oncomplete="PF('dialogUpdateUsuario').hide()" icon="ui-icon-close"/>
-                            </f:facet> 
-                        </h:panelGrid>  
-                    </p:dialog> 
-                </h:form>
-
-                <h:form id="formViewUsuario">
-                    <p:dialog header="Ver Estudiante" id="dialogViewUsuario" widgetVar="dialogView" showEffect="fade" 
-                              hideEffect="explode" modal="true" position="center"
-                              minWidth="350" minHeight="400">  
-                        <h:panelGrid id="display" columns="2" style="margin:0 auto;">  
-                            <h:outputText value="Identificacion:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.identicacion}" style="font-weight:bold"/> 
-                            <h:outputText value="Nombres:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.nombre}" style="font-weight:bold"/> 
-                            <h:outputText value="Apellidos:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.apellido}" style="font-weight:bold"/>
-                            <h:outputText value="Telefono:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.telefono}" style="font-weight:bold"/> 
-                            <h:outputText value="Direccion:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.direccion}" style="font-weight:bold"/> 
-                            <h:outputText value="Email:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.email}" style="font-weight:bold"/>
-                            <h:outputText value="Colegio:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.colegio}" style="font-weight:bold"/>
-                            <h:outputText value="Jornada:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.jornada}" style="font-weight:bold"/>
-                            <h:outputText value="Sexo:" />  
-                            <h:outputText value="#{estudianteBean.selectedEstudiante.sexo}" style="font-weight:bold"/> 
-                        </h:panelGrid> 
-                    </p:dialog> 
-                </h:form>
-
-                <h:form id="formDeleteUsuario">
-                    <p:confirmDialog id="confirmDialog" showEffect="fade" hideEffect="explode" 
-                                     message="¿Esta seguro de eliminar el Registro?" header="Eliminar Estudiante"
-                                     severity="alert" widgetVar="dialogDeleteUsuario">
-                        <h:inputHidden value="#{estudianteBean.selectedEstudiante.idestudiante}"/>
-                        <p:commandButton value="Aceptar" icon="ui-icon-check"
-                                         update=":formDataTable, :msgs" 
-                                         oncomplete="dialogDeleteUsuario.hide()" 
-                                         actionListener="#{estudianteBean.btnDeleteEstudiante(event)}"/>
-                        <p:commandButton value="Cancelar" type="button" 
-                                         styleClass="ui-confirmdialog-no" icon="ui-icon-close"
-                                         onclick="dialogDeleteUsuario.hide();"/>     
-                    </p:confirmDialog>
-
+                      <p:panelGrid id="panelFinalVenta" columns="1" style="text-align: right;width: 100%;">
+                        <h:panelGroup>
+                            <p:commandButton value="Guardar" 
+                                             ajax="false"  icon="ui-icon-disk"
+                                             actionListener="#{detalleRecorridoEstudiantesBean.guardarRecorrido()}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
                 </h:form>
             </ui:define>
 

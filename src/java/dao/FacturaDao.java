@@ -8,12 +8,14 @@ package dao;
 
 import java.util.List;
 import model.Factura;
+import org.hibernate.Session;
 
 /**
  *
  * @author Alex Rodriguez
  */
 public interface FacturaDao {
+    public boolean insert(Session sesion, Factura detalleFactura);
     public Factura findByFactura(Factura factura);
     public List<Factura> findAll();
     public boolean create(Factura factura);

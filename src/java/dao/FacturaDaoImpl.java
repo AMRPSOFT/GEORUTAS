@@ -121,5 +121,11 @@ public class FacturaDaoImpl implements FacturaDao{
         }
         return flag;
     }
+
+    @Override
+    public boolean insert(Session sesion, Factura detalleFactura) {
+        sesion.save(detalleFactura);
+        return true;
+    }
     
 }

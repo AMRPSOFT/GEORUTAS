@@ -26,7 +26,7 @@
                         <p:column headerText="Id">
                             <h:outputText value="#{item.idestudiante}"/>
                         </p:column>
-                        <p:column headerText="Identificacion" filterBy="identificacion">
+                        <p:column headerText="Identificacion">
                             <h:outputText value="#{item.identicacion}"/>
                         </p:column>
                         <p:column headerText="Nombre" filterBy="nombre">
@@ -83,7 +83,7 @@
                         <h:panelGroup>
                             <h:outputText value="Numero de Registros"/>
                             <p:inputText value="#{detalleRecorridoEstudiantesBean.recorrido.numEstudiantes}"/>
-                            <p:commandButton value="Guardar Recorrido" ajax="false" actionListener="#{detalleRecorridoEstudiantesBean.guardarRecorrido()}"/>
+                            <p:commandButton value="Guardar" icon="ui-icon-disk" ajax="false" actionListener="#{detalleRecorridoEstudiantesBean.guardarRecorrido()}"/>
                         </h:panelGroup>
                     </p:panelGrid>
                 </h:form>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="model.Detallefactura" table="detallefactura" catalog="georutas">
+        <id name="iddetallefactura" type="java.lang.Integer">
+            <column name="iddetallefactura" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="estudiante" class="model.Estudiante" fetch="select">
+            <column name="idEstudiante" not-null="true" />
+        </many-to-one>
+        <many-to-one name="factura" class="model.Factura" fetch="select">
+            <column name="idFactura" not-null="true" />
+        </many-to-one>
+        
+        <property name="identificacion" type="int">
+            <column name="identificacion" not-null="true" />
+        </property>
+        <property name="nombreestudiante" type="string">
+            <column name="nombreestudiante" length="45" not-null="true" />
+        </property>
+        <property name="apellidoestudiante" type="string">
+            <column name="apellidoestudiante" length="45" not-null="true" />
+        </property>
+        <property name="colegio" type="string">
+            <column name="colegio" length="45" not-null="true" />
+        </property>
+        <property name="mesesvencidos" type="int">
+            <column name="mesesvencidos" not-null="true" />
+        </property>
+        <property name="valormensualidad" type="big_decimal">
+            <column name="valormensualidad" length="18" not-null="true" />
+        </property>
+    </class>
+  
+
+</hibernate-mapping>
