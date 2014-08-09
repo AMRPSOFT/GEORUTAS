@@ -20,21 +20,16 @@
         <property name="identificacion" type="int">
             <column name="identificacion" not-null="true" />
         </property>
-        <property name="nombreestudiante" type="string">
-            <column name="nombreestudiante" length="45" not-null="true" />
+        <property name="nombreEstudiante" type="string">
+            <column name="nombreEstudiante" length="45" not-null="true" />
         </property>
-        <property name="apellidoestudiante" type="string">
-            <column name="apellidoestudiante" length="45" not-null="true" />
+        <property name="apellidoEstudiante" type="string">
+            <column name="apellidoEstudiante" length="45" not-null="true" />
         </property>
         <property name="colegio" type="string">
             <column name="colegio" length="45" not-null="true" />
         </property>
-        <property name="mesesvencidos" type="int">
-            <column name="mesesvencidos" not-null="true" />
-        </property>
-        <property name="valormensualidad" type="big_decimal">
-            <column name="valormensualidad" length="18" not-null="true" />
-        </property>
+        
     </class>
   
 

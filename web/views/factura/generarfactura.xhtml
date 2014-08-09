@@ -15,10 +15,10 @@
         <ui:composition template="./../template.xhtml">
 
             <ui:define name="content">
-                <h:form id="frmrealizarRecorrido">
+                <h:form id="frmrealizarFactura">
                     <p:growl id="mensajeGeneral" showDetail="true"/>
                     <p:dataTable  value="#{facturaBean.allEstudiantes}" 
-                                  paginator="true" rows="10" var="item" style="font-size: 10px;">
+                                  paginator="true" rows="3" var="item" style="font-size: 10px;">
                         <f:facet name="header">
                             <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes"/>
                         </f:facet>
@@ -37,24 +37,46 @@
                         <p:column headerText="Colegio">
                             <h:outputText value="#{item.colegio}"/>
                         </p:column>
-                        <p:column headerText="Periodo Inicio" style="text-align: center;">
-                            <p:calendar value="#{facturaBean.selectedFactura.periodoinicio}" showOn="button" style="text-align: center;" />                    
-                        </p:column>
-                        <p:column headerText="Periodo Final" style="text-align: center;">
-                            <p:calendar value="#{facturaBean.selectedFactura.periodofinal}" showOn="button" style="text-align: center;" />                    
-                        </p:column>
-                        <p:column headerText="Mensualida" style="text-align: center;">
-                            <p:inputText value="#{facturaBean.selectedFactura.valor}" style="text-align: center;" />                    
-                        </p:column>
                         <p:column headerText="Acciones">
                             <p:commandButton value="Agregar" ajax="false" actionListener="#{facturaBean.agregarListadeEstudiantes(item.idestudiante)}"/>
                         </p:column>
+                    </p:dataTable><hr />
+                    <p:dataTable id="tablaListaEstudiantes" paginator="true" rows="3" 
+                                 value="#{facturaBean.listaDetalleFactura}" var="itemes" style="font-size: 10px;">
+                        <f:facet name="header">
+                            <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes Agregados"/>
+                        </f:facet>
+                        <p:column headerText="Identificacion">
+                            <h:outputText value="#{itemes.identificacion}"/>
+                        </p:column>
+                        <p:column headerText="Nombres" style="text-align: center;">
+                            <h:outputText value="#{itemes.nombreEstudiante}"/>
+                        </p:column>
+                        <p:column headerText="Apellidos" style="text-align: left;">
+                            <h:outputText value="#{itemes.apellidoEstudiante}"/>
+                        </p:column>
+                        <p:column headerText="Colegio" style="text-align: center;">
+                            <h:outputText value="#{itemes.colegio}" style="text-align: center;" />                    
+                        </p:column>
+                        <p:column headerText="Periodo Inicio" style="text-align: center;">
+                            <p:calendar value="#{facturaBean.factura.periodoinicio}" showOn="button" style="text-align: center;" />                    
+                        </p:column>
+                        <p:column headerText="Periodo Final" style="text-align: center;">
+                            <p:calendar value="#{facturaBean.factura.periodofinal}" showOn="button" style="text-align: center;" />                    
+                        </p:column > 
+                        <p:column headerText="Meses Vencidos" style="text-align: center;">
+                            <p:inputText value="#{facturaBean.factura.mesesvencidos}"/>
+                        </p:column>
+                        <p:column headerText="Valor Mensualidad" style="text-align: center;">
+                            <p:inputText value="#{facturaBean.factura.valor}"/>
+                        </p:column>
+                        <p:column style="text-align: center;" headerText="Acciones">
+                            <p:commandButton value="Retirar de la lista" ajax="true" actionListener="#{mbVVenta.retirarListaVentaDetalle(item.codigoBarrasProducto)}"/>
+                        </p:column>
                     </p:dataTable>
-                      <p:panelGrid id="panelFinalVenta" columns="1" style="text-align: right;width: 100%;">
+                    <p:panelGrid id="panelFinalVenta" columns="1" style="text-align: right;width: 100%;">
                         <h:panelGroup>
-                            <p:commandButton value="Guardar" 
-                                             ajax="false"  icon="ui-icon-disk"
-                                             actionListener="#{detalleRecorridoEstudiantesBean.guardarRecorrido()}"/>
+                            <p:commandButton value="Guardar" icon="ui-icon-disk" ajax="false" actionListener="#{facturaBean.guardarFactura()}"/>
                         </h:panelGroup>
                     </p:panelGrid>
                 </h:form>

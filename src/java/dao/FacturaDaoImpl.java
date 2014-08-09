@@ -8,6 +8,7 @@ package dao;
 
 import java.util.List;
 import model.Factura;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -59,73 +60,17 @@ public class FacturaDaoImpl implements FacturaDao{
     }
 
     @Override
-    public boolean create(Factura factura) {
-        boolean flag = false;
-        final Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-        try {
-            final Transaction transaction = sesion.beginTransaction();
-            try {
-                sesion.save(factura);
-                transaction.commit();
-                flag = true;
-            } catch (Exception e) {
-                flag = false;
-                transaction.rollback();
-                throw e;
-            }
-        } finally {
-            
-        }
-        return flag;
-    }
-
-    @Override
-    public boolean update(Factura factura) {
-        boolean flag = false;
-        final Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-        try {
-            final Transaction transaction = sesion.beginTransaction();
-            try {
-                sesion.update(factura);
-                transaction.commit();
-                flag = true;
-            } catch (Exception e) {
-                flag = false;
-                transaction.rollback();
-                throw e;
-            }
-        } finally {
-            
-        }
-        return flag;
-    }
-
-    @Override
-    public boolean delete(Integer id) {
-        boolean flag = false;
-        final Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-        try {
-            final Transaction transaction = sesion.beginTransaction();
-            try {
-                Factura factura = (Factura) sesion.load(Factura.class, id);
-                sesion.delete(factura);
-                transaction.commit();
-                flag = true;
-            } catch (Exception e) {
-                flag = false;
-                transaction.rollback();
-                throw e;
-            }
-        } finally {
-            
-        }
-        return flag;
-    }
-
-    @Override
-    public boolean insert(Session sesion, Factura detalleFactura) {
-        sesion.save(detalleFactura);
+    public boolean insert(Session sesion, Factura factura) {
+        sesion.save(factura);
         return true;
+    }
+
+    @Override
+    public Factura getUltimoRegistro(Session sesion) throws Exception {
+        String hql="FROM Factura ORDER BY idfactura DESC";
+        Query query=sesion.createQuery(hql).setMaxResults(1);
+        
+        return (Factura) query.uniqueResult();
     }
     
 }

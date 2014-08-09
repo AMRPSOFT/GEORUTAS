@@ -15,10 +15,8 @@ import org.hibernate.Session;
  * @author Alex Rodriguez
  */
 public interface FacturaDao {
-    public boolean insert(Session sesion, Factura detalleFactura);
     public Factura findByFactura(Factura factura);
     public List<Factura> findAll();
-    public boolean create(Factura factura);
-    public boolean update(Factura factura);
-    public boolean delete(Integer id);
+    public boolean insert(Session sesion, Factura factura) throws Exception;
+    public Factura getUltimoRegistro(Session sesion) throws Exception;
 }

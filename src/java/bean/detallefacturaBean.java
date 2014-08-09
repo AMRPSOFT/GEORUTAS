@@ -6,11 +6,12 @@
 
 package bean;
 
+import dao.DetalleFacturaDao;
+import dao.DetalleFacturaDaoImpl;
 import dao.EstudianteDao;
 import dao.EstudianteDaoImpl;
 import dao.FacturaDao;
 import dao.FacturaDaoImpl;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -47,40 +48,6 @@ public class detallefacturaBean {
         this.listaDetalleFactura = new ArrayList<>();
     }
 
-    public Estudiante getSelectedEstudiante() {
-        return selectedEstudiante;
-    }
-
-    public void setSelectedEstudiante(Estudiante selectedEstudiante) {
-        this.selectedEstudiante = selectedEstudiante;
-    }
-    
-    public Factura getSelectedFactura() {
-        return selectedFactura;
-    }
-
-    public void setSelectedFactura(Factura selectedFactura) {
-        this.selectedFactura = selectedFactura;
-    }
-
-    public List<Factura> getFacturas() {
-        FacturaDao facturaDao = new FacturaDaoImpl();
-        this.facturas = facturaDao.findAll();
-        return facturas;
-    }
-
-    public List<Estudiante> getEstudiantes() {
-        return estudiantes;
-    }
-    
-    public int getIdentificacion() {
-        return identificacion;
-    }
-
-    public void setIdentificacion(int identificacion) {
-        this.identificacion = identificacion;
-    }
-    
     public List<Estudiante> getAllEstudiantes() {
         this.sesion=null;
         this.transaction=null;
@@ -119,52 +86,6 @@ public class detallefacturaBean {
         }
     }
 
-    public void btnCreateFactura(ActionEvent event){
-       FacturaDao facturaDao = new FacturaDaoImpl();
-       String msng;
-       if(facturaDao.create(this.selectedFactura)){
-           msng = "Se registro correctamente la Factura";
-           FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, msng, null);
-           FacesContext.getCurrentInstance().addMessage(null, message);
-       }
-       else{
-           msng = "Error al registrar ls Factura";
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, msng, null);
-            FacesContext.getCurrentInstance().addMessage(null, message);
-       }
-    }
-    
-    public void btnUpdateFactura(ActionEvent event){
-       FacturaDao facturaDao = new FacturaDaoImpl();
-       String msng;
-       if(facturaDao.update(this.selectedFactura)){
-           msng = "Se modificado correctamente la Factura";
-           FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, msng, null);
-           FacesContext.getCurrentInstance().addMessage(null, message);
-       }
-       else{
-           msng = "Error al modificar la Factura";
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, msng, null);
-            FacesContext.getCurrentInstance().addMessage(null, message);
-       }
-    }
-    
-    public void btnDeleteFactura(ActionEvent event){
-       FacturaDao facturaDao = new FacturaDaoImpl();
-       String msng;
-       if(facturaDao.delete(this.selectedFactura.getIdfactura())){
-           msng = "Se elimino correctamente la Factura";
-           FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, msng, null);
-           FacesContext.getCurrentInstance().addMessage(null, message);
-       }
-       else{
-           msng = "Error al eliminar la Factura";
-           FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, msng, null);
-           FacesContext.getCurrentInstance().addMessage(null, message);
-       }
-        
-    }
-
     public void agregarListadeEstudiantes(Integer idestudiante) {
         this.sesion = null;
         this.transaction = null;
@@ -173,14 +94,13 @@ public class detallefacturaBean {
             this.sesion = HibernateUtil.getSessionFactory().openSession();
             EstudianteDao estudianteDao = new EstudianteDaoImpl();
             this.transaction=this.sesion.beginTransaction();
-            this.selectedEstudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
-            this.facturas.add(new  (null, this.selectedEstudiante.getIdenticacion(), this.selectedEstudiante.getNombre(), 
-                    this.selectedEstudiante.getApellido(), this.selectedEstudiante.getColegio(), 
-                    this.selectedFactura.getPeriodoinicio(), this.selectedFactura.getPeriodofinal(), this.selectedFactura.getValor()));
+            this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
+            this.listaDetalleFactura.add(new Detallefactura(null, null, this.estudiante.getIdenticacion(), this.estudiante.getNombre(), 
+                    this.estudiante.getApellido(), this.estudiante.getColegio()));
             this.transaction.commit();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
-            RequestContext.getCurrentInstance().update("frmrealizarRecorrido:tablaListaEstudiantes");
-            RequestContext.getCurrentInstance().update("frmrealizarRecorrido:mensajeGeneral");
+            RequestContext.getCurrentInstance().update("frmrealizarFactura:tablaListaEstudiantes");
+            RequestContext.getCurrentInstance().update("frmrealizarFactura:mensajeGeneral");
         } 
         catch(Exception ex) {
         if(this.transaction!=null)
@@ -198,4 +118,87 @@ public class detallefacturaBean {
             }
         }
     }
+    
+    public void guardarFactura()
+    {
+        this.sesion=null;
+        this.transaction=null;
+        
+        try
+        {
+            this.sesion=HibernateUtil.getSessionFactory().openSession();
+            
+            EstudianteDao estudianteDao = new EstudianteDaoImpl();
+            FacturaDao facturaDao = new FacturaDaoImpl();
+            DetalleFacturaDao detallefacturaDao = new DetalleFacturaDaoImpl();
+            
+            this.transaction=this.sesion.beginTransaction();
+            
+            facturaDao.insert(this.sesion, this.factura);
+            this.factura = facturaDao.getUltimoRegistro(this.sesion);
+            
+            for(Detallefactura item : this.listaDetalleFactura)
+            {
+                this.estudiante = estudianteDao.getByIdentificacion(this.sesion, item.getIdentificacion());
+                item.setEstudiante(this.estudiante);
+                item.setFactura(this.factura);
+                detallefacturaDao.insert(this.sesion, item);
+            }
+            this.transaction.commit();
+            
+            this.listaDetalleFactura = new ArrayList<>();
+            this.factura = new Factura();
+            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiantes Agregados Correctamente"));
+        }
+        catch(Exception ex)
+        {
+            if(this.transaction!=null)
+            {
+                transaction.rollback();
+            }
+            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", ex.getMessage()));
+        }
+        finally
+        {
+            if(this.sesion!=null)
+            {
+                this.sesion.close();
+            }
+        }
+    }
+
+    public Estudiante getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public List<Estudiante> getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(List<Estudiante> estudiantes) {
+        this.estudiantes = estudiantes;
+    }
+
+    public Factura getFactura() {
+        return factura;
+    }
+
+    public void setFactura(Factura factura) {
+        this.factura = factura;
+    }
+
+    public List<Detallefactura> getListaDetalleFactura() {
+        return listaDetalleFactura;
+    }
+
+    public void setListaDetalleFactura(List<Detallefactura> listaDetalleFactura) {
+        this.listaDetalleFactura = listaDetalleFactura;
+    }
+    
 }
