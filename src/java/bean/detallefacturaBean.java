@@ -153,7 +153,7 @@ public class detallefacturaBean {
             this.listaDetalleFactura = new ArrayList<>();
             this.factura = new Factura();
             
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiantes Agregados Correctamente"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Factura Generada"));
         }
         catch(Exception ex)
         {
