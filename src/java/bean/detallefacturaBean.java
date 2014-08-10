@@ -100,7 +100,7 @@ public class detallefacturaBean {
             this.transaction=this.sesion.beginTransaction();
             this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
             this.listaDetalleFactura.add(new Detallefactura(null, null, this.estudiante.getIdenticacion(), this.estudiante.getNombre(), 
-                    this.estudiante.getApellido(), this.estudiante.getColegio(), 0, new BigDecimal("0"), new BigDecimal("0")));
+                    this.estudiante.getApellido(), this.estudiante.getColegio(), 0, new BigDecimal("100000"), new BigDecimal("0")));
             this.transaction.commit();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
             RequestContext.getCurrentInstance().update("frmrealizarFactura:tablaListaEstudiantes");
@@ -176,7 +176,7 @@ public class detallefacturaBean {
     {
         try
         {   
-            BigDecimal totalMensualidad = new BigDecimal("0");
+            BigDecimal total = new BigDecimal("0");
             
             for(Detallefactura item : this.listaDetalleFactura)
             {
@@ -184,10 +184,10 @@ public class detallefacturaBean {
                 
                 item.setTotalmensualidad(totalMensualidadAPagar);
                 
-                totalMensualidad = totalMensualidad.add(totalMensualidadAPagar);
+                total = total.add(totalMensualidadAPagar);
             }
             
-            this.factura.setTotalapagar(totalMensualidad);
+            this.factura.setTotalapagar(total);
             
             RequestContext.getCurrentInstance().update("frmRealizarFactura:tablaListaEstudiantes");
             RequestContext.getCurrentInstance().update("frmRealizarFactura:panelFinalVenta");

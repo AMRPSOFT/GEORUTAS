@@ -80,9 +80,7 @@
                     <p:panelGrid id="panelFinalVenta" columns="1" style="text-align: right;width: 100%;">
                         <h:panelGroup>
                             <p:commandButton value="Actualizar" actionListener="#{facturaBean.calcularCostos()}" />
-                            S./ 
                             <h:outputText value="#{facturaBean.factura.totalapagar}" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);padding: 7px;"/>
-                            -------------------
                             <p:commandButton value="Guardar" icon="ui-icon-disk" ajax="false" actionListener="#{facturaBean.guardarFactura()}"/>
                         </h:panelGroup>
                     </p:panelGrid>

@@ -16,12 +16,6 @@
         <property name="periodofinal" type="timestamp">
             <column name="Periodofinal" length="19" not-null="true" />
         </property>
-        <property name="mesesvencidos" type="int">
-            <column name="mesesvencidos" not-null="true" />
-        </property>
-        <property name="valor" type="big_decimal">
-            <column name="Valor" length="18" not-null="true" />
-        </property>
         <property name="totalapagar" type="big_decimal">
             <column name="totalapagar" length="18" not-null="true" />
         </property>
