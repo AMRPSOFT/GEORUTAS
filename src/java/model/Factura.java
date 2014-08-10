@@ -17,23 +17,26 @@ public class Factura implements java.io.Serializable{
      private Date periodofinal;
      private int mesesvencidos;
      private BigDecimal valor;
+     private BigDecimal totalapagar;
      private Set detallefactura = new HashSet(0);
      
      public Factura (){
      }
      
-     public Factura( Date periodoinicio, Date periodofinal, int mesesvencidos, BigDecimal valor) {
+     public Factura( Date periodoinicio, Date periodofinal, int mesesvencidos, BigDecimal valor, BigDecimal totalapagar) {
         this.periodoinicio = periodoinicio;
         this.periodofinal = periodofinal;
         this.mesesvencidos = mesesvencidos;
         this.valor = valor;
+        this.totalapagar = totalapagar;
     }
 
-    public Factura(Date periodoinicio, Date periodofinal, int mesesvencidos, BigDecimal valor, Set detallefactura ) {
+    public Factura(Date periodoinicio, Date periodofinal, int mesesvencidos, BigDecimal valor, Set detallefactura, BigDecimal totalapagar) {
         this.periodoinicio = periodoinicio;
         this.periodofinal = periodofinal;
         this.mesesvencidos = mesesvencidos;
         this.valor = valor;
+        this.totalapagar = totalapagar;
         this.detallefactura = detallefactura;
     }
     
@@ -84,6 +87,14 @@ public class Factura implements java.io.Serializable{
 
     public void setDetallefactura(Set detallefactura) {
         this.detallefactura = detallefactura;
+    }
+
+    public BigDecimal getTotalapagar() {
+        return totalapagar;
+    }
+
+    public void setTotalapagar(BigDecimal totalapagar) {
+        this.totalapagar = totalapagar;
     }
          
 }

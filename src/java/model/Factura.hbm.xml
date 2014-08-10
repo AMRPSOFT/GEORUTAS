@@ -22,6 +22,9 @@
         <property name="valor" type="big_decimal">
             <column name="Valor" length="18" not-null="true" />
         </property>
+        <property name="totalapagar" type="big_decimal">
+            <column name="totalapagar" length="18" not-null="true" />
+        </property>
         
         <set name="detallefactura" table="detallefactura" inverse="true" lazy="true" fetch="select">
             <key>

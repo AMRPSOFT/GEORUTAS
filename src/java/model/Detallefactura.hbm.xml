@@ -29,7 +29,15 @@
         <property name="colegio" type="string">
             <column name="colegio" length="45" not-null="true" />
         </property>
-        
+        <property name="mesesvencidos" type="int">
+            <column name="mesesvencidos" not-null="true" />
+        </property>
+        <property name="totalmensualidad" type="big_decimal">
+            <column name="totalmensualidad" length="18" not-null="true" />
+        </property>
+        <property name="mensualidad" type="big_decimal">
+            <column name="mensualidad" length="18" not-null="true" />
+        </property>
     </class>
   
 

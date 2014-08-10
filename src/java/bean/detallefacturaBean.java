@@ -12,6 +12,7 @@ import dao.EstudianteDao;
 import dao.EstudianteDaoImpl;
 import dao.FacturaDao;
 import dao.FacturaDaoImpl;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -40,12 +41,15 @@ public class detallefacturaBean {
     private Estudiante estudiante;
     private List<Estudiante> estudiantes;
     private Factura factura;
+    private List<Factura> listaFactura;
     private List<Detallefactura> listaDetalleFactura;
+    private BigDecimal valorMensualidad;
     
     
     public detallefacturaBean() {
         this.factura = new Factura();
         this.listaDetalleFactura = new ArrayList<>();
+        this.listaFactura = new ArrayList<>();
     }
 
     public List<Estudiante> getAllEstudiantes() {
@@ -96,7 +100,7 @@ public class detallefacturaBean {
             this.transaction=this.sesion.beginTransaction();
             this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
             this.listaDetalleFactura.add(new Detallefactura(null, null, this.estudiante.getIdenticacion(), this.estudiante.getNombre(), 
-                    this.estudiante.getApellido(), this.estudiante.getColegio()));
+                    this.estudiante.getApellido(), this.estudiante.getColegio(), 0, new BigDecimal("0"), new BigDecimal("0")));
             this.transaction.commit();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
             RequestContext.getCurrentInstance().update("frmrealizarFactura:tablaListaEstudiantes");
@@ -168,6 +172,31 @@ public class detallefacturaBean {
             }
         }
     }
+    public void calcularCostos()
+    {
+        try
+        {   
+            BigDecimal totalMensualidad = new BigDecimal("0");
+            
+            for(Detallefactura item : this.listaDetalleFactura)
+            {
+                BigDecimal totalMensualidadAPagar = item.getMensualidad().multiply(new BigDecimal(item.getMesesvencidos()));
+                
+                item.setTotalmensualidad(totalMensualidadAPagar);
+                
+                totalMensualidad = totalMensualidad.add(totalMensualidadAPagar);
+            }
+            
+            this.factura.setTotalapagar(totalMensualidad);
+            
+            RequestContext.getCurrentInstance().update("frmRealizarFactura:tablaListaEstudiantes");
+            RequestContext.getCurrentInstance().update("frmRealizarFactura:panelFinalVenta");
+        }
+        catch(Exception ex)
+        {            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", ex.getMessage()));
+        }
+    }
 
     public Estudiante getEstudiante() {
         return estudiante;
@@ -199,6 +228,14 @@ public class detallefacturaBean {
 
     public void setListaDetalleFactura(List<Detallefactura> listaDetalleFactura) {
         this.listaDetalleFactura = listaDetalleFactura;
+    }
+
+    public BigDecimal getValorMensualidad() {
+        return valorMensualidad;
+    }
+
+    public void setValorMensualidad(BigDecimal valorMensualidad) {
+        this.valorMensualidad = valorMensualidad;
     }
     
 }

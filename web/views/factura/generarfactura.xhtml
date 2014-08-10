@@ -25,7 +25,7 @@
                         <p:column headerText="Id">
                             <h:outputText value="#{item.idestudiante}"/>
                         </p:column>
-                        <p:column headerText="Identificacion" filterBy="identificacion">
+                        <p:column headerText="Identificacion">
                             <h:outputText value="#{item.identicacion}"/>
                         </p:column>
                         <p:column headerText="Nombre" filterBy="nombre">
@@ -44,7 +44,7 @@
                     <p:dataTable id="tablaListaEstudiantes" paginator="true" rows="3" 
                                  value="#{facturaBean.listaDetalleFactura}" var="itemes" style="font-size: 10px;">
                         <f:facet name="header">
-                            <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes Agregados"/>
+                            <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes a Facturar"/>
                         </f:facet>
                         <p:column headerText="Identificacion">
                             <h:outputText value="#{itemes.identificacion}"/>
@@ -65,10 +65,13 @@
                             <p:calendar value="#{facturaBean.factura.periodofinal}" showOn="button" style="text-align: center;" />                    
                         </p:column > 
                         <p:column headerText="Meses Vencidos" style="text-align: center;">
-                            <p:inputText value="#{facturaBean.factura.mesesvencidos}"/>
+                            <p:inputText value="#{itemes.mesesvencidos}"/>
                         </p:column>
                         <p:column headerText="Valor Mensualidad" style="text-align: center;">
-                            <p:inputText value="#{facturaBean.factura.valor}"/>
+                            <p:inputText value="#{itemes.mensualidad}"/>
+                        </p:column>
+                        <p:column headerText="Total Mensualidad" style="text-align: center;">
+                            S./<h:outputText value="#{itemes.totalmensualidad}"/>
                         </p:column>
                         <p:column style="text-align: center;" headerText="Acciones">
                             <p:commandButton value="Retirar de la lista" ajax="true" actionListener="#{mbVVenta.retirarListaVentaDetalle(item.codigoBarrasProducto)}"/>
@@ -76,6 +79,10 @@
                     </p:dataTable>
                     <p:panelGrid id="panelFinalVenta" columns="1" style="text-align: right;width: 100%;">
                         <h:panelGroup>
+                            <p:commandButton value="Actualizar" actionListener="#{facturaBean.calcularCostos()}" />
+                            S./ 
+                            <h:outputText value="#{facturaBean.factura.totalapagar}" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);padding: 7px;"/>
+                            -------------------
                             <p:commandButton value="Guardar" icon="ui-icon-disk" ajax="false" actionListener="#{facturaBean.guardarFactura()}"/>
                         </h:panelGroup>
                     </p:panelGrid>

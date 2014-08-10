@@ -22,17 +22,24 @@ public class Detallefactura implements Serializable{
      private String nombreEstudiante;
      private String apellidoEstudiante;
      private String colegio;
-
+     private BigDecimal mensualidad;
+     private int mesesvencidos;
+     private BigDecimal totalmensualidad;
+     
     public Detallefactura() {
     }
 
-    public Detallefactura(Estudiante estudiante, Factura factura, int identificacion, String nombreEstudiante, String apellidoEstudiante, String colegio) {
+    public Detallefactura(Estudiante estudiante, Factura factura, int identificacion, String nombreEstudiante, String apellidoEstudiante, String colegio,
+                          int mesesvencidos, BigDecimal mensualidad, BigDecimal totalmensualidad) {
         this.estudiante = estudiante;
         this.factura = factura;
         this.identificacion = identificacion;
         this.nombreEstudiante = nombreEstudiante;
         this.apellidoEstudiante = apellidoEstudiante;
         this.colegio = colegio;
+        this.mesesvencidos = mesesvencidos;
+        this.mensualidad = mensualidad;
+        this.totalmensualidad = totalmensualidad;
     }
 
     public Integer getIddetallefactura() {
@@ -89,6 +96,30 @@ public class Detallefactura implements Serializable{
 
     public void setColegio(String colegio) {
         this.colegio = colegio;
+    }
+
+    public BigDecimal getMensualidad() {
+        return mensualidad;
+    }
+
+    public void setMensualidad(BigDecimal mensualidad) {
+        this.mensualidad = mensualidad;
+    }
+
+    public int getMesesvencidos() {
+        return mesesvencidos;
+    }
+
+    public void setMesesvencidos(int mesesvencidos) {
+        this.mesesvencidos = mesesvencidos;
+    }
+
+    public BigDecimal getTotalmensualidad() {
+        return totalmensualidad;
+    }
+
+    public void setTotalmensualidad(BigDecimal totalmensualidad) {
+        this.totalmensualidad = totalmensualidad;
     }
 
 }
