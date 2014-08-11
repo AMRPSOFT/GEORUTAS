@@ -33,6 +33,7 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperRunManager;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -226,19 +227,17 @@ public class detallefacturaBean {
         }
     }
     
-    public void mostrarPdf(ActionEvent actionEvent){
-        DetalleFacturaDao detallefacturaDao = new DetalleFacturaDaoImpl();
-       String msng;
-       if(detallefacturaDao.mostrarPdf(this.selectedDetalle.getIdentificacion())){
-           msng = "Se modificado correctamente el Acudiente";
-           FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, msng, null);
-           FacesContext.getCurrentInstance().addMessage(null, message);
-       }
-       else{
-           msng = "Error al modificar el Acudiente";
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, msng, null);
-            FacesContext.getCurrentInstance().addMessage(null, message);
-       }
+    public void mostrarPdf(ActionEvent actionEvent) throws JRException, IOException{
+       File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/jrFactura.jasper"));
+       byte[] bytes = JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRBeanCollectionDataSource(this.getDetalleFacturas()));
+       HttpServletResponse httpServletResponse = (HttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+       httpServletResponse.setContentType("application/pdf");
+       httpServletResponse.setContentLength(bytes.length);
+       ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+       servletOutputStream.write(bytes, 0, bytes.length);
+       servletOutputStream.flush();
+       servletOutputStream.close();
+       FacesContext.getCurrentInstance().responseComplete();
     }
 
     public Estudiante getEstudiante() {
