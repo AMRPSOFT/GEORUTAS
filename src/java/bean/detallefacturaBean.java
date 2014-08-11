@@ -12,11 +12,13 @@ import dao.EstudianteDao;
 import dao.EstudianteDaoImpl;
 import dao.FacturaDao;
 import dao.FacturaDaoImpl;
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -55,14 +57,7 @@ public class detallefacturaBean {
     private List<Detallefactura> listaDetalleFactura;
     private List<Detallefactura> detalleFacturas;
     private BigDecimal valorMensualidad;
-    
-    JasperPrint jasperFactura;
-    
-    public void init() throws JRException{
-        JRBeanCollectionDataSource beanCollectionDataSource=new JRBeanCollectionDataSource(detalleFacturas);
-        jasperFactura = JasperFillManager.fillReport("C:\\Users\\Alex Rodriguez\\Documents\\NetBeansProjects\\AppTransporteDeRutasEscolares\\web\\resources\\reportes\\factura.jasper", new HashMap(),beanCollectionDataSource);
-    }
-    
+
     public detallefacturaBean() {
         this.factura = new Factura();
         this.listaDetalleFactura = new ArrayList<>();
@@ -71,11 +66,16 @@ public class detallefacturaBean {
     }
     
     public void PDF(ActionEvent actionEvent) throws JRException, IOException{
-       init();
+       Map<String, Object> parametro = new HashMap<String, Object>(); 
+       File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/jrFactura.jasper"));
+       JasperPrint jasperPrint = JasperFillManager.fillReport(jasper.getPath(), null, new JRBeanCollectionDataSource(this.getDetalleFacturas()));
        HttpServletResponse httpServletResponse = (HttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
        httpServletResponse.addHeader("Content-disposition", "attachment; filename=Factura.pdf");
        ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
-       JasperExportManager.exportReportToPdfStream(jasperFactura, servletOutputStream);  
+       JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream); 
+       servletOutputStream.flush();
+       servletOutputStream.close();
+       FacesContext.getCurrentInstance().responseComplete();
    }
 
     public List<Estudiante> getAllEstudiantes() {

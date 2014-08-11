@@ -33,3 +33,7 @@
 .ui-state-default .icon-edit{
     background-image: url(../icons/save_labled_edit.png);
 }
+
+.ui-state-default .icon-Pdf{
+    background-image: url(../icons/Pdf.png);
+}

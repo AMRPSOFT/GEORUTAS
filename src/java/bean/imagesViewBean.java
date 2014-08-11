@@ -29,7 +29,7 @@ public class imagesViewBean {
             images.add("ruta" + i + ".jpg");
         }
     }
- 
+    
     public List<String> getImages() {
         return images;
     }
