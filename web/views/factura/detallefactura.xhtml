@@ -5,6 +5,12 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>
+            Listar Facturas
+        </title>
+    </h:head>
 
     <body>
 
@@ -14,9 +20,9 @@
                 <p:growl id="msgs" showDetail="true" />
                
                 <h:form id="formDataTable">
-                    <p:dataTable id="usuario" var="item" value="#{facturaBean.listaDetalleFactura}" paginator="true" rows="8">
+                    <p:dataTable id="usuario" var="item" value="#{detallefacturaBean.detalleFacturas}" paginator="true" rows="10">
                         <f:facet name="header">
-                            <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes"/>
+                            <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes Facturados"/>
                         </f:facet>
                         <p:column headerText="Id" style="font-size: 10px;">  
                             <h:outputText value="#{item.iddetallefactura}" />  
@@ -24,7 +30,7 @@
                         <p:column headerText="Identificacion" style="font-size: 10px;">  
                             <h:outputText value="#{item.identificacion}" />  
                         </p:column>
-                        <p:column headerText="Nombres" style="font-size: 10px;">  
+                        <p:column headerText="Nombres" style="font-size: 10px;" filterBy="nombreEstudiante">  
                             <h:outputText value="#{item.nombreEstudiante}" />  
                         </p:column>
                         <p:column headerText="Apellidos" style="font-size: 10px;">  
@@ -41,6 +47,11 @@
                         </p:column>
                         <p:column headerText="Total Mensualidad" style="font-size: 10px;">  
                             <h:outputText value="#{item.totalmensualidad}" />  
+                        </p:column>
+                        <p:column headerText="Acciones" style="font-size: 10px; text-align: center;">
+                            <h:commandLink actionListener="#{facturaBean.PDF}">
+                                 <p:graphicImage name="/demo/images/xml.png" width="24"/>
+                            </h:commandLink>
                         </p:column>
                     </p:dataTable>
                 </h:form>

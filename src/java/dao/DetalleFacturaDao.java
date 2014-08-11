@@ -6,6 +6,7 @@
 
 package dao;
 
+import java.util.List;
 import model.Detallefactura;
 import org.hibernate.Session;
 
@@ -15,4 +16,5 @@ import org.hibernate.Session;
  */
 public interface DetalleFacturaDao {
     public boolean insert(Session sesion, Detallefactura detalleFactura);
+    public List<Detallefactura> findAll();
 }

@@ -12,16 +12,26 @@ import dao.EstudianteDao;
 import dao.EstudianteDaoImpl;
 import dao.FacturaDao;
 import dao.FacturaDaoImpl;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import model.Detallefactura;
 import model.Estudiante;
 import model.Factura;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.primefaces.context.RequestContext;
@@ -31,7 +41,7 @@ import util.HibernateUtil;
  *
  * @author Alex Rodriguez
  */
-@Named(value = "facturaBean")
+@Named(value = "detallefacturaBean")
 @ViewScoped
 public class detallefacturaBean {
 
@@ -43,14 +53,30 @@ public class detallefacturaBean {
     private Factura factura;
     private List<Factura> listaFactura;
     private List<Detallefactura> listaDetalleFactura;
+    private List<Detallefactura> detalleFacturas;
     private BigDecimal valorMensualidad;
     
+    JasperPrint jasperFactura;
+    
+    public void init() throws JRException{
+        JRBeanCollectionDataSource beanCollectionDataSource=new JRBeanCollectionDataSource(detalleFacturas);
+        jasperFactura = JasperFillManager.fillReport("C:\\Users\\Alex Rodriguez\\Documents\\NetBeansProjects\\AppTransporteDeRutasEscolares\\web\\resources\\reportes\\factura.jasper", new HashMap(),beanCollectionDataSource);
+    }
     
     public detallefacturaBean() {
         this.factura = new Factura();
         this.listaDetalleFactura = new ArrayList<>();
         this.listaFactura = new ArrayList<>();
+        this.detalleFacturas = new ArrayList<Detallefactura>();
     }
+    
+    public void PDF(ActionEvent actionEvent) throws JRException, IOException{
+       init();
+       HttpServletResponse httpServletResponse = (HttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+       httpServletResponse.addHeader("Content-disposition", "attachment; filename=Factura.pdf");
+       ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+       JasperExportManager.exportReportToPdfStream(jasperFactura, servletOutputStream);  
+   }
 
     public List<Estudiante> getAllEstudiantes() {
         this.sesion=null;
@@ -237,5 +263,12 @@ public class detallefacturaBean {
     public void setValorMensualidad(BigDecimal valorMensualidad) {
         this.valorMensualidad = valorMensualidad;
     }
+
+    public List<Detallefactura> getDetalleFacturas() {
+        DetalleFacturaDao detalleFacturaDao = new DetalleFacturaDaoImpl();
+        this.detalleFacturas = detalleFacturaDao.findAll();
+        return detalleFacturas;
+    }
+    
     
 }
