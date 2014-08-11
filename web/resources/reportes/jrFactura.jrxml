@@ -13,6 +13,7 @@
 			<style backcolor="#E6DAC3"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="txtIdentificacion" class="java.lang.Integer"/>
 	<field name="iddetallefactura" class="java.lang.Integer"/>
 	<field name="identificacion" class="java.lang.Integer"/>
 	<field name="nombreEstudiante" class="java.lang.String"/>

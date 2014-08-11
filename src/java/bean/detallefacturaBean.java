@@ -66,7 +66,7 @@ public class detallefacturaBean {
     }
     
     public void PDF(ActionEvent actionEvent) throws JRException, IOException{
-       Map<String, Object> parametro = new HashMap<String, Object>(); 
+       
        File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/jrFactura.jasper"));
        JasperPrint jasperPrint = JasperFillManager.fillReport(jasper.getPath(), null, new JRBeanCollectionDataSource(this.getDetalleFacturas()));
        HttpServletResponse httpServletResponse = (HttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
