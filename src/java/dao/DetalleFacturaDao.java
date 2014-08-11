@@ -17,4 +17,6 @@ import org.hibernate.Session;
 public interface DetalleFacturaDao {
     public boolean insert(Session sesion, Detallefactura detalleFactura);
     public List<Detallefactura> findAll();
+    public boolean mostrarPdf(Integer identificacion);
+    
 }

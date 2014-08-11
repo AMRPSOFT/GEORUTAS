@@ -43,6 +43,27 @@ public class DetalleFacturaDaoImpl implements DetalleFacturaDao{
         }
         return listado;
     }
+
+    @Override
+    public boolean mostrarPdf(Integer identificacion) {
+        boolean flag = false;
+        Detallefactura model = null;
+        final Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        String sql = "FROM Detallefactura WHERE identificacion = '" + model.getIdentificacion()+ "'";
+        try {
+            final Transaction transaction = sesion.beginTransaction();
+            try {
+                model = (Detallefactura) sesion.createQuery(sql).uniqueResult();
+                transaction.commit();
+            } catch (Exception e) {
+                transaction.rollback();
+                throw e;
+            }
+        } finally {
+            
+        }
+        return flag=true;
+    }
 }
     
 

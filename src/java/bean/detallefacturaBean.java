@@ -56,10 +56,12 @@ public class detallefacturaBean {
     private List<Factura> listaFactura;
     private List<Detallefactura> listaDetalleFactura;
     private List<Detallefactura> detalleFacturas;
+    private Detallefactura selectedDetalle;
     private BigDecimal valorMensualidad;
 
     public detallefacturaBean() {
         this.factura = new Factura();
+        this.selectedDetalle = new Detallefactura();
         this.listaDetalleFactura = new ArrayList<>();
         this.listaFactura = new ArrayList<>();
         this.detalleFacturas = new ArrayList<Detallefactura>();
@@ -223,6 +225,21 @@ public class detallefacturaBean {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", ex.getMessage()));
         }
     }
+    
+    public void mostrarPdf(ActionEvent actionEvent){
+        DetalleFacturaDao detallefacturaDao = new DetalleFacturaDaoImpl();
+       String msng;
+       if(detallefacturaDao.mostrarPdf(this.selectedDetalle.getIdentificacion())){
+           msng = "Se modificado correctamente el Acudiente";
+           FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, msng, null);
+           FacesContext.getCurrentInstance().addMessage(null, message);
+       }
+       else{
+           msng = "Error al modificar el Acudiente";
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, msng, null);
+            FacesContext.getCurrentInstance().addMessage(null, message);
+       }
+    }
 
     public Estudiante getEstudiante() {
         return estudiante;
@@ -264,6 +281,14 @@ public class detallefacturaBean {
         this.valorMensualidad = valorMensualidad;
     }
 
+    public Detallefactura getSelectedDetalle() {
+        return selectedDetalle;
+    }
+
+    public void setSelectedDetalle(Detallefactura selectedDetalle) {
+        this.selectedDetalle = selectedDetalle;
+    }
+    
     public List<Detallefactura> getDetalleFacturas() {
         DetalleFacturaDao detalleFacturaDao = new DetalleFacturaDaoImpl();
         this.detalleFacturas = detalleFacturaDao.findAll();
