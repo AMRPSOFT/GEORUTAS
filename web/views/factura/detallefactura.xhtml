@@ -49,9 +49,9 @@
                             <h:outputText value="#{item.totalmensualidad}" />  
                         </p:column>
                         <p:column headerText="Acciones" style="font-size: 10px; text-align: center;">
-                            <h:commandLink actionListener="#{facturaBean.PDF}">
-                                 <p:graphicImage name="/demo/images/xml.png" width="24"/>
-                            </h:commandLink>
+                            <p:commandLink actionListener="#{detallefacturaBean.PDF}">
+                                <p:graphicImage name="/resources/images/RutasImangen.jpg" width="22"/>
+                            </p:commandLink>
                         </p:column>
                     </p:dataTable>
                 </h:form>
