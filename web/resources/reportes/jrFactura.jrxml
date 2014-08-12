@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jrFactura" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="932d3e15-5ec1-410d-bd26-2f32b2a05ca1">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jrFactura" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="932d3e15-5ec1-410d-bd26-2f32b2a05ca1">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -14,13 +14,19 @@
 		</conditionalStyle>
 	</style>
 	<queryString>
-		<![CDATA[
-]]>
+		<![CDATA[SELECT
+     detallefactura.`iddetallefactura` AS iddetallefactura,
+     detallefactura.`nombreestudiante` AS nombreestudiante,
+     detallefactura.`apellidoestudiante` AS apellidoestudiante,
+     detallefactura.`colegio` AS colegio,
+     detallefactura.`identificacion` AS identificacion,
+     detallefactura.`mesesvencidos` AS mesesvencidos,
+     detallefactura.`mensualidad` AS mensualidad,
+     detallefactura.`totalmensualidad` AS totalmensualidad
+FROM
+     `detallefactura` detallefactura]]>
 	</queryString>
 	<field name="iddetallefactura" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="identificacion" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nombreestudiante" class="java.lang.String">
@@ -30,6 +36,9 @@
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="colegio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="identificacion" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="mesesvencidos" class="java.lang.Integer">
@@ -52,10 +61,6 @@
 	</background>
 	<title>
 		<band height="136" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="0" width="164" height="126" uuid="e8192e7c-2092-4b5c-afaa-61acacdf0259"/>
-				<imageExpression><![CDATA["coffee.jpg"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement style="Title" x="164" y="0" width="469" height="62" uuid="4a11beb1-a3b9-47d2-9f92-a51cfdb34cee"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -71,16 +76,12 @@
 				<text><![CDATA[Factura de Cobro]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="172" y="94" width="383" height="42" uuid="5a880a3b-e878-4e41-9252-cfdcbb8b380b"/>
+				<reportElement x="224" y="94" width="383" height="42" uuid="5a880a3b-e878-4e41-9252-cfdcbb8b380b"/>
 				<textElement textAlignment="Right">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
 			</staticText>
-			<image>
-				<reportElement x="633" y="-73" width="219" height="209" uuid="2368c8b8-cae9-48fc-9281-e7b4a37135cd"/>
-				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -90,69 +91,69 @@
 		<band height="16" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="175" splitType="Stretch">
+		<band height="133" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="1ba9133e-40ee-4746-8594-ba5568e1801b"/>
+				<text><![CDATA[Id:]]></text>
+			</staticText>
 			<textField>
-				<reportElement x="120" y="2" width="100" height="20" uuid="fcbf583c-bceb-4ca5-903f-3db3ff3ba03b"/>
+				<reportElement x="100" y="0" width="100" height="20" uuid="dd90a40a-72d4-408c-a84a-7b8e24ee8b71"/>
 				<textFieldExpression><![CDATA[$F{iddetallefactura}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="2" width="100" height="20" uuid="8c4ec4e0-6e78-4f22-8304-5b0fb1f8ab32"/>
-				<text><![CDATA[Id]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="1" y="27" width="100" height="20" uuid="e36c04ce-0c10-4cfe-b9e7-1d1b8bed5279"/>
-				<text><![CDATA[Identificacion]]></text>
+				<reportElement x="0" y="25" width="100" height="20" uuid="57da487c-597b-46b1-bff8-41ba9add8e1f"/>
+				<text><![CDATA[Identificacion:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="120" y="27" width="100" height="20" uuid="3ac37560-5233-475a-a06f-8f55feb8d3fb"/>
+				<reportElement x="100" y="25" width="100" height="20" uuid="2e3686b4-d38a-4f82-ba7b-fe16149e512b"/>
 				<textFieldExpression><![CDATA[$F{identificacion}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="51" width="100" height="20" uuid="9f760f58-9eda-41b6-b05c-c90d0c4330d5"/>
-				<text><![CDATA[Nombres]]></text>
+				<reportElement x="252" y="0" width="100" height="20" uuid="1c4a7e61-c691-4a64-a437-3323622aae45"/>
+				<text><![CDATA[Nombres:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="120" y="51" width="119" height="20" uuid="b47bb988-ff83-40c8-bb16-cc38f6955753"/>
+				<reportElement x="252" y="25" width="110" height="20" uuid="890fc2ec-7f83-4c38-93c6-8d6b7ab61ee9"/>
 				<textFieldExpression><![CDATA[$F{nombreestudiante}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="75" width="100" height="20" uuid="dd5a11bc-9811-4e81-85fe-308f06d33dc2"/>
+				<reportElement x="378" y="0" width="100" height="20" uuid="ec9fec16-7fb7-42f7-869f-5855603fb946"/>
 				<text><![CDATA[Apellidos]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="120" y="75" width="119" height="20" uuid="e11c4017-185b-48d4-9aad-83f3913dd206"/>
+				<reportElement x="378" y="25" width="126" height="20" uuid="9e719431-a6ff-4d2d-9780-96032436114c"/>
 				<textFieldExpression><![CDATA[$F{apellidoestudiante}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="99" width="100" height="20" uuid="a8acb2ef-a735-40c6-8b64-466e352e640d"/>
-				<text><![CDATA[Colegio]]></text>
+				<reportElement x="533" y="0" width="100" height="20" uuid="fc76e2b9-5d8f-48bb-9fa3-a207febd6019"/>
+				<text><![CDATA[Colegio:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="120" y="99" width="100" height="20" uuid="1c773b19-110b-43c4-ab52-34943c4c1db2"/>
+				<reportElement x="533" y="25" width="100" height="20" uuid="04467ff5-7270-4632-b3ff-e4f2e9218134"/>
 				<textFieldExpression><![CDATA[$F{colegio}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="303" y="7" width="100" height="20" uuid="de8d0bc1-3f6d-428a-bc57-bebdaf3eb7cd"/>
+				<reportElement x="0" y="76" width="100" height="20" uuid="cb148b09-7be9-49cd-ac5c-cbc0bd57fdf2"/>
 				<text><![CDATA[Meses Vencidos]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="413" y="7" width="100" height="20" uuid="45166d3c-9755-4144-8828-4d04b8a906a4"/>
+				<reportElement x="0" y="96" width="100" height="20" uuid="33f7d01d-5532-4479-9ee3-f24b77f314db"/>
 				<textFieldExpression><![CDATA[$F{mesesvencidos}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="303" y="51" width="100" height="20" uuid="23f52d4f-0b2d-4e94-9a4e-c5cc92d42625"/>
+				<reportElement x="252" y="76" width="100" height="20" uuid="664301f8-42e2-4d2f-9edb-0dfcf4675d18"/>
 				<text><![CDATA[Mensualidad]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="413" y="51" width="100" height="20" uuid="377cb10f-88ab-4c37-b8dd-8cf51b3899d4"/>
+				<reportElement x="252" y="96" width="100" height="20" uuid="a593d46b-3825-49f6-bef5-772295cc887c"/>
 				<textFieldExpression><![CDATA[$F{mensualidad}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="303" y="95" width="100" height="20" uuid="6c226618-cfd2-4ac2-8505-f16794d47125"/>
-				<text><![CDATA[Total a Pagar]]></text>
+				<reportElement x="533" y="76" width="100" height="20" uuid="d74076d8-ea3e-4d49-b93c-a380873e3aec"/>
+				<text><![CDATA[Total Mensualidad]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="413" y="95" width="100" height="20" uuid="1e27e5d8-20b7-48cf-9f3f-c26569839c34"/>
+				<reportElement x="533" y="96" width="100" height="20" uuid="1ea21cd2-0dcc-4922-8723-c67486a39d4b"/>
 				<textFieldExpression><![CDATA[$F{totalmensualidad}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -172,14 +173,14 @@
 			<frame>
 				<reportElement mode="Opaque" x="0" y="0" width="802" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="da219a5a-a66c-49da-865b-56b9f24d47bf"/>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="762" y="1" width="40" height="20" forecolor="#736343" uuid="382a4662-a309-429a-9956-c70b2b809d61"/>
+					<reportElement style="Column header" x="713" y="4" width="40" height="20" forecolor="#736343" uuid="382a4662-a309-429a-9956-c70b2b809d61"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Column header" x="679" y="1" width="80" height="20" forecolor="#736343" uuid="8e88e373-7c67-492c-a8b3-c962edf1a82d"/>
+					<reportElement style="Column header" x="633" y="4" width="80" height="20" forecolor="#736343" uuid="8e88e373-7c67-492c-a8b3-c962edf1a82d"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
