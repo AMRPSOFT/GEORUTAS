@@ -15,7 +15,7 @@
 	</style>
 	<parameter name="identificacion" class="java.lang.Integer"/>
 	<queryString>
-		<![CDATA[select iddetallefactura, identificacion, nombreestudiante, apellidoestudiante, colegio, mesesvencidos, mensualidad, totalmensualidad from detallefactura where identificacion =$P{identificacion} ;
+		<![CDATA[
 ]]>
 	</queryString>
 	<field name="iddetallefactura" class="java.lang.Integer">
@@ -133,27 +133,27 @@
 				<textFieldExpression><![CDATA[$F{colegio}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="2" y="124" width="100" height="20" uuid="de8d0bc1-3f6d-428a-bc57-bebdaf3eb7cd"/>
+				<reportElement x="303" y="7" width="100" height="20" uuid="de8d0bc1-3f6d-428a-bc57-bebdaf3eb7cd"/>
 				<text><![CDATA[Meses Vencidos]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="2" y="148" width="100" height="20" uuid="45166d3c-9755-4144-8828-4d04b8a906a4"/>
+				<reportElement x="413" y="7" width="100" height="20" uuid="45166d3c-9755-4144-8828-4d04b8a906a4"/>
 				<textFieldExpression><![CDATA[$F{mesesvencidos}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="120" y="124" width="100" height="20" uuid="23f52d4f-0b2d-4e94-9a4e-c5cc92d42625"/>
+				<reportElement x="303" y="51" width="100" height="20" uuid="23f52d4f-0b2d-4e94-9a4e-c5cc92d42625"/>
 				<text><![CDATA[Mensualidad]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="120" y="148" width="100" height="20" uuid="377cb10f-88ab-4c37-b8dd-8cf51b3899d4"/>
+				<reportElement x="413" y="51" width="100" height="20" uuid="377cb10f-88ab-4c37-b8dd-8cf51b3899d4"/>
 				<textFieldExpression><![CDATA[$F{mensualidad}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="239" y="124" width="100" height="20" uuid="6c226618-cfd2-4ac2-8505-f16794d47125"/>
+				<reportElement x="303" y="95" width="100" height="20" uuid="6c226618-cfd2-4ac2-8505-f16794d47125"/>
 				<text><![CDATA[Total a Pagar]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="239" y="148" width="100" height="20" uuid="1e27e5d8-20b7-48cf-9f3f-c26569839c34"/>
+				<reportElement x="413" y="95" width="100" height="20" uuid="1e27e5d8-20b7-48cf-9f3f-c26569839c34"/>
 				<textFieldExpression><![CDATA[$F{totalmensualidad}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -169,18 +169,18 @@
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="63" splitType="Stretch">
+		<band height="26" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="39" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="da219a5a-a66c-49da-865b-56b9f24d47bf"/>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="da219a5a-a66c-49da-865b-56b9f24d47bf"/>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="382a4662-a309-429a-9956-c70b2b809d61"/>
+					<reportElement style="Column header" x="762" y="1" width="40" height="20" forecolor="#736343" uuid="382a4662-a309-429a-9956-c70b2b809d61"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="8e88e373-7c67-492c-a8b3-c962edf1a82d"/>
+					<reportElement style="Column header" x="679" y="1" width="80" height="20" forecolor="#736343" uuid="8e88e373-7c67-492c-a8b3-c962edf1a82d"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
