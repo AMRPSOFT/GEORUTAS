@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jrFactura" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a620bc11-2323-40c6-b944-75c959f392b4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="iddetallefactura" class="java.lang.String"/>
+	<field name="identificacion" class="java.lang.String"/>
+	<field name="nombreEstudiante" class="java.lang.String"/>
+	<field name="apellidoEstudiante" class="java.lang.String"/>
+	<field name="colegio" class="java.lang.String"/>
+	<field name="mesesvencidos" class="java.lang.String"/>
+	<field name="mensualidad" class="java.lang.String"/>
+	<field name="totalmensualidad" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="178" y="13" width="417" height="51" uuid="097a8374-8f60-47fd-8ffd-d736f459a247"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AMTE TRANSPORTES ESCOLARES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="147" splitType="Stretch">
+			<textField>
+				<reportElement x="115" y="0" width="100" height="20" uuid="22572f90-d0d3-45e7-a7e3-d9ca1fb5d380"/>
+				<textFieldExpression><![CDATA[$F{iddetallefactura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="15" y="0" width="100" height="20" uuid="7bc27c61-9efc-4c19-a077-e35ce9f2e743"/>
+				<text><![CDATA[Id:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="30" width="100" height="20" uuid="82814874-8acc-43b4-bc0f-a620f3bf7918"/>
+				<textFieldExpression><![CDATA[$F{identificacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="15" y="30" width="100" height="20" uuid="ef607883-6a0b-408a-ae4a-26b7e3441879"/>
+				<text><![CDATA[Identificacion:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="354" y="0" width="114" height="20" uuid="b94619f8-c933-4a15-90e3-f5320ed6b6fe"/>
+				<textFieldExpression><![CDATA[$F{nombreEstudiante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="254" y="0" width="100" height="20" uuid="0acacec3-5a91-4bd7-b472-421a2d975f35"/>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="354" y="30" width="114" height="20" uuid="fc55de5a-395c-47ba-8a9f-9e1b1c4dbb35"/>
+				<textFieldExpression><![CDATA[$F{apellidoEstudiante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="254" y="30" width="100" height="20" uuid="0f67398d-3aa6-4c94-9cb9-d637d7b003ca"/>
+				<text><![CDATA[Apellidos:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="591" y="0" width="100" height="20" uuid="5d33f903-11c8-4d05-80de-8773154c94ca"/>
+				<textFieldExpression><![CDATA[$F{colegio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="491" y="0" width="100" height="20" uuid="96145b37-4b82-4c91-9c2e-ef35f14618ae"/>
+				<text><![CDATA[Colegio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="77" width="100" height="20" uuid="f228a8ff-4dc6-43da-9432-a43cc1fcfb2d"/>
+				<text><![CDATA[Meses Vencidos]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="97" width="100" height="20" uuid="a2eaa6aa-4940-427b-9af1-0b77bf0fa395"/>
+				<textFieldExpression><![CDATA[$F{mesesvencidos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="279" y="77" width="100" height="20" uuid="e1618aff-878a-42cc-a892-3e130a5469ce"/>
+				<text><![CDATA[Mensualidad]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="279" y="97" width="100" height="20" uuid="d4b0b656-81a2-4a71-963e-02835e99a71e"/>
+				<textFieldExpression><![CDATA[$F{mensualidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="547" y="77" width="100" height="20" uuid="ccb2a824-b6fd-476f-bde6-0ab17b77fa89"/>
+				<text><![CDATA[Total Mensualidad]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="547" y="97" width="100" height="20" uuid="cda8336f-9f17-427d-808c-b2c71e546142"/>
+				<textFieldExpression><![CDATA[$F{totalmensualidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="532" y="0" width="100" height="20" uuid="fb41ba48-2f6e-425b-bab9-4a750330473c"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="632" y="0" width="80" height="20" uuid="435bbd3e-8a40-4628-8384-6c525f36911c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="712" y="0" width="40" height="20" uuid="37d41ca3-7ba7-4fa4-b249-8dd73d9607c4"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="100" height="20" uuid="b0e2b22a-d773-4af3-873a-0b0fef0d176d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

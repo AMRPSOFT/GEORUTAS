@@ -206,7 +206,7 @@ public class detallefacturaBean {
     public void mostrarPdf(ActionEvent actionEvent) throws JRException, IOException {
         Map parametro = new HashMap();
         identificacion = this.getIdentificacion();
-        parametro.put("identificacion", identificacion);
+        //parametro.put("identificacion", identificacion);
         File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/jrFactura.jasper"));
         byte[] bytes = JasperRunManager.runReportToPdf(jasper.getPath(), parametro, new JRBeanCollectionDataSource(this.getDetalleFacturas()));
         HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
