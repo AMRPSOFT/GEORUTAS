@@ -20,11 +20,7 @@
                 <p:growl id="msgs" showDetail="true" />
 
                 <h:form id="formDataTable">
-                    <h:outputText value="Facturar por Identificacion: "/>
-                    <p:inputText value="#{detallefacturaBean.identificacion}"/>
-                    <h:commandLink id="pdf" actionListener="#{detallefacturaBean.mostrarPdf}">
-                        <img src="../../resources/icons/Pdf.png" style="height: 28px; width: 28px;" alt="Mostrar Reporte"/>
-                    </h:commandLink>
+                    
                     <p:dataTable id="usuario" var="item" value="#{detallefacturaBean.detalleFacturas}" paginator="true" rows="9">
                         <f:facet name="header">
                             <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes Facturados"/>

@@ -27,46 +27,46 @@
 	</title>
 	<detail>
 		<band height="147" splitType="Stretch">
-			<textField>
-				<reportElement x="115" y="0" width="100" height="20" uuid="22572f90-d0d3-45e7-a7e3-d9ca1fb5d380"/>
-				<textFieldExpression><![CDATA[$F{iddetallefactura}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="15" y="0" width="100" height="20" uuid="7bc27c61-9efc-4c19-a077-e35ce9f2e743"/>
 				<text><![CDATA[Id:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="115" y="30" width="100" height="20" uuid="82814874-8acc-43b4-bc0f-a620f3bf7918"/>
-				<textFieldExpression><![CDATA[$F{identificacion}]]></textFieldExpression>
+				<reportElement x="115" y="0" width="100" height="20" uuid="22572f90-d0d3-45e7-a7e3-d9ca1fb5d380"/>
+				<textFieldExpression><![CDATA[$F{iddetallefactura}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="15" y="30" width="100" height="20" uuid="ef607883-6a0b-408a-ae4a-26b7e3441879"/>
 				<text><![CDATA[Identificacion:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="354" y="0" width="114" height="20" uuid="b94619f8-c933-4a15-90e3-f5320ed6b6fe"/>
-				<textFieldExpression><![CDATA[$F{nombreEstudiante}]]></textFieldExpression>
+				<reportElement x="115" y="30" width="100" height="20" uuid="82814874-8acc-43b4-bc0f-a620f3bf7918"/>
+				<textFieldExpression><![CDATA[$F{identificacion}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="254" y="0" width="100" height="20" uuid="0acacec3-5a91-4bd7-b472-421a2d975f35"/>
 				<text><![CDATA[Nombre:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="354" y="30" width="114" height="20" uuid="fc55de5a-395c-47ba-8a9f-9e1b1c4dbb35"/>
-				<textFieldExpression><![CDATA[$F{apellidoEstudiante}]]></textFieldExpression>
+				<reportElement x="354" y="0" width="114" height="20" uuid="b94619f8-c933-4a15-90e3-f5320ed6b6fe"/>
+				<textFieldExpression><![CDATA[$F{nombreEstudiante}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="254" y="30" width="100" height="20" uuid="0f67398d-3aa6-4c94-9cb9-d637d7b003ca"/>
 				<text><![CDATA[Apellidos:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="591" y="0" width="100" height="20" uuid="5d33f903-11c8-4d05-80de-8773154c94ca"/>
-				<textFieldExpression><![CDATA[$F{colegio}]]></textFieldExpression>
+				<reportElement x="354" y="30" width="114" height="20" uuid="fc55de5a-395c-47ba-8a9f-9e1b1c4dbb35"/>
+				<textFieldExpression><![CDATA[$F{apellidoEstudiante}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="491" y="0" width="100" height="20" uuid="96145b37-4b82-4c91-9c2e-ef35f14618ae"/>
 				<text><![CDATA[Colegio:]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="591" y="0" width="100" height="20" uuid="5d33f903-11c8-4d05-80de-8773154c94ca"/>
+				<textFieldExpression><![CDATA[$F{colegio}]]></textFieldExpression>
+			</textField>
 			<staticText>
 				<reportElement x="40" y="77" width="100" height="20" uuid="f228a8ff-4dc6-43da-9432-a43cc1fcfb2d"/>
 				<text><![CDATA[Meses Vencidos]]></text>
