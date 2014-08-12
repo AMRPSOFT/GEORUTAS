@@ -3,14 +3,14 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<field name="iddetallefactura" class="java.lang.String"/>
-	<field name="identificacion" class="java.lang.String"/>
+	<field name="iddetallefactura" class="java.lang.Integer"/>
+	<field name="identificacion" class="java.lang.Integer"/>
 	<field name="nombreEstudiante" class="java.lang.String"/>
 	<field name="apellidoEstudiante" class="java.lang.String"/>
 	<field name="colegio" class="java.lang.String"/>
-	<field name="mesesvencidos" class="java.lang.String"/>
-	<field name="mensualidad" class="java.lang.String"/>
-	<field name="totalmensualidad" class="java.lang.String"/>
+	<field name="mesesvencidos" class="java.lang.Integer"/>
+	<field name="mensualidad" class="java.math.BigDecimal"/>
+	<field name="totalmensualidad" class="java.math.BigDecimal"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
