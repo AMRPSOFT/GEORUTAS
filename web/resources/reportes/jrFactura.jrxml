@@ -13,7 +13,6 @@
 			<style backcolor="#E6DAC3"/>
 		</conditionalStyle>
 	</style>
-	<parameter name="identificacion" class="java.lang.Integer"/>
 	<queryString>
 		<![CDATA[
 ]]>
