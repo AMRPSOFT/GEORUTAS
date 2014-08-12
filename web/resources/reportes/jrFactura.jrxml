@@ -26,7 +26,7 @@
 		</band>
 	</title>
 	<detail>
-		<band height="147" splitType="Stretch">
+		<band height="203" splitType="Stretch">
 			<staticText>
 				<reportElement x="15" y="0" width="100" height="20" uuid="7bc27c61-9efc-4c19-a077-e35ce9f2e743"/>
 				<text><![CDATA[Id:]]></text>
@@ -68,35 +68,35 @@
 				<textFieldExpression><![CDATA[$F{colegio}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="40" y="77" width="100" height="20" uuid="f228a8ff-4dc6-43da-9432-a43cc1fcfb2d"/>
+				<reportElement x="40" y="86" width="100" height="20" uuid="f228a8ff-4dc6-43da-9432-a43cc1fcfb2d"/>
 				<text><![CDATA[Meses Vencidos]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="40" y="97" width="100" height="20" uuid="a2eaa6aa-4940-427b-9af1-0b77bf0fa395"/>
+				<reportElement x="40" y="106" width="100" height="20" uuid="a2eaa6aa-4940-427b-9af1-0b77bf0fa395"/>
 				<textFieldExpression><![CDATA[$F{mesesvencidos}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="279" y="77" width="100" height="20" uuid="e1618aff-878a-42cc-a892-3e130a5469ce"/>
+				<reportElement x="279" y="86" width="100" height="20" uuid="e1618aff-878a-42cc-a892-3e130a5469ce"/>
 				<text><![CDATA[Mensualidad]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="279" y="97" width="100" height="20" uuid="d4b0b656-81a2-4a71-963e-02835e99a71e"/>
+				<reportElement x="279" y="106" width="100" height="20" uuid="d4b0b656-81a2-4a71-963e-02835e99a71e"/>
 				<textFieldExpression><![CDATA[$F{mensualidad}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="547" y="77" width="100" height="20" uuid="ccb2a824-b6fd-476f-bde6-0ab17b77fa89"/>
+				<reportElement x="547" y="86" width="100" height="20" uuid="ccb2a824-b6fd-476f-bde6-0ab17b77fa89"/>
 				<text><![CDATA[Total Mensualidad]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="547" y="97" width="100" height="20" uuid="cda8336f-9f17-427d-808c-b2c71e546142"/>
+				<reportElement x="547" y="106" width="100" height="20" uuid="cda8336f-9f17-427d-808c-b2c71e546142"/>
 				<textFieldExpression><![CDATA[$F{totalmensualidad}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="25" splitType="Stretch">
+		<band height="62" splitType="Stretch">
 			<textField>
-				<reportElement x="532" y="0" width="100" height="20" uuid="fb41ba48-2f6e-425b-bab9-4a750330473c"/>
+				<reportElement x="325" y="5" width="100" height="20" uuid="fb41ba48-2f6e-425b-bab9-4a750330473c"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
