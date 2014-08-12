@@ -21,9 +21,9 @@
 
                 <h:form id="formDataTable">
                     <h:outputText value="Facturar por Identificacion: "/>
-                    <p:inputText value="#{detallefacturaBean.selectedDetalle.identificacion}"/>
-                    <p:commandButton actionListener="#{detallefacturaBean.startReport}" value="Crear"/>
-                    <p:dataTable id="usuario" var="item" value="#{detallefacturaBean.detalleFacturas}" paginator="true" rows="10">
+                    <p:inputText value="#{detallefacturaBean.identificacion}"/>
+                    <p:commandButton actionListener="#{detallefacturaBean.mostrarPdf}" value="Crear"/>
+                    <p:dataTable id="usuario" var="item" value="#{detallefacturaBean.detalleFacturas}" paginator="true" rows="9">
                         <f:facet name="header">
                             <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes Facturados"/>
                         </f:facet>

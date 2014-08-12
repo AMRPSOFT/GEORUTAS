@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bean;
 
 import dao.DetalleFacturaDao;
@@ -12,12 +11,9 @@ import dao.EstudianteDao;
 import dao.EstudianteDaoImpl;
 import dao.FacturaDao;
 import dao.FacturaDaoImpl;
-import java.awt.Frame;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,11 +32,8 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.JasperRunManager;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.primefaces.context.RequestContext;
@@ -57,7 +50,7 @@ public class detallefacturaBean {
 
     Session sesion;
     Transaction transaction;
-    
+
     private Estudiante estudiante;
     private List<Estudiante> estudiantes;
     private Factura factura;
@@ -66,12 +59,7 @@ public class detallefacturaBean {
     private List<Detallefactura> detalleFacturas;
     private Detallefactura selectedDetalle;
     private BigDecimal valorMensualidad;
-    
-        private static final String DRIVER="com.mysql.jdbc.Driver";
-        private static final String RUTA="jdbc:mysql://localhost/georutas";
-        private static final String USER="root";
-        private static final String PASSWORD="12345";
-	private static Connection CONEXION;
+    private int identificacion;
 
     public detallefacturaBean() {
         this.factura = new Factura();
@@ -80,53 +68,46 @@ public class detallefacturaBean {
         this.listaFactura = new ArrayList<>();
         this.detalleFacturas = new ArrayList<Detallefactura>();
     }
-    
-    public void PDF(ActionEvent actionEvent) throws JRException, IOException{
-       
-       File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/jrFactura.jasper"));
-       JasperPrint jasperPrint = JasperFillManager.fillReport(jasper.getPath(), null, new JRBeanCollectionDataSource(this.getDetalleFacturas()));
-       HttpServletResponse httpServletResponse = (HttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
-       httpServletResponse.addHeader("Content-disposition", "attachment; filename=Factura.pdf");
-       ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
-       JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream); 
-       servletOutputStream.flush();
-       servletOutputStream.close();
-       FacesContext.getCurrentInstance().responseComplete();
-   }
+
+    public void PDF(ActionEvent actionEvent) throws JRException, IOException {
+
+        File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/jrFactura.jasper"));
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasper.getPath(), null, new JRBeanCollectionDataSource(this.getDetalleFacturas()));
+        HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        httpServletResponse.addHeader("Content-disposition", "attachment; filename=Factura.pdf");
+        ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+        JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
+        servletOutputStream.flush();
+        servletOutputStream.close();
+        FacesContext.getCurrentInstance().responseComplete();
+    }
 
     public List<Estudiante> getAllEstudiantes() {
-        this.sesion=null;
-        this.transaction=null;
-        
-        try
-        {
-            this.sesion=HibernateUtil.getSessionFactory().openSession();
-            
+        this.sesion = null;
+        this.transaction = null;
+
+        try {
+            this.sesion = HibernateUtil.getSessionFactory().openSession();
+
             EstudianteDao estudianteDao = new EstudianteDaoImpl();
-            
-            this.transaction=this.sesion.beginTransaction();
-            
-            this.estudiantes=estudianteDao.getAll(this.sesion);
-            
+
+            this.transaction = this.sesion.beginTransaction();
+
+            this.estudiantes = estudianteDao.getAll(this.sesion);
+
             this.transaction.commit();
-            
+
             return this.estudiantes;
-        }
-        catch(Exception ex)
-        {
-            if(this.transaction!=null)
-            {
+        } catch (Exception ex) {
+            if (this.transaction != null) {
                 transaction.rollback();
             }
-            
+
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", ex.getMessage()));
-            
+
             return null;
-        }
-        finally
-        {
-            if(this.sesion!=null)
-            {
+        } finally {
+            if (this.sesion != null) {
                 this.sesion.close();
             }
         }
@@ -139,128 +120,120 @@ public class detallefacturaBean {
         try {
             this.sesion = HibernateUtil.getSessionFactory().openSession();
             EstudianteDao estudianteDao = new EstudianteDaoImpl();
-            this.transaction=this.sesion.beginTransaction();
+            this.transaction = this.sesion.beginTransaction();
             this.estudiante = estudianteDao.getByIdEstdiante(this.sesion, idestudiante);
-            this.listaDetalleFactura.add(new Detallefactura(null, null, this.estudiante.getIdenticacion(), this.estudiante.getNombre(), 
+            this.listaDetalleFactura.add(new Detallefactura(null, null, this.estudiante.getIdenticacion(), this.estudiante.getNombre(),
                     this.estudiante.getApellido(), this.estudiante.getColegio(), 0, new BigDecimal("100000"), new BigDecimal("0")));
             this.transaction.commit();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Estudiante Agregado"));
             RequestContext.getCurrentInstance().update("frmrealizarFactura:tablaListaEstudiantes");
             RequestContext.getCurrentInstance().update("frmrealizarFactura:mensajeGeneral");
-        } 
-        catch(Exception ex) {
-        if(this.transaction!=null)
-            {
+        } catch (Exception ex) {
+            if (this.transaction != null) {
                 transaction.rollback();
             }
-            
+
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", ex.getMessage()));
-        }
-        finally
-        {
-            if(this.sesion!=null)
-            {
+        } finally {
+            if (this.sesion != null) {
                 this.sesion.close();
             }
         }
     }
-    
-    public void guardarFactura()
-    {
-        this.sesion=null;
-        this.transaction=null;
-        
-        try
-        {
-            this.sesion=HibernateUtil.getSessionFactory().openSession();
-            
+
+    public void guardarFactura() {
+        this.sesion = null;
+        this.transaction = null;
+
+        try {
+            this.sesion = HibernateUtil.getSessionFactory().openSession();
+
             EstudianteDao estudianteDao = new EstudianteDaoImpl();
             FacturaDao facturaDao = new FacturaDaoImpl();
             DetalleFacturaDao detallefacturaDao = new DetalleFacturaDaoImpl();
-            
-            this.transaction=this.sesion.beginTransaction();
-            
+
+            this.transaction = this.sesion.beginTransaction();
+
             facturaDao.insert(this.sesion, this.factura);
             this.factura = facturaDao.getUltimoRegistro(this.sesion);
-            
-            for(Detallefactura item : this.listaDetalleFactura)
-            {
+
+            for (Detallefactura item : this.listaDetalleFactura) {
                 this.estudiante = estudianteDao.getByIdentificacion(this.sesion, item.getIdentificacion());
                 item.setEstudiante(this.estudiante);
                 item.setFactura(this.factura);
                 detallefacturaDao.insert(this.sesion, item);
             }
             this.transaction.commit();
-            
+
             this.listaDetalleFactura = new ArrayList<>();
             this.factura = new Factura();
-            
+
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Factura Generada"));
-        }
-        catch(Exception ex)
-        {
-            if(this.transaction!=null)
-            {
+        } catch (Exception ex) {
+            if (this.transaction != null) {
                 transaction.rollback();
             }
-            
+
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", ex.getMessage()));
-        }
-        finally
-        {
-            if(this.sesion!=null)
-            {
+        } finally {
+            if (this.sesion != null) {
                 this.sesion.close();
             }
         }
     }
-    public void calcularCostos()
-    {
-        try
-        {   
+
+    public void calcularCostos() {
+        try {
             BigDecimal total = new BigDecimal("0");
-            
-            for(Detallefactura item : this.listaDetalleFactura)
-            {
+
+            for (Detallefactura item : this.listaDetalleFactura) {
                 BigDecimal totalMensualidadAPagar = item.getMensualidad().multiply(new BigDecimal(item.getMesesvencidos()));
-                
+
                 item.setTotalmensualidad(totalMensualidadAPagar);
-                
+
                 total = total.add(totalMensualidadAPagar);
             }
-            
+
             this.factura.setTotalapagar(total);
-            
+
             RequestContext.getCurrentInstance().update("frmRealizarFactura:tablaListaEstudiantes");
             RequestContext.getCurrentInstance().update("frmRealizarFactura:panelFinalVenta");
-        }
-        catch(Exception ex)
-        {            
+        } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", ex.getMessage()));
         }
     }
-    
-    public void mostrarPdf(ActionEvent actionEvent) throws JRException, IOException{
-       Map parametro = new HashMap();
-       int identificacion = this.selectedDetalle.getIdentificacion();
-       parametro.put("identificacion", identificacion);
-       File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/jrFactura.jasper"));
-       byte[] bytes = JasperRunManager.runReportToPdf(jasper.getPath(), parametro, new JRBeanCollectionDataSource(this.getDetalleFacturas()));
-       HttpServletResponse httpServletResponse = (HttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
-       httpServletResponse.setContentType("application/pdf");
-       httpServletResponse.setContentLength(bytes.length);
-       ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
-       servletOutputStream.write(bytes, 0, bytes.length);
-       
-       servletOutputStream.flush();
-       servletOutputStream.close();
-       FacesContext.getCurrentInstance().responseComplete();
+
+    public void mostrarPdf(ActionEvent actionEvent) throws JRException, IOException {
+        Map parametro = new HashMap();
+        identificacion = this.getIdentificacion();
+        parametro.put("identificacion", identificacion);
+        File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/jrFactura.jasper"));
+        byte[] bytes = JasperRunManager.runReportToPdf(jasper.getPath(), parametro, new JRBeanCollectionDataSource(this.getDetalleFacturas()));
+        HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        httpServletResponse.setContentType("application/pdf");
+        httpServletResponse.setContentLength(bytes.length);
+        ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+        servletOutputStream.write(bytes, 0, bytes.length);
+
+        servletOutputStream.flush();
+        servletOutputStream.close();
+        FacesContext.getCurrentInstance().responseComplete();
     }
-    
-    public void startReport(ActionEvent actionEvent){
-       int identificacion = this.selectedDetalle.getIdentificacion();
-        Reportes reporte = new Reportes();
-        reporte.startReport(identificacion);
+
+    public void startReport() throws JRException, IOException {
+        this.sesion = null;
+        this.transaction = null;
+        try {
+            this.sesion = HibernateUtil.getSessionFactory().openSession();
+            identificacion = this.getIdentificacion();
+            Reportes reporte = new Reportes();
+            this.transaction = this.sesion.beginTransaction();
+            reporte.verReporte(identificacion);
+
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", e.getMessage()));
+        }
+
     }
 
     public Estudiante getEstudiante() {
@@ -310,12 +283,19 @@ public class detallefacturaBean {
     public void setSelectedDetalle(Detallefactura selectedDetalle) {
         this.selectedDetalle = selectedDetalle;
     }
-    
+
+    public int getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(int identificacion) {
+        this.identificacion = identificacion;
+    }
+
     public List<Detallefactura> getDetalleFacturas() {
         DetalleFacturaDao detalleFacturaDao = new DetalleFacturaDaoImpl();
         this.detalleFacturas = detalleFacturaDao.findAll();
         return detalleFacturas;
     }
-    
-    
+
 }

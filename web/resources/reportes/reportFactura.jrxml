@@ -40,7 +40,7 @@
 				<staticText>
 					<reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="2ba22d60-1041-4919-99d3-0b55b3fa7604"/>
 					<textElement>
-						<font size="12"/>
+						<font size="10"/>
 					</textElement>
 					<text><![CDATA[identificacion]]></text>
 				</staticText>
@@ -50,7 +50,7 @@
 				<textField>
 					<reportElement mode="Opaque" x="100" y="1" width="453" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="e8442216-b22f-4c22-971e-6f5819ec6c58"/>
 					<textElement>
-						<font size="14" isBold="true"/>
+						<font size="10" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{identificacion}]]></textFieldExpression>
 				</textField>
@@ -88,49 +88,49 @@
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="b955014b-b3d7-4c36-ae32-86be98628b06"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Id]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="79" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1e2f7ec7-1e56-48fc-9500-de522f4773da"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="158" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1ba012f6-201d-435f-8c53-8598f1341b2c"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Apellidos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="237" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="54cd2488-4f2b-4040-a813-6b8c741f1278"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Colegio]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="316" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1fbfa6b9-09eb-4482-8afd-80d3986338e2"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Meses Vencidos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="395" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="46044088-ea18-4197-b65f-40e8f745448c"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Mensualidad]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="474" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a3a4a6fe-9d0b-4585-bbd9-7b9fcb468b7d"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total Mensualidad]]></text>
 			</staticText>
@@ -144,49 +144,49 @@
 			<textField isStretchWithOverflow="true">
 				<reportElement x="0" y="0" width="79" height="20" uuid="39cdec2f-050d-46e3-b754-749ee08c68b1"/>
 				<textElement>
-					<font size="14"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{iddetallefactura}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="79" y="0" width="79" height="20" uuid="c8fe638b-56e8-4560-b405-7f702057c103"/>
 				<textElement>
-					<font size="14"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombreestudiante}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="158" y="0" width="79" height="20" uuid="3c79b0f7-940f-4659-b842-f9ba33756470"/>
 				<textElement>
-					<font size="14"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{apellidoestudiante}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="237" y="0" width="79" height="20" uuid="368eb4e8-246a-48ed-8ab0-c409e8d30a52"/>
 				<textElement>
-					<font size="14"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{colegio}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="336" y="0" width="30" height="20" uuid="e432396b-088d-4f12-8895-554b1a26fdc9"/>
 				<textElement>
-					<font size="14"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mesesvencidos}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="395" y="0" width="79" height="20" uuid="9a26aea5-9131-418e-b17d-108c3fde3447"/>
 				<textElement>
-					<font size="14"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mensualidad}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="474" y="0" width="79" height="20" uuid="6de86581-9aae-4621-8121-3d9e7044d888"/>
 				<textElement>
-					<font size="14"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{totalmensualidad}]]></textFieldExpression>
 			</textField>

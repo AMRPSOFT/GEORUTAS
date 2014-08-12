@@ -14,14 +14,34 @@
 		</conditionalStyle>
 	</style>
 	<parameter name="identificacion" class="java.lang.Integer"/>
-	<field name="iddetallefactura" class="java.lang.Integer"/>
-	<field name="identificacion" class="java.lang.Integer"/>
-	<field name="nombreEstudiante" class="java.lang.String"/>
-	<field name="apellidoEstudiante" class="java.lang.String"/>
-	<field name="colegio" class="java.lang.String"/>
-	<field name="mesesvencidos" class="java.lang.Integer"/>
-	<field name="mensualidad" class="java.math.BigDecimal"/>
-	<field name="totalmensualidad" class="java.math.BigDecimal"/>
+	<queryString>
+		<![CDATA[select iddetallefactura, identificacion, nombreestudiante, apellidoestudiante, colegio, mesesvencidos, mensualidad, totalmensualidad from detallefactura where identificacion =$P{identificacion} ;
+]]>
+	</queryString>
+	<field name="iddetallefactura" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="identificacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreestudiante" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidoestudiante" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="colegio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mesesvencidos" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mensualidad" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totalmensualidad" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<group name="Group1">
 		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
 	</group>
@@ -94,7 +114,7 @@
 			</staticText>
 			<textField>
 				<reportElement x="120" y="51" width="119" height="20" uuid="b47bb988-ff83-40c8-bb16-cc38f6955753"/>
-				<textFieldExpression><![CDATA[$F{nombreEstudiante}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nombreestudiante}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="75" width="100" height="20" uuid="dd5a11bc-9811-4e81-85fe-308f06d33dc2"/>
@@ -102,7 +122,7 @@
 			</staticText>
 			<textField>
 				<reportElement x="120" y="75" width="119" height="20" uuid="e11c4017-185b-48d4-9aad-83f3913dd206"/>
-				<textFieldExpression><![CDATA[$F{apellidoEstudiante}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{apellidoestudiante}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="99" width="100" height="20" uuid="a8acb2ef-a735-40c6-8b64-466e352e640d"/>
