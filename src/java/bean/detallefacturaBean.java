@@ -12,9 +12,12 @@ import dao.EstudianteDao;
 import dao.EstudianteDaoImpl;
 import dao.FacturaDao;
 import dao.FacturaDaoImpl;
+import java.awt.Frame;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,12 +36,16 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.JasperRunManager;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.primefaces.context.RequestContext;
 import util.HibernateUtil;
+import util.Reportes;
 
 /**
  *
@@ -59,6 +66,12 @@ public class detallefacturaBean {
     private List<Detallefactura> detalleFacturas;
     private Detallefactura selectedDetalle;
     private BigDecimal valorMensualidad;
+    
+        private static final String DRIVER="com.mysql.jdbc.Driver";
+        private static final String RUTA="jdbc:mysql://localhost/georutas";
+        private static final String USER="root";
+        private static final String PASSWORD="12345";
+	private static Connection CONEXION;
 
     public detallefacturaBean() {
         this.factura = new Factura();
@@ -228,16 +241,26 @@ public class detallefacturaBean {
     }
     
     public void mostrarPdf(ActionEvent actionEvent) throws JRException, IOException{
+       Map parametro = new HashMap();
+       int identificacion = this.selectedDetalle.getIdentificacion();
+       parametro.put("identificacion", identificacion);
        File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/jrFactura.jasper"));
-       byte[] bytes = JasperRunManager.runReportToPdf(jasper.getPath(), null, new JRBeanCollectionDataSource(this.getDetalleFacturas()));
+       byte[] bytes = JasperRunManager.runReportToPdf(jasper.getPath(), parametro, new JRBeanCollectionDataSource(this.getDetalleFacturas()));
        HttpServletResponse httpServletResponse = (HttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
        httpServletResponse.setContentType("application/pdf");
        httpServletResponse.setContentLength(bytes.length);
        ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
        servletOutputStream.write(bytes, 0, bytes.length);
+       
        servletOutputStream.flush();
        servletOutputStream.close();
        FacesContext.getCurrentInstance().responseComplete();
+    }
+    
+    public void startReport(ActionEvent actionEvent){
+       int identificacion = this.selectedDetalle.getIdentificacion();
+        Reportes reporte = new Reportes();
+        reporte.startReport(identificacion);
     }
 
     public Estudiante getEstudiante() {

@@ -18,7 +18,11 @@
 
             <ui:define name="content">
                 <p:growl id="msgs" showDetail="true" />
+
                 <h:form id="formDataTable">
+                    <h:outputText value="Facturar por Identificacion: "/>
+                    <p:inputText value="#{detallefacturaBean.selectedDetalle.identificacion}"/>
+                    <p:commandButton actionListener="#{detallefacturaBean.startReport}" value="Crear"/>
                     <p:dataTable id="usuario" var="item" value="#{detallefacturaBean.detalleFacturas}" paginator="true" rows="10">
                         <f:facet name="header">
                             <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes Facturados"/>
@@ -47,12 +51,13 @@
                         <p:column headerText="Total Mensualidad" style="font-size: 10px;text-align: center;">  
                             <h:outputText value="#{item.totalmensualidad}" />  
                         </p:column>
-                        <p:column headerText="Acciones" style="font-size: 10px; text-align: center;">
+                        <p:column headerText="Exportar" style="font-size: 10px; text-align: center;">
                             <h:commandLink id="pdf" actionListener="#{detallefacturaBean.mostrarPdf}">
-                                <img src="../../resources/icons/Pdf.png" style="height: 22px; width: 22px;"/>
+                                <img src="../../resources/icons/Pdf.png" style="height: 22px; width: 22px;" alt="Mostrar Reporte"/>
                             </h:commandLink>
                         </p:column>
                     </p:dataTable>
+                    
                 </h:form>
             </ui:define>
 
