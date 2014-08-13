@@ -8,9 +8,7 @@
             <column name="idvehiculo" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="ruta" class="model.Ruta" fetch="select">
-            <column name="IdRuta" not-null="true" unique="true" />
-        </many-to-one>
+        
         <many-to-one name="conductor" class="model.Conductor" fetch="select">
             <column name="IdConductor" not-null="true" unique="true" />
         </many-to-one>

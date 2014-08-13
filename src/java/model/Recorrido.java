@@ -17,6 +17,7 @@ public class Recorrido  implements java.io.Serializable {
      private Set detallerecorridoestudiante = new HashSet(0);
  
     public Recorrido() {
+        this.idrecorrido = 0;
     }
 
     public Recorrido( int numEstudiantes, String jornada) {

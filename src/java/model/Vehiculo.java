@@ -26,29 +26,32 @@ public class Vehiculo  implements java.io.Serializable {
 
 
      private int idvehiculo;
-     private Ruta ruta;
      private Conductor conductor;
+     private Recorrido recorrido;
      private int nroRuta;
      private String placa;
      private String color;
      private Set recorridos = new HashSet(0);
 
     public Vehiculo() {
+        this.idvehiculo = 0;
+        this.conductor = new Conductor();
+        this.recorrido = new Recorrido();
     }
 
 	
-    public Vehiculo(int idvehiculo, Ruta ruta, Conductor conductor, int nroRuta, String placa, String color) {
+    public Vehiculo(int idvehiculo, Conductor conductor, Recorrido recorrido, int nroRuta, String placa, String color) {
         this.idvehiculo = idvehiculo;
-        this.ruta = ruta;
         this.conductor = conductor;
+        this.recorrido = recorrido;
         this.nroRuta = nroRuta;
         this.placa = placa;
         this.color = color;
     }
-    public Vehiculo(int idvehiculo, Ruta ruta, Conductor conductor, int nroRuta, String placa, String color, Set recorridos) {
+    public Vehiculo(int idvehiculo, Conductor conductor, Recorrido recorrido, int nroRuta, String placa, String color, Set recorridos) {
        this.idvehiculo = idvehiculo;
-       this.ruta = ruta;
        this.conductor = conductor;
+       this.recorrido = recorrido;
        this.nroRuta = nroRuta;
        this.placa = placa;
        this.color = color;
@@ -67,17 +70,7 @@ public class Vehiculo  implements java.io.Serializable {
         this.idvehiculo = idvehiculo;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IdRuta", unique=true, nullable=false)
-    public Ruta getRuta() {
-        return this.ruta;
-    }
-    
-    public void setRuta(Ruta ruta) {
-        this.ruta = ruta;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="IdConductor", unique=true, nullable=false)
     public Conductor getConductor() {
         return this.conductor;
@@ -86,7 +79,17 @@ public class Vehiculo  implements java.io.Serializable {
     public void setConductor(Conductor conductor) {
         this.conductor = conductor;
     }
+    
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="IdRecorrido", unique=true, nullable=false)
+    public Recorrido getRecorrido() {
+        return recorrido;
+    }
 
+    public void setRecorrido(Recorrido recorrido) {
+        this.recorrido = recorrido;
+    }
+    
     
     @Column(name="NroRuta", nullable=false)
     public int getNroRuta() {

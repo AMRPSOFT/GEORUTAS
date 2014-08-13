@@ -6,11 +6,8 @@
 
 package bean;
 
-import dao.EstudianteDaoImpl;
 import dao.RecorridoDao;
 import dao.RecorridoDaoImpl;
-import dao.VehiculoDao;
-import dao.VehiculoDaoImpl;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -40,7 +37,8 @@ public class recorridoBean {
         RecorridoDao recorridoDao = new RecorridoDaoImpl();
         recorridos = recorridoDao.selectItems();
         for (Recorrido recorrido : recorridos) {
-            SelectItem selectItem = new SelectItem(recorrido.getIdrecorrido(),"");
+            String idrecorrido = String.valueOf(recorrido.getIdrecorrido());
+            SelectItem selectItem = new SelectItem(recorrido.getIdrecorrido(),idrecorrido);
             this.selectOneItemsRecorrido.add(selectItem);
         }
         return selectOneItemsRecorrido;

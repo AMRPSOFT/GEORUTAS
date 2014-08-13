@@ -32,6 +32,7 @@ public class Conductor  implements java.io.Serializable {
      private Set recorridos = new HashSet(0);
 
     public Conductor() {
+        this.idconductor = 0;
     }
 
 	
