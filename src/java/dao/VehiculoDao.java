@@ -6,10 +6,17 @@
 
 package dao;
 
+import java.util.List;
+import model.Vehiculo;
+
 /**
  *
  * @author Alex Rodriguez
  */
 public interface VehiculoDao {
-    
+    public Vehiculo findByVehiculo(Vehiculo vehiculo);
+    public List<Vehiculo> findAll();
+    public boolean create(Vehiculo vehiculo);
+    public boolean update(Vehiculo vehiculo);
+    public boolean delete(Integer id);
 }

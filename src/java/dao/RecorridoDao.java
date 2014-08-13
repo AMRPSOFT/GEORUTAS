@@ -6,6 +6,7 @@
 
 package dao;
 
+import java.util.List;
 import model.Recorrido;
 import org.hibernate.Session;
 
@@ -16,4 +17,5 @@ import org.hibernate.Session;
 public interface RecorridoDao {
     public boolean insert(Session sesion, Recorrido recorrido) throws Exception;
     public Recorrido getUltimoRegistro(Session sesion) throws Exception;
+    public List<Recorrido> selectItems();
 }

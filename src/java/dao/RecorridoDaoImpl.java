@@ -1,9 +1,12 @@
 
 package dao;
 
+import java.util.List;
 import model.Recorrido;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.HibernateUtil;
 
 /**
  *
@@ -24,5 +27,21 @@ public class RecorridoDaoImpl implements RecorridoDao{
         
         return (Recorrido) query.uniqueResult();
     }
-    
+
+    @Override
+    public List<Recorrido> selectItems() {
+        List<Recorrido> listado = null;
+        Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        String sql = "FROM Recorrido";
+        Transaction transaction = sesion.beginTransaction();
+            try {
+                listado = (List<Recorrido>) sesion.createQuery(sql).list();
+                transaction.commit();
+            } catch (Exception e) {
+                transaction.rollback();
+                throw e;
+            }
+        return listado;
+    }
+
 }
