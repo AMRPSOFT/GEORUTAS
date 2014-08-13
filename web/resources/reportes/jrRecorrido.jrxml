@@ -42,7 +42,7 @@
 			</rectangle>
 			<staticText>
 				<reportElement x="117" y="38" width="141" height="20" uuid="41ef6987-0064-4b50-8b0a-8e137f492b1d"/>
-				<text><![CDATA[iddetallerecorridoestudiante]]></text>
+				<text><![CDATA[Id]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="273" y="38" width="162" height="20" uuid="92fa9be6-52f6-4f65-80c1-34ced8736c21"/>
@@ -50,7 +50,7 @@
 			</textField>
 			<staticText>
 				<reportElement x="117" y="72" width="141" height="20" uuid="8c094aeb-54da-4721-b14b-3af05bca6f32"/>
-				<text><![CDATA[identificacion]]></text>
+				<text><![CDATA[Identificacion]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="273" y="72" width="162" height="20" uuid="086f41f0-8772-4999-bbf8-bf181c0b1aeb"/>
@@ -58,7 +58,7 @@
 			</textField>
 			<staticText>
 				<reportElement x="117" y="104" width="141" height="20" uuid="d2da3d0d-12a4-4296-a9d1-9b817b890113"/>
-				<text><![CDATA[nombreestudiante]]></text>
+				<text><![CDATA[Nombres]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="273" y="104" width="162" height="20" uuid="06374ae1-30b3-4616-ba50-9487e1eaaa9b"/>
@@ -66,7 +66,7 @@
 			</textField>
 			<staticText>
 				<reportElement x="117" y="139" width="141" height="20" uuid="9590eb28-5ad1-4922-b3fb-fd8f07648735"/>
-				<text><![CDATA[apellidoestudiante]]></text>
+				<text><![CDATA[Apellidos]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="273" y="139" width="162" height="20" uuid="c1c7f74b-343a-4445-b14d-ea9166593563"/>
@@ -74,7 +74,7 @@
 			</textField>
 			<staticText>
 				<reportElement x="117" y="175" width="141" height="20" uuid="9d97165f-1989-4c97-84da-d2937fa74a3d"/>
-				<text><![CDATA[direccionestudiante]]></text>
+				<text><![CDATA[Direccion]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="273" y="175" width="162" height="20" uuid="4e76d6df-ddda-4f31-a35e-7360929f1dac"/>
@@ -82,7 +82,7 @@
 			</textField>
 			<staticText>
 				<reportElement x="117" y="211" width="141" height="20" uuid="e15a61c2-5350-4581-8b0f-a642224951e4"/>
-				<text><![CDATA[colegio]]></text>
+				<text><![CDATA[Colegio]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="273" y="211" width="162" height="20" uuid="8824a45c-ef1d-43d5-baac-318ed29c8c66"/>
@@ -90,7 +90,7 @@
 			</textField>
 			<staticText>
 				<reportElement x="117" y="247" width="141" height="20" uuid="9fdc4837-2681-4b7e-9571-ec7988c27bee"/>
-				<text><![CDATA[jornada]]></text>
+				<text><![CDATA[Jornada]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="273" y="247" width="162" height="20" uuid="f0ece826-b0dc-4927-bfed-0f1e9eae78e3"/>
