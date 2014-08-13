@@ -208,7 +208,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable {
             identificacion = this.getIdentificacion();
             Reportes reporte = new Reportes();
             this.transaction = this.sesion.beginTransaction();
-            reporte.verReporte(identificacion);
+            reporte.verReporteRecorrido(identificacion);
 
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", e.getMessage()));
@@ -220,7 +220,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable {
         Map parametro = new HashMap();
         identificacion = this.getIdentificacion();
         //parametro.put("identificacion", identificacion);
-        File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/jrFactura.jasper"));
+        File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/jrRecorrido.jasper"));
         byte[] bytes = JasperRunManager.runReportToPdf(jasper.getPath(), parametro, new JRBeanCollectionDataSource(this.getDetallerecorridos()));
         HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         httpServletResponse.setContentType("application/pdf");
