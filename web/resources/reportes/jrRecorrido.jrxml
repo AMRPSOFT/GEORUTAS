@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jrRecorrido" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ddc9ef94-a6d2-449d-b28d-fa390aa8fb7f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="iddetallerecorridoestudiante" class="java.lang.Integer"/>
+	<field name="identificacion" class="java.lang.Integer"/>
+	<field name="nombreestudiante" class="java.lang.String"/>
+	<field name="apellidoestudiante" class="java.lang.String"/>
+	<field name="direccionestudiante" class="java.lang.String"/>
+	<field name="colegio" class="java.lang.String"/>
+	<field name="jornada" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="555" height="77" uuid="3fe40fb1-9e5e-420f-aa04-0135d450fbb4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AMTE TRANSPORTES ESCOLARES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="35" uuid="14c56cbf-c266-423d-a064-c818ff7a77f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE GENERAL DE RECORRIDOS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="303" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="44" y="22" width="453" height="260" uuid="dd6b7eb2-5100-45c4-b39c-df924aac6f3c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="117" y="38" width="141" height="20" uuid="41ef6987-0064-4b50-8b0a-8e137f492b1d"/>
+				<text><![CDATA[iddetallerecorridoestudiante]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="273" y="38" width="162" height="20" uuid="92fa9be6-52f6-4f65-80c1-34ced8736c21"/>
+				<textFieldExpression><![CDATA[$F{iddetallerecorridoestudiante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="117" y="72" width="141" height="20" uuid="8c094aeb-54da-4721-b14b-3af05bca6f32"/>
+				<text><![CDATA[identificacion]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="273" y="72" width="162" height="20" uuid="086f41f0-8772-4999-bbf8-bf181c0b1aeb"/>
+				<textFieldExpression><![CDATA[$F{identificacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="117" y="104" width="141" height="20" uuid="d2da3d0d-12a4-4296-a9d1-9b817b890113"/>
+				<text><![CDATA[nombreestudiante]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="273" y="104" width="162" height="20" uuid="06374ae1-30b3-4616-ba50-9487e1eaaa9b"/>
+				<textFieldExpression><![CDATA[$F{nombreestudiante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="117" y="139" width="141" height="20" uuid="9590eb28-5ad1-4922-b3fb-fd8f07648735"/>
+				<text><![CDATA[apellidoestudiante]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="273" y="139" width="162" height="20" uuid="c1c7f74b-343a-4445-b14d-ea9166593563"/>
+				<textFieldExpression><![CDATA[$F{apellidoestudiante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="117" y="175" width="141" height="20" uuid="9d97165f-1989-4c97-84da-d2937fa74a3d"/>
+				<text><![CDATA[direccionestudiante]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="273" y="175" width="162" height="20" uuid="4e76d6df-ddda-4f31-a35e-7360929f1dac"/>
+				<textFieldExpression><![CDATA[$F{direccionestudiante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="117" y="211" width="141" height="20" uuid="e15a61c2-5350-4581-8b0f-a642224951e4"/>
+				<text><![CDATA[colegio]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="273" y="211" width="162" height="20" uuid="8824a45c-ef1d-43d5-baac-318ed29c8c66"/>
+				<textFieldExpression><![CDATA[$F{colegio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="117" y="247" width="141" height="20" uuid="9fdc4837-2681-4b7e-9571-ec7988c27bee"/>
+				<text><![CDATA[jornada]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="273" y="247" width="162" height="20" uuid="f0ece826-b0dc-4927-bfed-0f1e9eae78e3"/>
+				<textFieldExpression><![CDATA[$F{jornada}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="435" y="4" width="80" height="20" uuid="8a5dd046-02b4-41aa-b9a2-a3a9b27285e0"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="4" width="40" height="20" uuid="7c3811f8-ad71-4512-9cb6-023c2ee2c565"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="219" y="4" width="100" height="20" uuid="7a2231dd-2a81-4de0-9421-8d3630e59831"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="20" uuid="53d39f66-fd6f-4714-8e2d-9a3ad85a2fb0"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

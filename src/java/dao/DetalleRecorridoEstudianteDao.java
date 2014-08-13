@@ -1,6 +1,7 @@
 
 package dao;
 
+import java.util.List;
 import model.Detallerecorridoestudiante;
 import org.hibernate.Session;
 
@@ -10,4 +11,5 @@ import org.hibernate.Session;
  */
 public interface DetalleRecorridoEstudianteDao {
     public boolean insert(Session sesion, Detallerecorridoestudiante dtellaRecorridoEstudiante);
+    public List<Detallerecorridoestudiante> findAll();
 }

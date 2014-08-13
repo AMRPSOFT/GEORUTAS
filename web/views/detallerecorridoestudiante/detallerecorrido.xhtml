@@ -6,12 +6,6 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head>
-        <title>
-            Listar Facturas
-        </title>
-    </h:head>
-
     <body>
 
         <ui:composition template="./../template.xhtml">
@@ -33,33 +27,30 @@
                         </h:commandLink>
                     </h:panelGroup>
                     <hr/>
-                    <p:dataTable id="usuario" var="item" value="#{detallefacturaBean.detalleFacturas}" paginator="true" rows="13">
+                    <p:dataTable id="usuario" var="item" value="#{detalleRecorridoEstudiantesBean.detallerecorridos}" paginator="true" rows="13">
                         <f:facet name="header">
                             <p:outputLabel style="font-size: 18px;" value="Listado de Estudiantes Facturados"/>
                         </f:facet>
                         <p:column headerText="Id" style="font-size: 10px;text-align: center;"> 
-                            <h:outputText value="#{item.iddetallefactura}" />  
+                            <h:outputText value="#{item.iddetallerecorridoestudiante}" />  
                         </p:column>
                         <p:column headerText="Identificacion" style="font-size: 10px;text-align: center;"> 
                             <h:outputText value="#{item.identificacion}" />  
                         </p:column>
                         <p:column headerText="Nombres" style="font-size: 10px;text-align: center;" filterBy="nombreEstudiante">  
-                            <h:outputText value="#{item.nombreEstudiante}" />  
+                            <h:outputText value="#{item.nombreestudiante}" />  
                         </p:column>
                         <p:column headerText="Apellidos" style="font-size: 10px;text-align: center;">  
-                            <h:outputText value="#{item.apellidoEstudiante}" />  
+                            <h:outputText value="#{item.apellidoestudiante}" />  
                         </p:column>
                         <p:column headerText="Colegio" style="font-size: 10px;text-align: center;">  
                             <h:outputText value="#{item.colegio}" />  
                         </p:column>
-                        <p:column headerText="Meses Vencidos" style="font-size: 10px;text-align: center;">  
-                            <h:outputText value="#{item.mesesvencidos}" />  
+                        <p:column headerText="Direccion" style="font-size: 10px;text-align: center;">  
+                            <h:outputText value="#{item.direccionestudiante}" />  
                         </p:column>
-                        <p:column headerText="Mensualidad" style="font-size: 10px;text-align: center;">  
-                            <h:outputText value="#{item.mensualidad}" />  
-                        </p:column>
-                        <p:column headerText="Total Mensualidad" style="font-size: 10px;text-align: center;">  
-                            <h:outputText value="#{item.totalmensualidad}" />  
+                        <p:column headerText="Jornada" style="font-size: 10px;text-align: center;">  
+                            <h:outputText value="#{item.jornada}" />  
                         </p:column>
                     </p:dataTable>
 
