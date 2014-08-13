@@ -22,8 +22,8 @@
                 <h:form id="formDataTable">
                     <br/>
                     <h:panelGroup>
-                        <h:outputText value="Identificacion Estudiante " style="padding-left: 350px;"/>
-                        <p:inputText value="#{detalleRecorridoEstudiantesBean.identificacion}" title="Digitar Identificacion Estudiante"/>
+                        <h:outputText value="Numero Ruta de Recorrido  " style="padding-left: 350px;"/>
+                        <p:inputText value="#{detalleRecorridoEstudiantesBean.recorrido.idrecorrido}" title="Digitar Id de Recorrido"/>
                         <h:commandLink id="pdf" action="#{detalleRecorridoEstudiantesBean.startReport()}" title="Generar Reporte">
                             <img src="../../resources/icons/Pdf.png" style="height: 20px; width: 20px;" alt="Mostrar Reporte"/>
                         </h:commandLink>

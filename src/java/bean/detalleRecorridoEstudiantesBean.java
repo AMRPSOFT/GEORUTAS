@@ -48,7 +48,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable {
     private Recorrido recorrido;
     private List<Detallerecorridoestudiante> listaDetallerecorridoestudiante;
     private List<Detallerecorridoestudiante> detallerecorridos;
-    private int identificacion;
+    private int idrecorrido;
 
     public detalleRecorridoEstudiantesBean() {
         this.recorrido = new Recorrido();
@@ -205,10 +205,10 @@ public class detalleRecorridoEstudiantesBean implements Serializable {
         this.transaction = null;
         try {
             this.sesion = HibernateUtil.getSessionFactory().openSession();
-            identificacion = this.getIdentificacion();
+            idrecorrido = this.recorrido.getIdrecorrido();
             Reportes reporte = new Reportes();
             this.transaction = this.sesion.beginTransaction();
-            reporte.verReporteRecorrido(identificacion);
+            reporte.verReporteRecorrido(idrecorrido);
 
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error", e.getMessage()));
@@ -218,7 +218,7 @@ public class detalleRecorridoEstudiantesBean implements Serializable {
     
     public void mostrarPdf(ActionEvent actionEvent) throws JRException, IOException {
         Map parametro = new HashMap();
-        identificacion = this.getIdentificacion();
+        idrecorrido = this.getIdrecorrido();
         //parametro.put("identificacion", identificacion);
         File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/jrRecorrido.jasper"));
         byte[] bytes = JasperRunManager.runReportToPdf(jasper.getPath(), parametro, new JRBeanCollectionDataSource(this.getDetallerecorridos()));
@@ -270,12 +270,12 @@ public class detalleRecorridoEstudiantesBean implements Serializable {
         this.listaDetallerecorridoestudiante = listaDetallerecorridoestudiante;
     }
 
-    public int getIdentificacion() {
-        return identificacion;
+    public int getIdrecorrido() {
+        return idrecorrido;
     }
 
-    public void setIdentificacion(int identificacion) {
-        this.identificacion = identificacion;
+    public void setIdentificacion(int idrecorrido) {
+        this.idrecorrido = idrecorrido;
     }
 
 }

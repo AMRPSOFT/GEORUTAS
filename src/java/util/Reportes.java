@@ -15,13 +15,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import model.Recorrido;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.JasperRunManager;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -34,6 +30,8 @@ public class Reportes {
     public static final String USER = "root";
     public static final String PASSWORD = "12345";
     public static Connection CONEXION;
+    
+    private Recorrido recorrido;
 
     public void verReporte(int identificacion) throws JRException, IOException {
         try {
@@ -59,14 +57,15 @@ public class Reportes {
         }
     }
     
-    public void verReporteRecorrido(int identificacion) throws JRException, IOException {
+    public void verReporteRecorrido(int idrecorrido) throws JRException, IOException {
+        
         try {
             Class.forName(DRIVER);
             CONEXION = DriverManager.getConnection(RUTA, USER, PASSWORD);
-            
+             
             File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/reportRecorrido.jasper"));
             Map parametro = new HashMap();
-            parametro.put("identificacion", identificacion);
+            parametro.put("idrecorrido", idrecorrido);
             byte[] bytes = JasperRunManager.runReportToPdf(jasper.getPath(), parametro, CONEXION);
             HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
             httpServletResponse.setContentType("application/pdf");
@@ -83,4 +82,12 @@ public class Reportes {
         }
     }
 
+    public Recorrido getRecorrido() {
+        return recorrido;
+    }
+
+    public void setRecorrido(Recorrido recorrido) {
+        this.recorrido = recorrido;
+    }
+    
 }
