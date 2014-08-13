@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportFactura" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="441621f1-b5ee-4af4-9274-881d84dbd836">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#6B91D5">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#CFD7E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="identificacion" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     detallefactura.`iddetallefactura` AS detallefactura_iddetallefactura,
+     detallefactura.`nombreestudiante` AS detallefactura_nombreestudiante,
+     detallefactura.`apellidoestudiante` AS detallefactura_apellidoestudiante,
+     detallefactura.`colegio` AS detallefactura_colegio,
+     detallefactura.`identificacion` AS detallefactura_identificacion,
+     detallefactura.`mesesvencidos` AS detallefactura_mesesvencidos,
+     detallefactura.`mensualidad` AS detallefactura_mensualidad,
+     detallefactura.`totalmensualidad` AS detallefactura_totalmensualidad
+FROM
+     `detallefactura` detallefactura
+WHERE
+	identificacion = $P{identificacion};]]>
+	</queryString>
+	<field name="detallefactura_iddetallefactura" class="java.lang.Integer"/>
+	<field name="detallefactura_nombreestudiante" class="java.lang.String"/>
+	<field name="detallefactura_apellidoestudiante" class="java.lang.String"/>
+	<field name="detallefactura_colegio" class="java.lang.String"/>
+	<field name="detallefactura_identificacion" class="java.lang.Integer"/>
+	<field name="detallefactura_mesesvencidos" class="java.lang.Integer"/>
+	<field name="detallefactura_mensualidad" class="java.math.BigDecimal"/>
+	<field name="detallefactura_totalmensualidad" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="334" y="29" width="100" height="20" uuid="ef911f4a-2c81-4705-a122-d06605e42880"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="4" width="727" height="64" uuid="394391da-4f76-4c3c-babd-931f35f41730"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AMTE TRANSPORTES ESCOLARES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="395" y="11" width="100" height="20" uuid="ab08c40c-399a-462b-81c7-654de8fa7533"/>
+				<textFieldExpression><![CDATA[$P{identificacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="253" y="11" width="134" height="20" uuid="22be7523-0e05-44d2-b4d8-fc73344ccf90"/>
+				<text><![CDATA[Identificacion Estudiante: ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="321" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="172" y="13" width="409" height="295" uuid="9e4c40f1-8f55-48f2-b944-f292b7273cda"/>
+			</rectangle>
+			<textField>
+				<reportElement x="371" y="24" width="175" height="20" uuid="10287113-affa-4baa-b0cc-17aa14c6928e"/>
+				<textFieldExpression><![CDATA[$F{detallefactura_iddetallefactura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="24" width="156" height="20" uuid="5c95e46c-2e5a-4653-9ab0-55f218702d82"/>
+				<text><![CDATA[Id:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="55" width="156" height="20" uuid="fffada92-c40d-4021-aece-547320859db4"/>
+				<text><![CDATA[Identificacion:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="371" y="55" width="175" height="20" uuid="4fbf693b-a32d-42fc-8d68-0d1a51b629a4"/>
+				<textFieldExpression><![CDATA[$F{detallefactura_identificacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="87" width="156" height="20" uuid="cf2bca27-cdd9-4136-ac8c-dcf22e842bcb"/>
+				<text><![CDATA[Nombres:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="371" y="87" width="175" height="20" uuid="01381b12-2235-480a-876d-c3c5b507ca47"/>
+				<textFieldExpression><![CDATA[$F{detallefactura_nombreestudiante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="117" width="156" height="20" uuid="b093880a-fc31-47ce-9253-7c012f41bd10"/>
+				<text><![CDATA[Apellidos:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="371" y="117" width="185" height="20" uuid="20051a54-c2a2-4438-aa72-f98cf83a0ac4"/>
+				<textFieldExpression><![CDATA[$F{detallefactura_apellidoestudiante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="147" width="156" height="20" uuid="4c563585-788b-46b9-b80c-5466426063ae"/>
+				<text><![CDATA[Colegio:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="371" y="147" width="175" height="20" uuid="07e68e78-0008-4902-8d12-b75996bfa06d"/>
+				<textFieldExpression><![CDATA[$F{detallefactura_colegio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="202" y="204" width="154" height="20" uuid="2e45bb07-8a4a-4322-88e1-e28780f9f60c"/>
+				<text><![CDATA[Meses Vencidos]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="371" y="204" width="168" height="20" uuid="c7644100-48a5-48d4-8352-e92c023cd904"/>
+				<textFieldExpression><![CDATA[$F{detallefactura_mesesvencidos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="229" width="156" height="20" uuid="f2ea7a90-8b5a-4f41-a37b-016889fceba2"/>
+				<text><![CDATA[Mensualidad]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="371" y="229" width="163" height="20" uuid="03d110f0-f386-47e0-819e-57cd1eefadbb"/>
+				<textFieldExpression><![CDATA[$F{detallefactura_mensualidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="255" width="156" height="20" uuid="4b8886f6-1207-4c97-903d-46eaee00cc36"/>
+				<text><![CDATA[Total Mensualidad]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="371" y="255" width="181" height="20" uuid="2bb77b59-224f-44de-8d0f-33c0a49c5e2b"/>
+				<textFieldExpression><![CDATA[$F{detallefactura_totalmensualidad}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="172" y="188" width="409" height="1" uuid="d0d60620-e20f-4ba0-9e65-6bf954c76254"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="632" y="0" width="80" height="20" uuid="72b0b5ac-aa34-4578-bb51-eba1cdf88407"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="712" y="0" width="40" height="20" uuid="d3e9d3ae-9fb5-495c-863c-4daf5b704e30"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="0" width="100" height="20" uuid="8e1362a0-9524-47c2-8520-d2f8768d4900"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="100" height="20" uuid="521fa14a-1106-45e4-a257-c1720ea6560a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
