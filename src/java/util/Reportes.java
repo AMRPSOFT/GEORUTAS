@@ -61,9 +61,10 @@ public class Reportes {
         try {
             Class.forName(DRIVER);
             CONEXION = DriverManager.getConnection(RUTA, USER, PASSWORD);
+            
+            File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/reportFactura.jasper"));
             Map parametro = new HashMap();
             parametro.put("identificacion", identificacion);
-            File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/reportes/reportFactura.jasper"));
             byte[] bytes = JasperRunManager.runReportToPdf(jasper.getPath(), parametro, CONEXION);
             HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
             httpServletResponse.setContentType("application/pdf");
